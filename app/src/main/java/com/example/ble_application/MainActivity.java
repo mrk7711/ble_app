@@ -5,22 +5,29 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothManager;
+import android.bluetooth.le.BluetoothLeScanner;
+import android.bluetooth.le.ScanCallback;
+import android.bluetooth.le.ScanResult;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
     private BluetoothAdapter BA = null;
+    private boolean scanning;
+    private Handler handler = new Handler();
+    private static final long SCAN_PERIOD = 10000;          // Stops scanning after 10 seconds.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BA = BluetoothAdapter.getDefaultAdapter();
         checkBTState();
-
-
     }
     private void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();}
