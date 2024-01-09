@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
     private void checkBTState() {
         if (BA == null) {
             errorExit("Error", "Bluetooth not support");
