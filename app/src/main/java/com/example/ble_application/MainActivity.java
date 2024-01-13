@@ -30,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private static final UUID NOTIFI_SERVICE = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private static final UUID NOTIFI_CHARACTERISTIC = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private static final long SCAN_PERIOD = 10000;          // Stops scanning after 10 seconds.
-    private BluetoothLeScanner BL;
+    private BluetoothLeScanner BS;
+    private BluetoothGatt BG = null;
     private boolean scanningEnd;
     BluetoothGattCharacteristic characteristicNotifi;
     String[] permissions = new String[]{Manifest.permission.ACCESS_COARSE_LOCATION};
@@ -51,7 +52,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void scanLeDevice() {
         BA = BluetoothAdapter.getDefaultAdapter();
-        BL = BA.getBluetoothLeScanner();                    // مشکل از این قسمت است.
+        BS = BA.getBluetoothLeScanner();                    // مشکل از این قسمت است.
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
         if (!scanningEnd) {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
                 if (Build.VERSION.SDK_INT >= 31) {
