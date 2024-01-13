@@ -52,17 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void scanLeDevice() {
         BA = BluetoothAdapter.getDefaultAdapter();
-        BS = BA.getBluetoothLeScanner();                    // مشکل از این قسمت است.
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
+//        BS = BA.getBluetoothLeScanner();                    // مشکل از این قسمت است.
         if (!scanningEnd) {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
                 if (Build.VERSION.SDK_INT >= 31) {
@@ -70,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
             }
-//            BL.startScan(lescanDevice);
+
+//           BL.startScan(lescanDevice);
         } else {
 //            BL.stopScan(lescanDevice);
         }
@@ -162,7 +153,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     private void errorExit(String title, String message) {
-        Toast.makeText(getBaseContext(), title + " - " + message, Toast.LENGTH_LONG).show();
+//        Toast.makeText(getBaseContext(), title + " - " + message, Toast.LENGTH_LONG).show();
+        showToast(title + "-" + message);
 //       finish();
     }
 }
