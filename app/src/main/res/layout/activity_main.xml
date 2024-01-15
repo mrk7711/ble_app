@@ -51,7 +51,7 @@
         <TextView
             android:id="@+id/ble"
             android:layout_width="match_parent"
-            android:layout_height="82dp"
+            android:layout_height="43dp"
             android:paddingTop="10dp"
             android:text="ble_device" />
     </LinearLayout>
