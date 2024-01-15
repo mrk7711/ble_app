@@ -3,6 +3,7 @@ package com.example.ble_application;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattService;
 import android.content.Intent;
 import android.Manifest;
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     Button b3;
     ListView lv;
     TextView status;
+    TextView ble;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,16 +60,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mHandler = new Handler();
         findViewByIdes();
-        BA = BluetoothAdapter.getDefaultAdapter();
+        final BluetoothManager bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+//        BA = BluetoothAdapter.getDefaultAdapter();
+        BA =bluetoothManager.getAdapter();
         checkBTState();
         implementListeners();
     }
-    private void scanLeDevice() {
 
-                         // مشکل از این قسمت است.
+    private void scanLeDevice() {
         if (!scanningEnd) {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
-                if (Build.VERSION.SDK_INT >= 21) {
+                if (Build.VERSION.SDK_INT >= 31) {
                     ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
                     return;
                 }
@@ -82,91 +85,87 @@ public class MainActivity extends AppCompatActivity {
     private ScanCallback lescanDevice = new ScanCallback() {
         @Override
         public void onScanResult(int callbackType, ScanResult result) {
-            super.onScanResult(callbackType, result);
-            if (!scanningEnd) {
+//            super.onScanResult(callbackType, result);
+                ble.setText("aa");
+                BluetoothDevice device = result.getDevice();
+                String uuidsFromScan = String.valueOf(result.getScanRecord().getServiceUuids());
+//            if (!scanningEnd) {
                 if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                    if (Build.VERSION.SDK_INT >= 21) {
+                    if (Build.VERSION.SDK_INT >= 31) {
                         ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
                         return;
                     }
                 }
-                Log.i(TAG, "onScanResult: " + result.getDevice().getAddress() + ":" + result.getDevice().getName());
+                ble.append("Device Name: " + device.getName() + " rssi: " + result.getRssi() + "\n");
+//                final int scrollAmount = ble.getLayout().getLineTop(ble.getLineCount()) - ble.getHeight();
+                showToast("onScanResult: "+ result.getDevice().getAddress()+ ":" + result.getDevice().getName());
                 if (result.getDevice().getAddress().equals("48:23:35:F4:00:17")) {
                     scanningEnd = true;
                     if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
-                        if (Build.VERSION.SDK_INT >= 21) {
+                        if (Build.VERSION.SDK_INT >= 31) {
                             ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
                             return;
                         }
                     }
                     BS.stopScan(lescanDevice);
-                    result.getDevice().connectGatt(MainActivity.this, false, mGattCallback);
+//                    device.connectGatt(this, false, mGattCallback);
                 }
-            }
+//            }
         }
     };
 
-    private BluetoothGattCallback mGattCallback = new BluetoothGattCallback() {
-        @Override
-        public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
-            super.onConnectionStateChange(gatt, status, newState);
-            if (newState == BluetoothProfile.STATE_CONNECTED) {
-                if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                    if (Build.VERSION.SDK_INT >= 21) {
-                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
-                        return;
-                    }
-                }
-                showToast("BLE_Connected");
-                gatt.discoverServices();
-            } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
-                showToast("BLE_Disconnected");
-                scanningEnd = false;
-            }
-        }
-
-        public void onServiceDiscovered(BluetoothGatt gatt, int status) {
-            super.onServicesDiscovered(gatt, status);
-            characteristicNotifi = gatt.getService(NOTIFI_SERVICE).getCharacteristic(NOTIFI_CHARACTERISTIC);
-            if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                if (Build.VERSION.SDK_INT >= 21) {
-                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
-                    return;
-                }
-            }
-            gatt.setCharacteristicNotification(characteristicNotifi, true);
-        }
-        public void  onCharacteristicChanged(BluetoothGatt gatt,BluetoothGattCharacteristic characteristic){
-            super.onCharacteristicChanged(gatt,characteristic);
-        }
-    };
-
-    public void writeMessage(byte[] message){
-        showToast("Writing message ....");
-        if(BG == null){
-            return;
-        }
-        BluetoothGattService service = BG.getService(UUID.fromString("4fafc201-1fb5-459e-8fcc-c5c9c331914b"));
-    }
-        public void onScanFailed(int errorCode) {
-            showToast("Scan Failed!");
-            scanningEnd = false;
-        }
-
+//    private BluetoothGattCallback mGattCallback = new BluetoothGattCallback() {
+//        @Override
+//        public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
+//            super.onConnectionStateChange(gatt, status, newState);
+//            if (newState == BluetoothProfile.STATE_CONNECTED) {
+//                if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+//                    if (Build.VERSION.SDK_INT >= 31) {
+//                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
+//                        return;
+//                    }
+//                }
+//                showToast("BLE_Connected");
+//                gatt.discoverServices();
+//            } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
+//                showToast("BLE_Disconnected");
+//                scanningEnd = false;
+//            }
+//        }
+//
+//        public void onServiceDiscovered(BluetoothGatt gatt, int status) {
+//            super.onServicesDiscovered(gatt, status);
+//            characteristicNotifi = gatt.getService(NOTIFI_SERVICE).getCharacteristic(NOTIFI_CHARACTERISTIC);
+//            if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+//                if (Build.VERSION.SDK_INT >= 31) {
+//                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
+//                    return;
+//                }
+//            }
+//            gatt.setCharacteristicNotification(characteristicNotifi, true);
+//        }
+//        public void  onCharacteristicChanged(BluetoothGatt gatt,BluetoothGattCharacteristic characteristic){
+//            super.onCharacteristicChanged(gatt,characteristic);
+//        }
+//    };
+//        public void onScanFailed(int errorCode) {
+//            showToast("Scan Failed!");
+//            scanningEnd = false;
+//        }
     private void implementListeners() {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!BA.isEnabled()) {
                     if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                        if (Build.VERSION.SDK_INT >= 21) {
+                        if (Build.VERSION.SDK_INT >= 31) {
                             ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 100);
                             return;
                         }
                     }
                     BA.enable();
                 } else {
-                    showToast("Bluetooth is ON!");
+//                    showToast("Bluetooth is ON!");
                 }
             }
         });
@@ -190,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 scanLeDevice();
+                status.setText("Scanning ........");
             }
         });
     }
@@ -210,6 +210,7 @@ public class MainActivity extends AppCompatActivity {
         b3 = findViewById(R.id.b3);
         lv = findViewById(R.id.lv);
         status = findViewById(R.id.status);
+        ble = findViewById(R.id.ble);
     }
 
     private void errorExit(String title, String message) {

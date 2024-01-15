@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="661dp"
+        android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -28,13 +28,13 @@
             android:id="@+id/b3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SCAN" />
+            android:text="START_SCAN" />
 
         <Button
             android:id="@+id/b4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CONNECT" />
+            android:text="STOP_SCAN" />
 
         <TextView
             android:id="@+id/status"
@@ -46,7 +46,14 @@
         <ListView
             android:id="@+id/lv"
             android:layout_width="match_parent"
-            android:layout_height="420dp" />
+            android:layout_height="373dp" />
+
+        <TextView
+            android:id="@+id/ble"
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:paddingTop="10dp"
+            android:text="ble_device" />
     </LinearLayout>
 
 </LinearLayout>
