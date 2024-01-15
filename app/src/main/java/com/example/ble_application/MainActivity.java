@@ -3,6 +3,8 @@ package com.example.ble_application;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import android.bluetooth.BluetoothGattService;
+import android.content.Intent;
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothGatt;
@@ -21,6 +23,8 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.UUID;
@@ -35,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 1;
     private BluetoothLeScanner BS;
     private BluetoothGatt BG = null;
+
     private boolean scanningEnd;
     BluetoothGattCharacteristic characteristicNotifi;
     String[] permissions = new String[]{Manifest.permission.ACCESS_COARSE_LOCATION};
@@ -43,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
 //    private LeDeviceListAdapter mLeDeviceListAdapter;
     Button b1;
     Button b2;
+    Button b3;
+    ListView lv;
+    TextView status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +59,7 @@ public class MainActivity extends AppCompatActivity {
         mHandler = new Handler();
         findViewByIdes();
         BA = BluetoothAdapter.getDefaultAdapter();
-//        BS = BA.getBluetoothLeScanner();
         checkBTState();
-//        scanLeDevice();
         implementListeners();
     }
     private void scanLeDevice() {
@@ -61,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
                          // مشکل از این قسمت است.
         if (!scanningEnd) {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
-                if (Build.VERSION.SDK_INT >= 31) {
-                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 100);
+                if (Build.VERSION.SDK_INT >= 21) {
+                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
                     return;
                 }
             }
@@ -79,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
             super.onScanResult(callbackType, result);
             if (!scanningEnd) {
                 if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                    if (Build.VERSION.SDK_INT >= 31) {
-                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 100);
+                    if (Build.VERSION.SDK_INT >= 21) {
+                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
                         return;
                     }
                 }
@@ -88,8 +94,8 @@ public class MainActivity extends AppCompatActivity {
                 if (result.getDevice().getAddress().equals("48:23:35:F4:00:17")) {
                     scanningEnd = true;
                     if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
-                        if (Build.VERSION.SDK_INT >= 31) {
-                            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 100);
+                        if (Build.VERSION.SDK_INT >= 21) {
+                            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
                             return;
                         }
                     }
@@ -106,14 +112,15 @@ public class MainActivity extends AppCompatActivity {
             super.onConnectionStateChange(gatt, status, newState);
             if (newState == BluetoothProfile.STATE_CONNECTED) {
                 if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                    if (Build.VERSION.SDK_INT >= 31) {
-                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 100);
+                    if (Build.VERSION.SDK_INT >= 21) {
+                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
                         return;
                     }
                 }
+                showToast("BLE_Connected");
                 gatt.discoverServices();
             } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
-
+                showToast("BLE_Disconnected");
                 scanningEnd = false;
             }
         }
@@ -122,8 +129,8 @@ public class MainActivity extends AppCompatActivity {
             super.onServicesDiscovered(gatt, status);
             characteristicNotifi = gatt.getService(NOTIFI_SERVICE).getCharacteristic(NOTIFI_CHARACTERISTIC);
             if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                if (Build.VERSION.SDK_INT >= 31) {
-                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 100);
+                if (Build.VERSION.SDK_INT >= 21) {
+                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
                     return;
                 }
             }
@@ -133,9 +140,18 @@ public class MainActivity extends AppCompatActivity {
             super.onCharacteristicChanged(gatt,characteristic);
         }
     };
-//        public void onScanFailed(int errorCode) {
-//            super.onScanFailed(errorCode);
-//        }
+
+    public void writeMessage(byte[] message){
+        showToast("Writing message ....");
+        if(BG == null){
+            return;
+        }
+        BluetoothGattService service = BG.getService(UUID.fromString("4fafc201-1fb5-459e-8fcc-c5c9c331914b"));
+    }
+        public void onScanFailed(int errorCode) {
+            showToast("Scan Failed!");
+            scanningEnd = false;
+        }
 
     private void implementListeners() {
         b1.setOnClickListener(new View.OnClickListener() {
@@ -143,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!BA.isEnabled()) {
                     if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                        if (Build.VERSION.SDK_INT >= 31) {
+                        if (Build.VERSION.SDK_INT >= 21) {
                             ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 100);
                             return;
                         }
@@ -154,7 +170,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
 
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -168,6 +183,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                     BA.disable();
                 }
+            }
+        });
+
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                scanLeDevice();
             }
         });
     }
@@ -185,6 +207,9 @@ public class MainActivity extends AppCompatActivity {
     private void findViewByIdes() {
         b1 = findViewById(R.id.b1);
         b2 = findViewById(R.id.b2);
+        b3 = findViewById(R.id.b3);
+        lv = findViewById(R.id.lv);
+        status = findViewById(R.id.status);
     }
 
     private void errorExit(String title, String message) {
