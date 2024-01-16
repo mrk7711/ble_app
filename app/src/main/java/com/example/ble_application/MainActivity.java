@@ -131,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 status.setText("Connecting");
+//                MainActivity.this.startActivity(new Intent(MainActivity.this, GATTService.class));
             }
         });
     }
@@ -145,6 +146,19 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             BS = BA.getBluetoothLeScanner();
+//            handler.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    scanningEnd = false;
+//                    if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
+//                        if (Build.VERSION.SDK_INT >= 31) {
+//                            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
+//                            return;
+//                        }
+//                    }
+//                    BS.stopScan(lescanDevice);
+//                }
+//            }, SCAN_PERIOD);
             BS.startScan(lescanDevice);
         } else {
             BS.stopScan(lescanDevice);
@@ -225,8 +239,6 @@ public class MainActivity extends AppCompatActivity {
     private void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
-
-
 }
 
 
