@@ -18,6 +18,7 @@ import android.bluetooth.le.ScanCallback;
 import android.bluetooth.le.ScanResult;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -125,13 +126,18 @@ public class MainActivity extends AppCompatActivity {
                 }
                 BS.stopScan(lescanDevice);
                 status.setText("Scan Finished ........");
+                showToast(btArray[0].getAddress());
             }
         });
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 status.setText("Connecting");
-//                MainActivity.this.startActivity(new Intent(MainActivity.this, GATTService.class));
+                if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+//                btArray[i].connectGatt(MainActivity.this, false, mGattCallback);
+//                MainActivity.this.startActivity(new Intent(MainActivity.this, Gatt_Activity.class));
             }
         });
     }
@@ -159,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
 //                    BS.stopScan(lescanDevice);
 //                }
 //            }, SCAN_PERIOD);
+
             BS.startScan(lescanDevice);
         } else {
             BS.stopScan(lescanDevice);
@@ -178,8 +185,14 @@ public class MainActivity extends AppCompatActivity {
 //            if (mLeDevices.size() > 0) {
             for (BluetoothDevice a : mLeDevices) {
                 btArray[index] = a;
-                strings[index] = a.getAddress();
-                    index++;
+                if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                    if (Build.VERSION.SDK_INT >= 31) {
+                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
+                        return;
+                    }
+                }
+                strings[index] = a.getName();
+                index++;
                 }
                 ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,strings);
                 lv.setAdapter(arrayAdapter);
@@ -193,22 +206,50 @@ public class MainActivity extends AppCompatActivity {
                 }
                 ble.append("Device Address: " + device.getName() + " rssi: " + result.getRssi() + "\n");
 
-//                final int scrollAmount = ble.getLayout().getLineTop(ble.getLineCount()) - ble.getHeight();
-//                showToast("onScanResult: "+ result.getDevice().getAddress()+ ":" + result.getDevice().getName());
 //                if (result.getDevice().getAddress().equals("48:23:35:F4:00:17")) {
-//                    scanningEnd = true;
-//                    if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
-//                        if (Build.VERSION.SDK_INT >= 31) {
-//                            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
-//                            return;
-//                        }
-//                    }
-//                    BS.stopScan(lescanDevice);
-////                    device.connectGatt(this, false, mGattCallback);
+//                    scanningEnd = true;;
+//                    device.connectGatt(this, false, mGattCallback);
 //                }
 //            }
         }
     };
+
+//        private BluetoothGattCallback mGattCallback = new BluetoothGattCallback() {
+//        @Override
+//        public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
+//            super.onConnectionStateChange(gatt, status, newState);
+//            if (newState == BluetoothProfile.STATE_CONNECTED) {
+//                if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+//                    if (Build.VERSION.SDK_INT >= 31) {
+//                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 100);
+//                        return;
+//                    }
+//                }
+//                gatt.discoverServices();
+//            } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
+//                scanningEnd = false;
+//            }
+//        }
+//
+//        public void onServiceDiscovered(BluetoothGatt gatt, int status) {
+//            super.onServicesDiscovered(gatt, status);
+//            characteristicNotifi = gatt.getService(NOTIFI_SERVICE).getCharacteristic(NOTIFI_CHARACTERISTIC);
+//            if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+//                if (Build.VERSION.SDK_INT >= 31) {
+//                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 100);
+//                    return;
+//                }
+//            }
+//            gatt.setCharacteristicNotification(characteristicNotifi, true);
+//        }
+//
+//        public void  onCharacteristicChanged(BluetoothGatt gatt,BluetoothGattCharacteristic characteristic){
+//            super.onCharacteristicChanged(gatt,characteristic);
+//        }
+//    };
+////        public void onScanFailed(int errorCode) {
+////            super.onScanFailed(errorCode);
+////        }
 
     private void checkBTState() {
 
@@ -219,6 +260,7 @@ public class MainActivity extends AppCompatActivity {
             else{showToast("Please Turn Bluetooth ON...");}
         }
     }
+
 
     private void findViewByIdes() {
         b1 = findViewById(R.id.b1);
