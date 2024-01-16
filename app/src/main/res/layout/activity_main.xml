@@ -43,17 +43,18 @@
             android:paddingTop="10dp"
             android:text="Status:" />
 
-        <ListView
-            android:id="@+id/lv"
-            android:layout_width="match_parent"
-            android:layout_height="373dp" />
-
         <TextView
             android:id="@+id/ble"
             android:layout_width="match_parent"
             android:layout_height="43dp"
             android:paddingTop="10dp"
             android:text="ble_device" />
+
+        <ListView
+            android:id="@+id/lv"
+            android:layout_width="match_parent"
+            android:layout_height="373dp" />
+
     </LinearLayout>
 
 </LinearLayout>

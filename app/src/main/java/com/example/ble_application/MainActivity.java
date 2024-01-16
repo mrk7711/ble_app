@@ -25,6 +25,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -38,8 +39,8 @@ import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
     private BluetoothAdapter BA = null;
-    private Handler handler ;
-//    private LeDeviceListAdapter leDeviceListAdapter = new LeDeviceListAdapter();
+    private Handler handler;
+    //    private LeDeviceListAdapter leDeviceListAdapter = new LeDeviceListAdapter();
     private static final UUID NOTIFI_SERVICE = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private static final UUID NOTIFI_CHARACTERISTIC = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private static final long SCAN_PERIOD = 10000;          // Stops scanning after 10 seconds.
@@ -51,10 +52,11 @@ public class MainActivity extends AppCompatActivity {
     private boolean scanningEnd;
     BluetoothGattCharacteristic characteristicNotifi;
     private static final String TAG = "Main";
-//    private LeDeviceListAdapter mLeDeviceListAdapter;
+    //    private LeDeviceListAdapter mLeDeviceListAdapter;
     Button b1;
     Button b2;
     Button b3;
+    Button b4;
     ListView lv;
     TextView status;
     TextView ble;
@@ -63,15 +65,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        handler  = new Handler();
+        handler = new Handler();
         findViewByIdes();
         final BluetoothManager bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
 //        BA = BluetoothAdapter.getDefaultAdapter();
-        BA =bluetoothManager.getAdapter();
+        BA = bluetoothManager.getAdapter();
         checkBTState();
         implementListeners();
         mLeDevices = new ArrayList<BluetoothDevice>();
     }
+
     private void implementListeners() {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,8 +87,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                     BA.enable();
-                } else {
-//                    showToast("Bluetooth is ON!");
                 }
             }
         });
@@ -112,7 +113,28 @@ public class MainActivity extends AppCompatActivity {
                 status.setText("Scanning ........");
             }
         });
+
+        b4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
+                    if (Build.VERSION.SDK_INT >= 31) {
+                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
+                        return;
+                    }
+                }
+                BS.stopScan(lescanDevice);
+                status.setText("Scan Finished ........");
+            }
+        });
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                status.setText("Connecting");
+            }
+        });
     }
+
     private void scanLeDevice() {
 
         if (!scanningEnd) {
@@ -128,35 +150,34 @@ public class MainActivity extends AppCompatActivity {
             BS.stopScan(lescanDevice);
         }
     }
+
     private ScanCallback lescanDevice = new ScanCallback() {
         @Override
         public void onScanResult(int callbackType, ScanResult result) {
             super.onScanResult(callbackType, result);
-            if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                    if (Build.VERSION.SDK_INT >= 31) {
-                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
-                        return;
-                    }
-                }
-                ble.setText("aa");
-                BluetoothDevice device = result.getDevice();
-                mLeDevices.add(device);
-                String[] strings=new String[mLeDevices.size()];
-                btArray=new BluetoothDevice[mLeDevices.size()];
-                int index=0;
+            ble.setText("aa");
+            BluetoothDevice device = result.getDevice();
+            mLeDevices.add(device);
+            String[] strings = new String[mLeDevices.size()];
+            btArray = new BluetoothDevice[mLeDevices.size()];
+            int index = 0;
 //            if (mLeDevices.size() > 0) {
-                for (BluetoothDevice a : mLeDevices) {
-                    btArray[index]=a;
-                    strings[index]=a.getName();
+            for (BluetoothDevice a : mLeDevices) {
+                btArray[index] = a;
+                strings[index] = a.getAddress();
                     index++;
                 }
                 ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,strings);
                 lv.setAdapter(arrayAdapter);
 //            }
-//                String uuidsFromScan = String.valueOf(result.getScanRecord().getServiceUuids());
 //            if (!scanningEnd) {
-
-                ble.append("Device Address: " + device.getAddress() + " rssi: " + result.getRssi() + "\n");
+                if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                    if (Build.VERSION.SDK_INT >= 31) {
+                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
+                        return;
+                    }
+                }
+                ble.append("Device Address: " + device.getName() + " rssi: " + result.getRssi() + "\n");
 
 //                final int scrollAmount = ble.getLayout().getLineTop(ble.getLineCount()) - ble.getHeight();
 //                showToast("onScanResult: "+ result.getDevice().getAddress()+ ":" + result.getDevice().getName());
@@ -189,6 +210,7 @@ public class MainActivity extends AppCompatActivity {
         b1 = findViewById(R.id.b1);
         b2 = findViewById(R.id.b2);
         b3 = findViewById(R.id.b3);
+        b4 = findViewById(R.id.b4);
         lv = findViewById(R.id.lv);
         status = findViewById(R.id.status);
         ble = findViewById(R.id.ble);
