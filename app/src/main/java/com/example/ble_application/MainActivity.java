@@ -126,8 +126,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 BS.stopScan(lescanDevice);
-                status.setText("Scan Finished ........");
-                showToast(btArray[0].getAddress());
+                status.setText("Scan Finished ..");
             }
         });
 
@@ -203,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
                 ble.append("Device Address: " + device.getName() + " rssi: " + result.getRssi() + "\n");
 
 //                if (result.getDevice().getAddress().equals("48:23:35:F4:00:17")) {
-//                    scanningEnd = true;;
+//                    scanningEnd = true;
 //                    device.connectGatt(this, false, mGattCallback);
 //                }
 //            }
