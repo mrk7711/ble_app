@@ -15,18 +15,18 @@ public class Gatt_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gatt);
         findViewByIdes();
+        status2.setText("Device Information:");
         Intent a=getIntent();
-//        BluetoothDevice device = getIntent().getExtras().getParcelable("BLE");
-        String y=a.getStringExtra("BLE");
-        status3.setText(y);
-//        status2.setText(device.getAddress());
+        BluetoothDevice device = getIntent().getExtras().getParcelable("BLE");
+//        String y=a.getStringExtra("BLE");
+//        status3.setText(y);
+        status3.setText(device.getAddress());
     }
 
     private void findViewByIdes() {
 
         status2 = findViewById(R.id.status2);
         status3 = findViewById(R.id.status3);
-        status2.setText("Connecting");
     }
 
     //        private BluetoothGattCallback mGattCallback = new BluetoothGattCallback() {

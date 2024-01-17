@@ -135,13 +135,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 status.setText("Connecting");
-//                BluetoothDevice selectedDevice = btArray[i];
-                String x = btArray[i].getAddress();
+                BluetoothDevice selectedDevice = btArray[i];
 //               btArray[i].connectGatt(MainActivity.this, false, mGattCallback);
                 Intent senderIntent = new Intent(MainActivity.this,Gatt_Activity.class);
-//                senderIntent.putExtra("BLE",selectedDevice);
-                senderIntent.putExtra("BLE",x);
-               MainActivity.this.startActivity(senderIntent);
+                senderIntent.putExtra("BLE",selectedDevice);
+                MainActivity.this.startActivity(senderIntent);
 //                MainActivity.this.startActivity(new Intent(MainActivity.this, Gatt_Activity.class));
             }
         });

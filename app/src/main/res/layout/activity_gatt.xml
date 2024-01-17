@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center|right|center_horizontal|top"
     tools:context=".Gatt_Activity">
 
     <LinearLayout
@@ -15,14 +16,23 @@
         <TextView
             android:id="@+id/status2"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="Status" />
+            android:layout_height="50dp" />
 
         <TextView
             android:id="@+id/status3"
             android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:id="@+id/status4"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <Button
+            android:id="@+id/connect"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="TextView" />
+            android:text="Connect" />
     </LinearLayout>
 
 </LinearLayout>
