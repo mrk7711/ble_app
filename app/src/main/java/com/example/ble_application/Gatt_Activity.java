@@ -29,6 +29,8 @@ public class Gatt_Activity extends AppCompatActivity {
     private static final UUID NOTIFI_SERVICE = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private static final UUID NOTIFI_CHARACTERISTIC = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     BluetoothGattCharacteristic characteristicNotifi;
+    BluetoothDevice device2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +38,7 @@ public class Gatt_Activity extends AppCompatActivity {
         findViewByIdes();
 
         Intent a = getIntent();
-        BluetoothDevice device2 = getIntent().getExtras().getParcelable("BLE");
+        device2 = getIntent().getExtras().getParcelable("BLE");
         status2.setText("Device Information:");
         status3.setText(device2.getAddress());
         if (ContextCompat.checkSelfPermission(Gatt_Activity.this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
@@ -61,7 +63,10 @@ public class Gatt_Activity extends AppCompatActivity {
         b_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                device2.connectGatt(this, false, mGattCallback);
+                if (ActivityCompat.checkSelfPermission(Gatt_Activity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                device2.connectGatt(Gatt_Activity.this, false, mGattCallback);
                 }
 
         });

@@ -233,10 +233,8 @@ public class MainActivity extends AppCompatActivity {
     private void errorExit(String title, String message) {
 //        Toast.makeText(getBaseContext(), title + " - " + message, Toast.LENGTH_LONG).show();
             showToast(title + "-" + message);
-            finish();
+//            finish();
     }
-
-
 
     private void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
