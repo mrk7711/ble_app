@@ -135,7 +135,13 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 status.setText("Connecting");
                 BluetoothDevice selectedDevice = btArray[i];
-//               btArray[i].connectGatt(MainActivity.this, false, mGattCallback);
+                if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                    if (Build.VERSION.SDK_INT >= 31) {
+                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
+                        return;
+                    }
+                }
+                ble.append("Device Address: " + selectedDevice.getName() +" \n");
                 Intent senderIntent = new Intent(MainActivity.this,Gatt_Activity.class);
                 senderIntent.putExtra("BLE",selectedDevice);
                 MainActivity.this.startActivity(senderIntent);
@@ -193,13 +199,8 @@ public class MainActivity extends AppCompatActivity {
                 lv.setAdapter(arrayAdapter);
 //            }
 //            if (!scanningEnd) {
-                if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                    if (Build.VERSION.SDK_INT >= 31) {
-                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
-                        return;
-                    }
-                }
-                ble.append("Device Address: " + device.getName() + " rssi: " + result.getRssi() + "\n");
+
+//                ble.append("Device Address: " + device.getName() + " rssi: " + result.getRssi() + "\n");
 
 //                if (result.getDevice().getAddress().equals("48:23:35:F4:00:17")) {
 //                    scanningEnd = true;
