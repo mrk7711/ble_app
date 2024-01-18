@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     }
                 }
-                ble.append("Device Address: " + selectedDevice.getName() +" \n");
+                ble.setText("Device Name : " + selectedDevice.getName() +" \n");
                 Intent senderIntent = new Intent(MainActivity.this,Gatt_Activity.class);
                 senderIntent.putExtra("BLE",selectedDevice);
                 MainActivity.this.startActivity(senderIntent);
@@ -159,20 +159,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             BS = BA.getBluetoothLeScanner();
-//            handler.postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    scanningEnd = false;
-//                    if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
-//                        if (Build.VERSION.SDK_INT >= 31) {
-//                            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
-//                            return;
-//                        }
-//                    }
-//                    BS.stopScan(lescanDevice);
-//                }
-//            }, SCAN_PERIOD);
-
             BS.startScan(lescanDevice);
         } else {
             BS.stopScan(lescanDevice);
@@ -183,7 +169,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onScanResult(int callbackType, ScanResult result) {
             super.onScanResult(callbackType, result);
-            ble.setText("aa");
             BluetoothDevice device = result.getDevice();
             mLeDevices.add(device);
             String[] strings = new String[mLeDevices.size()];

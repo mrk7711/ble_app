@@ -33,6 +33,11 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="Connect" />
+
+        <TextView
+            android:id="@+id/status5"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
     </LinearLayout>
 
 </LinearLayout>
