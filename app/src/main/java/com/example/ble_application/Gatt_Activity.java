@@ -191,5 +191,5 @@ private ArrayList<ArrayList<BluetoothGattCharacteristic>> mGattCharacteristics =
         sendBroadcast(intent);
     }
 
-
+    
 }
