@@ -25,7 +25,7 @@ public class Gatt_Activity extends AppCompatActivity {
     TextView status3;
     TextView status4;
     TextView status5;
-    Button b_1;
+    Button   but_1;
     private boolean scanningEnd;
     private final static String TAG = Gatt_Activity.class.getSimpleName();
     public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
@@ -63,7 +63,6 @@ private ArrayList<ArrayList<BluetoothGattCharacteristic>> mGattCharacteristics =
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gatt);
         findViewByIdes();
-
         Intent a = getIntent();
         device2 = getIntent().getExtras().getParcelable("BLE");
         status2.setText("Device Information:");
@@ -84,11 +83,12 @@ private ArrayList<ArrayList<BluetoothGattCharacteristic>> mGattCharacteristics =
         status3 = findViewById(R.id.status3);
         status4 = findViewById(R.id.status4);
         status5 = findViewById(R.id.status5);
-        b_1 = findViewById(R.id.connect);
+        but_1 = findViewById(R.id.connect);
+        mGattServicesList =findViewById(R.id.expand);
     }
 
     private void implementListeners2() {
-        b_1.setOnClickListener(new View.OnClickListener() {
+        but_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (ActivityCompat.checkSelfPermission(Gatt_Activity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
@@ -191,5 +191,5 @@ private ArrayList<ArrayList<BluetoothGattCharacteristic>> mGattCharacteristics =
         sendBroadcast(intent);
     }
 
-    
+
 }
