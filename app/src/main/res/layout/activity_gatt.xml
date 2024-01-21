@@ -28,16 +28,21 @@
             android:layout_width="match_parent"
             android:layout_height="50dp" />
 
+        <TextView
+            android:id="@+id/status5"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:id="@+id/status6"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
         <Button
             android:id="@+id/connect"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="Connect" />
-
-        <TextView
-            android:id="@+id/status5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
         <ExpandableListView
             android:id="@+id/expand"
