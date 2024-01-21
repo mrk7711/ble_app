@@ -16,27 +16,27 @@
         <TextView
             android:id="@+id/status2"
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="30dp" />
 
         <TextView
             android:id="@+id/status3"
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="30dp" />
 
         <TextView
             android:id="@+id/status4"
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="30dp" />
 
         <TextView
             android:id="@+id/status5"
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="30dp" />
 
         <TextView
             android:id="@+id/status6"
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="30dp" />
 
         <Button
             android:id="@+id/connect"
