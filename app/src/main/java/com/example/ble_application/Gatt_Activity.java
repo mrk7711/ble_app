@@ -13,6 +13,7 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
 import android.bluetooth.BluetoothProfile;
+import android.bluetooth.le.ScanSettings;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -23,7 +24,9 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.IBinder;
+import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -46,7 +49,7 @@ public class Gatt_Activity extends AppCompatActivity {
     TextView ConnectionState;      //Connection State
     TextView mDataField;
     Button ConnectionButton;
-    BluetoothDevice device3;
+    BluetoothDevice device2;
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private final static String TAG = "BluetoothLeService";
     public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
@@ -62,7 +65,7 @@ public class Gatt_Activity extends AppCompatActivity {
     private BluetoothGattCharacteristic mNotifyCharacteristic;
     private final String LIST_NAME = "NAME";
     private final String LIST_UUID = "UUID";
-    BluetoothDevice device2;
+    BluetoothGattCallback getmGattCallback;
     public final static String ACTION_GATT_CONNECTED =
             "com.example.bluetooth.le.ACTION_GATT_CONNECTED";
     public final static String ACTION_GATT_DISCONNECTED =
@@ -73,9 +76,12 @@ public class Gatt_Activity extends AppCompatActivity {
             "com.example.bluetooth.le.ACTION_DATA_AVAILABLE";
     public final static String EXTRA_DATA =
             "com.example.bluetooth.le.EXTRA_DATA";
-    private static final int STATE_DISCONNECTED = 0;
-    private static final int STATE_CONNECTING = 1;
-    private static final int STATE_CONNECTED = 2;
+    static final int STATE_DISCOVERED = 1;
+    static final int STATE_CONNECTING = 2;
+    static final int STATE_CONNECTED = 3;
+    static final int STATE_CONNECTION_FAILED = 4;
+    static final int STATE_MESSAGE_RECEIVED = 5;
+    static final int STATE_DISCOVERY = 6;
     private int connectionState;
 
 
@@ -90,7 +96,7 @@ public class Gatt_Activity extends AppCompatActivity {
         Address.setText(device2.getAddress());
         if (ContextCompat.checkSelfPermission(Gatt_Activity.this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
             if (Build.VERSION.SDK_INT >= 31) {
-                ActivityCompat.requestPermissions(Gatt_Activity.this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 100);
+                ActivityCompat.requestPermissions(Gatt_Activity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
                 return;
             }
         }
@@ -98,7 +104,35 @@ public class Gatt_Activity extends AppCompatActivity {
         mDeviceName = device2.getName();
         mDeviceAddress = device2.getAddress();
         implementListeners2();
+        if (device2 == null) {
+            showToast("There is not any Device!");
+        }
     }
+
+    Handler handler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+
+            switch (msg.what) {
+                case STATE_DISCOVERED:
+                    ConnectionState.setText("Service Discovery");
+                    break;
+                case STATE_CONNECTING:
+                    ConnectionState.setText("Connecting");
+                    break;
+                case STATE_CONNECTED:
+                    ConnectionState.setText("Connected");
+                    break;
+                case STATE_CONNECTION_FAILED:
+                    ConnectionState.setText("Connection Failed");
+                    break;
+                case STATE_DISCOVERY:
+                    ConnectionState.setText("Service Dicovered");
+                    break;
+            }
+            return true;
+        }
+    });
 
     private void findViewByIdes() {
 
@@ -115,13 +149,16 @@ public class Gatt_Activity extends AppCompatActivity {
         ConnectionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (ActivityCompat.checkSelfPermission(Gatt_Activity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                    return;
-                }
-                BG = device3.connectGatt(Gatt_Activity.this, false, mGattCallback);
                 ConnectionState.setText("yes till now");
-//                BG.connect();
-//                mGattCallback.onConnectionStateChange(BG,BluetoothGatt.GATT_SUCCESS,BluetoothProfile.STATE_CONNECTED);
+//                BG = device3.connectGatt(Gatt_Activity.this, false, mGattCallback);
+                if (ActivityCompat.checkSelfPermission(Gatt_Activity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                    if (Build.VERSION.SDK_INT >= 31) {
+                        ActivityCompat.requestPermissions(Gatt_Activity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
+                        return;
+                    }
+                }
+                device2.connectGatt(Gatt_Activity.this, false, mGattCallback);
+                mDataField.setText("yes till now");
             }
         });
     }
@@ -129,33 +166,48 @@ public class Gatt_Activity extends AppCompatActivity {
     private final BluetoothGattCallback mGattCallback =
             new BluetoothGattCallback() {
                 @Override
-                public void onConnectionStateChange(BluetoothGatt gatt, int status,
-                                                    int newState) {
+                public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
                     String intentAction;
                     if (newState == BluetoothProfile.STATE_CONNECTED) {
-                        intentAction = ACTION_GATT_CONNECTED;
-                        connectionState = STATE_CONNECTED;
-                        broadcastUpdate(intentAction);
-                        Log.i(TAG, "Connected to GATT server.");
+                        handler.obtainMessage(STATE_DISCOVERED, gatt).sendToTarget();
+//                        connectionState = STATE_CONNECTED;
                         if (ActivityCompat.checkSelfPermission(Gatt_Activity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                            return;
+                            if (Build.VERSION.SDK_INT >= 31) {
+                                ActivityCompat.requestPermissions(Gatt_Activity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
+                                return;
+                            }
                         }
                         BG.discoverServices();
-
+                        mDataField.setText("Service Discovery Finished!");
                     } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
-                        intentAction = ACTION_GATT_DISCONNECTED;
-                        connectionState = STATE_DISCONNECTED;
-                        Log.i(TAG, "Disconnected from GATT server.");
-                        broadcastUpdate(intentAction);
+                        handler.obtainMessage(STATE_CONNECTION_FAILED, gatt).sendToTarget();
+//                        connectionState = STATE_CONNECTION_FAILED;
+                    }
+                }
+
+                @Override
+                public void onServicesDiscovered(BluetoothGatt gatt, int status) {
+                    if(status == BluetoothGatt.GATT_SUCCESS) {
+//                        List<BluetoothGattService> services = gatt.getServices();
+                        handler.obtainMessage(STATE_DISCOVERY, gatt).sendToTarget();
+                    }
+                    showToast("Hi");
+                }
+
+                @Override
+                public void onCharacteristicRead(BluetoothGatt gatt,
+                                                 BluetoothGattCharacteristic characteristic,
+                                                 int status) {
+                    Log.d(TAG, "onCharacteristicRead characteristic: " + characteristic.getUuid());
+                    if (status == BluetoothGatt.GATT_SUCCESS) {
                     }
                 }
             };
-    private void broadcastUpdate(final String action) {
-        final Intent intent = new Intent(action);
-        sendBroadcast(intent);
-    }
+
     private void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 }
+
+
 

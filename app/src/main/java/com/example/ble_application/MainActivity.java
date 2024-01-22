@@ -5,6 +5,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattService;
+import android.bluetooth.le.ScanSettings;
 import android.content.Intent;
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
@@ -151,6 +152,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void scanLeDevice() {
+//        ScanSettings scanSettings = new ScanSettings.Builder()
+//                .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)
+//                .build();
         if (!scanningEnd) {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
                 if (Build.VERSION.SDK_INT >= 31) {
