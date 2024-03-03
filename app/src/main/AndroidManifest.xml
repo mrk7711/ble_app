@@ -8,11 +8,11 @@
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
     <application
@@ -25,16 +25,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BLE_Application"
         tools:targetApi="31">
+
+        <!-- This is our first page(Launcher) in this app -->
         <activity
-            android:name=".MainActivity"
+            android:name=".FirstActivity"
             android:exported="true">
+
+            <!-- Next line describe launcher (Main And first Page that opens!!) -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Gatt_Activity" android:exported="false" />
+        <!-- This is our Second page in this app. in this page we want User to Enable Bluetooth -->
+        <activity android:name=".SecondActivity"/>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Gatt_Activity" />
     </application>
 
 </manifest>

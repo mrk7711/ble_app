@@ -1,33 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".SecondActivity">
+    android:background="#51673AB7"
+    tools:context=".FirstActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
+        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize" />
+            android:layout_height="200dp"
+            app:srcCompat="@drawable/arnica_logo_prev_ui_2_1" />
 
-    </com.google.android.material.appbar.AppBarLayout>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="79dp"
+            android:text="Welcome"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textSize="40sp" />
 
-    <include layout="@layout/content_second" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="309dp"
+            android:text="@string/about_app"
+            android:textAlignment="center"
+            android:textSize="20sp" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="16dp"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+            <Button
+                android:id="@+id/Continue"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:text="Continue"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                app:iconTint="#673AB7" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

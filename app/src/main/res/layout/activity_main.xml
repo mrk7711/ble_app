@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#51673AB7"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -15,25 +16,25 @@
         <Button
             android:id="@+id/b1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:text="ON" />
 
         <Button
             android:id="@+id/b2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:text="OFF" />
 
         <Button
             android:id="@+id/b3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:text="START_SCAN" />
 
         <Button
             android:id="@+id/b4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:text="STOP_SCAN" />
 
         <TextView
