@@ -30,26 +30,25 @@
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
-            android:layout_height="309dp"
+            android:layout_height="235dp"
             android:text="@string/about_app"
             android:textAlignment="center"
             android:textSize="20sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/Continue"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:background="#FFFFFF"
-                android:text="Continue"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                app:iconTint="#673AB7" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/Continue"
+            android:layout_width="346dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="20dp"
+            android:background="#FFFFFF"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="Continue"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:verticalScrollbarPosition="defaultPosition"
+            app:iconTint="#673AB7" />
 
     </LinearLayout>
 </LinearLayout>
