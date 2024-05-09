@@ -15,7 +15,7 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="242dp"
             app:srcCompat="@drawable/arnica_logo_prev_ui_2_1" />
 
         <TextView
@@ -30,7 +30,7 @@
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
-            android:layout_height="235dp"
+            android:layout_height="124dp"
             android:text="@string/about_app"
             android:textAlignment="center"
             android:textSize="20sp" />

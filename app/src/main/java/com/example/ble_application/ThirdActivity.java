@@ -17,7 +17,6 @@ public class ThirdActivity extends AppCompatActivity {
     private BluetoothAdapter BA;
     Button b1;
     Button b2;
-    int flag=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,15 +40,12 @@ public class ThirdActivity extends AppCompatActivity {
                 if(!BA.isEnabled()) {
                     Intent turnOn = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                     startActivityForResult(turnOn, 0);
-                    flag=1;
                     new Handler().postDelayed(new Runnable(){
                         @Override
                         public void run() {
-                            if(flag==1)
-                            {
                                 ThirdActivity.this.startActivity(new Intent(ThirdActivity.this,FourthActivity.class));
                                 ThirdActivity.this.finish();
-                            }
+
                         }
                     },4000);
                 }

@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.location.Location;
 import android.location.LocationRequest;
 import android.os.Bundle;
+import android.os.Handler;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 
@@ -28,7 +30,16 @@ public class FourthActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //ActivityCompat.requestPermissions(FourthActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
                 ActivityCompat.requestPermissions(FourthActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION,}, 1);
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivity(intent);
+                new Handler().postDelayed(new Runnable(){
+                    @Override
+                    public void run() {
+                        FourthActivity.this.startActivity(new Intent(FourthActivity.this,MainActivity.class));
+                        FourthActivity.this.finish();
 
+                    }
+                },4000);
             }
         });
         b2.setOnClickListener(new View.OnClickListener() {
