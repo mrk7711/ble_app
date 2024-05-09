@@ -17,6 +17,6 @@ public class FirstActivity extends AppCompatActivity {
                 FirstActivity.this.startActivity(new Intent(FirstActivity.this,SecondActivity.class));
                 FirstActivity.this.finish();
             }
-        },5000);
+        },4000);
     }
 }
