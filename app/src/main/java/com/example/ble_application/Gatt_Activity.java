@@ -85,7 +85,6 @@ public class Gatt_Activity extends AppCompatActivity {
     static final int STATE_DISCOVERY = 6;
     private int connectionState;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
