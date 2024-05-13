@@ -195,7 +195,6 @@ public class Gatt_Activity extends AppCompatActivity {
                         handler.obtainMessage(STATE_CONNECTION_FAILED, gatt).sendToTarget();
                     }
                 }
-
                 @Override
                 public void onServicesDiscovered(BluetoothGatt gatt, int status) {
                     if (status == BluetoothGatt.GATT_SUCCESS) {
