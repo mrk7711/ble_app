@@ -30,8 +30,10 @@ import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.ListAdapter;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -173,6 +175,8 @@ public class Gatt_Activity extends AppCompatActivity {
                     }
                 }
                 BG.disconnect();
+                BG.close();
+                ConnectionState.setText("Disconnected");
             }
         });
     }
@@ -203,7 +207,6 @@ public class Gatt_Activity extends AppCompatActivity {
                         displayGattServices(services);
                     }
                 }
-
                 @Override
                 public void onCharacteristicRead(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
                     Log.d(TAG, "onCharacteristicRead characteristic: " + characteristic.getUuid());
@@ -231,7 +234,7 @@ public class Gatt_Activity extends AppCompatActivity {
         for (BluetoothGattService gattService : gattServices){
             HashMap<String, String> currentServiceData = new HashMap<String, String>();
             uuid = gattService.getUuid().toString();
-            //currentServiceData.put(LIST_NAME, SampleGattAttributes.lookup(uuid, unknownServiceString));
+            currentServiceData.put(LIST_NAME,lookup(uuid, unknownServiceString));
             currentServiceData.put(LIST_UUID, uuid);
             gattServiceData.add(currentServiceData);
             ArrayList<HashMap<String, String>> gattCharacteristicGroupData = new ArrayList<HashMap<String, String>>();
@@ -242,15 +245,24 @@ public class Gatt_Activity extends AppCompatActivity {
                 charas.add(gattCharacteristic);
                 HashMap<String, String> currentCharaData = new HashMap<String, String>();
                 uuid = gattCharacteristic.getUuid().toString();
-                //currentCharaData.put(LIST_NAME, SampleGattAttributes.lookup(uuid, unknownCharaString));
+                currentCharaData.put(LIST_NAME,lookup(uuid, unknownCharaString));
                 currentCharaData.put(LIST_UUID, uuid);
                 gattCharacteristicGroupData.add(currentCharaData);
             }
             mGattCharacteristics.add(charas);
             gattCharacteristicData.add(gattCharacteristicGroupData);
         }
+        SimpleExpandableListAdapter gattServiceAdapter = new SimpleExpandableListAdapter(
+                this, gattServiceData, android.R.layout.simple_expandable_list_item_2, new String[] {LIST_NAME, LIST_UUID}, new int[] { android.R.id.text1, android.R.id.text2 }, gattCharacteristicData, android.R.layout.simple_expandable_list_item_2, new String[] {LIST_NAME, LIST_UUID}, new int[] { android.R.id.text1, android.R.id.text2 }
+        );
+        mGattServicesList.setAdapter(gattServiceAdapter);
         }
 
+    private static HashMap<String, String> attributes = new HashMap();
+    public static String lookup(String uuid, String defaultName) {
+        String name = attributes.get(uuid);
+        return name == null ? defaultName : name;
+    }
 }
 
 

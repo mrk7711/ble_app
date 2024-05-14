@@ -142,13 +142,18 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     }
                 }
-                ble.setText("Device Name : " + selectedDevice.getName() +" \n");
-                Intent senderIntent = new Intent(MainActivity.this,Gatt_Activity.class);
-                senderIntent.putExtra("BLE",selectedDevice);
+                ble.setText("Device Name : " + selectedDevice.getName() + " \n");
+                Intent senderIntent = new Intent(MainActivity.this, Gatt_Activity.class);
+                senderIntent.putExtra("BLE", selectedDevice);
                 MainActivity.this.startActivity(senderIntent);
+                clearUI();
 //                MainActivity.this.startActivity(new Intent(MainActivity.this, Gatt_Activity.class));
             }
         });
+    }
+
+    private void clearUI() {
+        lv.setAdapter(null);
     }
 
     private void scanLeDevice() {
