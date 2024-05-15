@@ -123,6 +123,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void clearUI() {
         lv.setAdapter(null);
+        ble.setText(null);
+        status.setText(null);
     }
 
     private void scanLeDevice() {
