@@ -52,6 +52,7 @@ public class Gatt_Activity extends AppCompatActivity {
     TextView mDataField;
     Button ConnectionButton;
     Button DisconnectionButton;
+    Button ShowButton;
     BluetoothDevice device2;
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private final static String TAG = "BluetoothLeService";
@@ -86,6 +87,7 @@ public class Gatt_Activity extends AppCompatActivity {
     static final int STATE_MESSAGE_RECEIVED = 5;
     static final int STATE_DISCOVERY = 6;
     private int connectionState;
+    List<BluetoothGattService> services2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,11 +146,18 @@ public class Gatt_Activity extends AppCompatActivity {
         ConnectionState = findViewById(R.id.status5);
         ConnectionButton = findViewById(R.id.connect);
         DisconnectionButton = findViewById(R.id.disconnect);
+        ShowButton = findViewById(R.id.show);
         mGattServicesList = findViewById(R.id.expand);
         mDataField = findViewById(R.id.status6);
     }
 
     private void implementListeners2() {
+        ShowButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                displayGattServices(services2);
+            }
+        });
         ConnectionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -176,7 +185,7 @@ public class Gatt_Activity extends AppCompatActivity {
                 }
                 BG.disconnect();
                 BG.close();
-                ConnectionState.setText("Disconnected");
+                mDataField.setText("Disconnected");
             }
         });
     }
@@ -204,7 +213,8 @@ public class Gatt_Activity extends AppCompatActivity {
                     if (status == BluetoothGatt.GATT_SUCCESS) {
                         handler.obtainMessage(STATE_DISCOVERED, gatt).sendToTarget();
                         List<BluetoothGattService> services = gatt.getServices();
-                        displayGattServices(services);
+                        services2=services;
+                        //displayGattServices(services);
                     }
                 }
                 @Override
@@ -218,13 +228,23 @@ public class Gatt_Activity extends AppCompatActivity {
                     final byte[] data = characteristic.getValue();
                 }
             };
-
+    private static HashMap<String, String> attributes = new HashMap();
+    public static String lookup(String uuid, String defaultName) {
+        String name = attributes.get(uuid);
+        return name == null ? defaultName : name;
+    }
     private void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
     private void displayGattServices(List<BluetoothGattService> gattServices) {
-        if (gattServices == null) return;
+        if (gattServices == null)
+        {
+            ConnectionState.setText("Look1");
+            return;
+        }
+        ConnectionState.setText("Look2");
         String uuid = null;
+        int i=0;
         String unknownServiceString = getResources().getString(R.string.unknown_service);
         String unknownCharaString = getResources().getString(R.string.unknown_characteristic);
         ArrayList<HashMap<String, String>> gattServiceData = new ArrayList<HashMap<String, String>>();
@@ -234,7 +254,8 @@ public class Gatt_Activity extends AppCompatActivity {
         for (BluetoothGattService gattService : gattServices){
             HashMap<String, String> currentServiceData = new HashMap<String, String>();
             uuid = gattService.getUuid().toString();
-            currentServiceData.put(LIST_NAME,lookup(uuid, unknownServiceString));
+            currentServiceData.put(LIST_NAME, SampleGattAttributes.lookup(uuid, unknownServiceString));
+            //currentServiceData.put(LIST_NAME,lookup(uuid, unknownServiceString));
             currentServiceData.put(LIST_UUID, uuid);
             gattServiceData.add(currentServiceData);
             ArrayList<HashMap<String, String>> gattCharacteristicGroupData = new ArrayList<HashMap<String, String>>();
@@ -245,24 +266,22 @@ public class Gatt_Activity extends AppCompatActivity {
                 charas.add(gattCharacteristic);
                 HashMap<String, String> currentCharaData = new HashMap<String, String>();
                 uuid = gattCharacteristic.getUuid().toString();
-                currentCharaData.put(LIST_NAME,lookup(uuid, unknownCharaString));
+                currentCharaData.put(LIST_NAME, SampleGattAttributes.lookup(uuid,unknownCharaString));
+                //currentCharaData.put(LIST_NAME,lookup(uuid, unknownCharaString));
                 currentCharaData.put(LIST_UUID, uuid);
                 gattCharacteristicGroupData.add(currentCharaData);
             }
             mGattCharacteristics.add(charas);
             gattCharacteristicData.add(gattCharacteristicGroupData);
+            i++;
         }
-        SimpleExpandableListAdapter gattServiceAdapter = new SimpleExpandableListAdapter(
-                this, gattServiceData, android.R.layout.simple_expandable_list_item_2, new String[] {LIST_NAME, LIST_UUID}, new int[] { android.R.id.text1, android.R.id.text2 }, gattCharacteristicData, android.R.layout.simple_expandable_list_item_2, new String[] {LIST_NAME, LIST_UUID}, new int[] { android.R.id.text1, android.R.id.text2 }
+        mDataField.setText(String.valueOf(i));
+        SimpleExpandableListAdapter gattServiceAdapter = new SimpleExpandableListAdapter(this, gattServiceData, android.R.layout.simple_expandable_list_item_2, new String[] {LIST_NAME, LIST_UUID}, new int[] { android.R.id.text1, android.R.id.text2 }, gattCharacteristicData, android.R.layout.simple_expandable_list_item_2, new String[] {LIST_NAME, LIST_UUID}, new int[] { android.R.id.text1, android.R.id.text2 }
         );
         mGattServicesList.setAdapter(gattServiceAdapter);
         }
 
-    private static HashMap<String, String> attributes = new HashMap();
-    public static String lookup(String uuid, String defaultName) {
-        String name = attributes.get(uuid);
-        return name == null ? defaultName : name;
-    }
+
 }
 
 

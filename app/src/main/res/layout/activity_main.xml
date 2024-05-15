@@ -14,18 +14,6 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/b1"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="ON" />
-
-        <Button
-            android:id="@+id/b2"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="OFF" />
-
-        <Button
             android:id="@+id/b3"
             android:layout_width="match_parent"
             android:layout_height="40dp"

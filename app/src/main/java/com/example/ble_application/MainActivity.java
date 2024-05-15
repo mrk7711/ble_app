@@ -78,37 +78,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void implementListeners() {
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!BA.isEnabled()) {
-                    if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                        if (Build.VERSION.SDK_INT >= 31) {
-                            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 100);
-                            return;
-                        }
-                    }
-                    BA.enable();
-                }
-            }
-        });
-
-        b2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (BA.isEnabled()) {
-                    if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                        if (Build.VERSION.SDK_INT >= 31) {
-                            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 100);
-                            return;
-                        }
-                    }
-                    BA.disable();
-                }
-            }
-        });
-
-
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -216,8 +185,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void findViewByIdes() {
-        b1 = findViewById(R.id.b1);
-        b2 = findViewById(R.id.b2);
         b3 = findViewById(R.id.b3);
         b4 = findViewById(R.id.b4);
         lv = findViewById(R.id.lv);
