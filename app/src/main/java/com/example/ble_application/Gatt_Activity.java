@@ -288,6 +288,7 @@ public class Gatt_Activity extends AppCompatActivity {
     private void displayGattServices(List<BluetoothGattService> gattServices) {
         if (gattServices == null) return;
         String uuid = null;
+        String charuuid = null;
         String unknownServiceString = getResources().getString(R.string.unknown_service);
         String unknownCharaString = getResources().getString(R.string.unknown_characteristic);
         ArrayList<HashMap<String, String>> gattServiceData = new ArrayList<HashMap<String, String>>();
@@ -308,10 +309,10 @@ public class Gatt_Activity extends AppCompatActivity {
             for (BluetoothGattCharacteristic gattCharacteristic : gattCharacteristics) {
                 charas.add(gattCharacteristic);
                 HashMap<String, String> currentCharaData = new HashMap<String, String>();
-                uuid = gattCharacteristic.getUuid().toString();
-                currentCharaData.put(LIST_NAME, SampleGattAttributes.lookup(uuid, unknownCharaString));
-                currentCharaData.put(LIST_NAME, lookup(uuid, unknownCharaString));
-                currentCharaData.put(LIST_UUID, uuid);
+                charuuid = gattCharacteristic.getUuid().toString();
+                currentCharaData.put(LIST_NAME, SampleGattAttributes.lookup(charuuid, unknownCharaString));
+                currentCharaData.put(LIST_NAME, lookup(charuuid, unknownCharaString));
+                currentCharaData.put(LIST_UUID, charuuid);
                 gattCharacteristicGroupData.add(currentCharaData);
             }
             mGattCharacteristics.add(charas);
