@@ -37,7 +37,6 @@ public class FourthActivity extends AppCompatActivity {
                     public void run() {
                         FourthActivity.this.startActivity(new Intent(FourthActivity.this,MainActivity.class));
                         FourthActivity.this.finish();
-
                     }
                 },4000);
             }

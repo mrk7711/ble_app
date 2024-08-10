@@ -78,6 +78,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void implementListeners() {
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, SlideActivity.class));
+            }
+        });
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -187,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void findViewByIdes() {
+        b2 = findViewById(R.id.b2);
         b3 = findViewById(R.id.b3);
         b4 = findViewById(R.id.b4);
         lv = findViewById(R.id.lv);
