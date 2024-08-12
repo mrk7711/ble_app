@@ -26,24 +26,17 @@
         android:theme="@style/Theme.BLE_Application"
         tools:targetApi="31">
         <activity
-            android:name=".FourthMode"
-            android:exported="false" />
-        <activity
-            android:name=".ThirdMode"
-            android:exported="false" />
-        <activity
-            android:name=".SecondMode"
-            android:exported="false" />
-        <activity
-            android:name=".FirstMode"
-            android:exported="false" />
+            android:name=".extra"
+            android:exported="false"
+            android:label="@string/title_activity_extra"
+            android:theme="@style/Theme.BLE_Application" />
         <activity
             android:name=".SlideActivity"
             android:exported="false"
             android:label="@string/title_activity_slide"
             android:theme="@style/Theme.BLE_Application" /> <!-- This is our first page(Launcher) in this app -->
         <activity
-            android:name=".FirstActivity"
+            android:name=".Program"
             android:exported="true">
 
             <!-- Next line describe launcher (Main And first Page that opens!!) -->
@@ -57,8 +50,11 @@
         <activity android:name=".ThirdActivity" />
         <activity android:name=".SecondActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Gatt_Activity" />
-        <activity android:name=".Program" />
+        <activity android:name=".Gatt_Activity" /> <!-- <activity android:name=".Program" /> -->
+        <activity android:name=".FourthMode" />
+        <activity android:name=".ThirdMode" />
+        <activity android:name=".SecondMode" />
+        <activity android:name=".FirstMode" />
     </application>
 
 </manifest>
