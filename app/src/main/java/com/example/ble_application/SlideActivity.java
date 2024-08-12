@@ -28,6 +28,13 @@ TextView text2;
                 text1.setText(Float.toString(value));
             }
         });
+
+        slider2.addOnChangeListener(new Slider.OnChangeListener() {
+            @Override
+            public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
+                text2.setText(Float.toString(value));
+            }
+        });
     }
     private void findViewByIdes(){
         slider1=findViewById(R.id.slider1);

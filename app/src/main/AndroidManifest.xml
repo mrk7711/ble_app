@@ -26,11 +26,22 @@
         android:theme="@style/Theme.BLE_Application"
         tools:targetApi="31">
         <activity
+            android:name=".FourthMode"
+            android:exported="false" />
+        <activity
+            android:name=".ThirdMode"
+            android:exported="false" />
+        <activity
+            android:name=".SecondMode"
+            android:exported="false" />
+        <activity
+            android:name=".FirstMode"
+            android:exported="false" />
+        <activity
             android:name=".SlideActivity"
             android:exported="false"
             android:label="@string/title_activity_slide"
-            android:theme="@style/Theme.BLE_Application" />
-        <!-- This is our first page(Launcher) in this app -->
+            android:theme="@style/Theme.BLE_Application" /> <!-- This is our first page(Launcher) in this app -->
         <activity
             android:name=".FirstActivity"
             android:exported="true">
@@ -47,6 +58,7 @@
         <activity android:name=".SecondActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Gatt_Activity" />
+        <activity android:name=".Program" />
     </application>
 
 </manifest>
