@@ -4,15 +4,16 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.PopupMenu;
 import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.PopupMenu;
 
 public class Program extends AppCompatActivity {
     ImageButton g1;
@@ -20,6 +21,10 @@ public class Program extends AppCompatActivity {
     MenuItem a2;
     MenuItem a3;
     MenuItem a4;
+    Button p1;
+    Button p2;
+    Button p3;
+    Button p4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,12 +35,13 @@ public class Program extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.testmenu,menu);
+         MenuInflater inflater=getMenuInflater();
+         inflater.inflate(R.menu.testmenu,menu);
          a1=menu.getItem(R.id.item1);
          a2=menu.getItem(R.id.item2);
          a3=menu.getItem(R.id.item3);
          a4=menu.getItem(R.id.item4);
+
         return true;
     }
 
@@ -62,12 +68,40 @@ public class Program extends AppCompatActivity {
 
     private void findViewByIdes(){
         g1=(ImageButton) findViewById(R.id.g1);
+        p1 = findViewById(R.id.P1);
+        p2 = findViewById(R.id.P2);
+        p3 = findViewById(R.id.P3);
+        p4 = findViewById(R.id.P4);
     }
     private void implementListeners(){
         g1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                showToast("Hi");
+            }
+        });
+        p1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Program.this, FirstMode.class));
+            }
+        });
+        p2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Program.this, SecondMode.class));
+            }
+        });
+        p3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Program.this, ThirdMode.class));
+            }
+        });
+        p4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Program.this, FourthMode.class));
             }
         });
     }

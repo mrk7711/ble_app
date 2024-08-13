@@ -26,11 +26,6 @@
         android:theme="@style/Theme.BLE_Application"
         tools:targetApi="31">
         <activity
-            android:name=".extra"
-            android:exported="false"
-            android:label="@string/title_activity_extra"
-            android:theme="@style/Theme.BLE_Application" />
-        <activity
             android:name=".SlideActivity"
             android:exported="false"
             android:label="@string/title_activity_slide"
