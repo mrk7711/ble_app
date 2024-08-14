@@ -234,6 +234,7 @@ public class Gatt_Activity extends AppCompatActivity {
                 @Override
                 public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
                     broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);
+                    showToast("Hi");
                 }
             };
     private static HashMap<String, String> attributes = new HashMap();
