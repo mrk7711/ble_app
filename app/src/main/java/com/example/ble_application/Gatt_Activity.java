@@ -54,11 +54,12 @@ public class Gatt_Activity extends AppCompatActivity {
     Button ConnectionButton;
     Button DisconnectionButton;
     Button ShowButton;
+    Button Notif;
     BluetoothDevice device2;
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private static final UUID I2C_UUID_Service = UUID.fromString("18424398-7cbc-11e9-8f9e-2a86e4085a59");
     private static final UUID I2C_UUID_Characteristic = UUID.fromString("5b87b4ef-3bfa-76a8-e642-92933c31434c");
-    //private static final UUID I2C_UUID_Descriptor = UUID.fromString("0x2901");
+    private static final UUID I2C_UUID_Descriptor = null;
     private final static String TAG = "BluetoothLeService";
     public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
     public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
@@ -94,10 +95,15 @@ public class Gatt_Activity extends AppCompatActivity {
     static final int STATE_DISCOVERY = 6;
     private int connectionState;
     List<BluetoothGattService> services2;
+    List<BluetoothGattDescriptor> desc;
     BluetoothGattService service3=null;
     BluetoothGattCharacteristic char1=null;
     BluetoothGattDescriptor desc1=null;
-    //byte a[]=null;
+    int a;
+    String b;
+    String c;
+    byte[] d;
+    int e;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,6 +165,7 @@ public class Gatt_Activity extends AppCompatActivity {
         ShowButton = findViewById(R.id.show);
         mGattServicesList = findViewById(R.id.expand);
         mDataField = findViewById(R.id.status6);
+        Notif=findViewById(R.id.Notif);
     }
 
     private void implementListeners2() {
@@ -167,11 +174,17 @@ public class Gatt_Activity extends AppCompatActivity {
             public void onClick(View view) {
                 if(service3!=null)
                 {
-                    showToast("detected");
+                    //showToast("detected");
 
                     if(char1!= null)
                     {
-                        showToast("AGain detected");
+                        //showToast("Again detected");
+                        //showToast(String.valueOf(a));
+                        if(e != 0 )
+                        {
+                            Notif.setVisibility(View.VISIBLE);
+                        }
+                        //showToast(b);
                     }
                 }
                 if(service3==null)
@@ -210,7 +223,13 @@ public class Gatt_Activity extends AppCompatActivity {
                 BG.close();
                 ConnectionState.setText("Disconnected");
                 services2 = null;
+                Notif.setVisibility(View.INVISIBLE);
                 clearUI();
+            }
+        });
+        Notif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
             }
         });
     }
@@ -242,6 +261,12 @@ public class Gatt_Activity extends AppCompatActivity {
                         services2 = services;
                         service3=gatt.getService(I2C_UUID_Service);
                         char1=service3.getCharacteristic(I2C_UUID_Characteristic);
+
+                        desc=char1.getDescriptors();
+                        a= desc.size();
+                        e=char1.PROPERTY_NOTIFY;
+                        desc1=desc.get(1);
+                        b=desc1.getUuid().toString();
                         if(char1!=null)
                         {
                             //gatt.readCharacteristic(char1);

@@ -73,6 +73,21 @@
                 android:text="Show Services" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/Notif"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Notification"
+                android:textAlignment="center"
+                android:visibility="invisible" />
+        </LinearLayout>
+
         <ExpandableListView
             android:id="@+id/expand"
             android:layout_width="match_parent"
