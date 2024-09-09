@@ -33,7 +33,6 @@
         <activity
             android:name=".FirstActivity"
             android:exported="true">
-
             <!-- Next line describe launcher (Main And first Page that opens!!) -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

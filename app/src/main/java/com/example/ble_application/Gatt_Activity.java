@@ -5,6 +5,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -57,6 +58,7 @@ public class Gatt_Activity extends AppCompatActivity {
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private static final UUID I2C_UUID_Service = UUID.fromString("18424398-7cbc-11e9-8f9e-2a86e4085a59");
     private static final UUID I2C_UUID_Characteristic = UUID.fromString("5b87b4ef-3bfa-76a8-e642-92933c31434c");
+    //private static final UUID I2C_UUID_Descriptor = UUID.fromString("0x2901");
     private final static String TAG = "BluetoothLeService";
     public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
     public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
@@ -92,8 +94,10 @@ public class Gatt_Activity extends AppCompatActivity {
     static final int STATE_DISCOVERY = 6;
     private int connectionState;
     List<BluetoothGattService> services2;
-    BluetoothGattService service3;
-    BluetoothGattCharacteristic char1;
+    BluetoothGattService service3=null;
+    BluetoothGattCharacteristic char1=null;
+    BluetoothGattDescriptor desc1=null;
+    //byte a[]=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,7 +171,7 @@ public class Gatt_Activity extends AppCompatActivity {
 
                     if(char1!= null)
                     {
-                            showToast("again detected");
+                        showToast("AGain detected");
                     }
                 }
                 if(service3==null)
@@ -240,12 +244,15 @@ public class Gatt_Activity extends AppCompatActivity {
                         char1=service3.getCharacteristic(I2C_UUID_Characteristic);
                         if(char1!=null)
                         {
-                            gatt.readCharacteristic(char1);
+                            //gatt.readCharacteristic(char1);
+                            //desc1=char1.getDescriptor(I2C_UUID_Descriptor);
+                            //if(desc1!=null)
+                            //{
+                                //gatt.readDescriptor(desc1);
+                                //a=desc1.getValue();
 
-                            byte value[]=char1.getValue();
-                            showToast(value.toString());
+                            //}
                         }
-
                         //displayGattServices(services);
                     }
                 }
@@ -256,12 +263,13 @@ public class Gatt_Activity extends AppCompatActivity {
                         broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);
                     } 
                 }
+
                 @Override
                 public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
                     if (status == BluetoothGatt.GATT_SUCCESS) {
-
                     }
                 }
+
                 @Override
                 public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
                     broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);
@@ -316,7 +324,6 @@ public class Gatt_Activity extends AppCompatActivity {
         }
         sendBroadcast(intent);
     }
-
     private void displayGattServices(List<BluetoothGattService> gattServices) {
         if (gattServices == null) return;
         String uuid = null;
