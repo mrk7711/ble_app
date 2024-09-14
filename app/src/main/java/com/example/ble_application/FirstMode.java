@@ -37,14 +37,16 @@ public class FirstMode extends AppCompatActivity {
         slider1.addOnChangeListener(new Slider.OnChangeListener() {
             @Override
             public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
-                text1.setText(Float.toString(value));
+                //text1.setText(Float.toString(value));
+                text1.setText(Integer.toString((int) value));
             }
         });
 
         slider2.addOnChangeListener(new Slider.OnChangeListener() {
             @Override
             public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
-                text2.setText(Float.toString(value));
+                //text2.setText(Float.toString(value));
+                text2.setText(Integer.toString((int) value));
             }
         });
         n1.setOnClickListener(new View.OnClickListener() {

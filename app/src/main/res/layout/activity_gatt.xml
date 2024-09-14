@@ -42,21 +42,26 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/disconnect"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Disconnect" />
 
             <Button
                 android:id="@+id/connect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="Connect" />
+
+            <Button
+                android:id="@+id/disconnect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Disconnect" />
+
+            <Button
+                android:id="@+id/show"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show Services" />
 
         </LinearLayout>
 
@@ -66,24 +71,11 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/show"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Show Services" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="51dp"
-            android:orientation="horizontal">
-
-            <Button
                 android:id="@+id/Notif"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Notification"
+                android:text="Programs"
                 android:textAlignment="center"
                 android:visibility="invisible" />
         </LinearLayout>
@@ -91,7 +83,7 @@
         <ExpandableListView
             android:id="@+id/expand"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:divider="@android:color/darker_gray"
             android:dividerHeight="0.5dp"
             android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft" />

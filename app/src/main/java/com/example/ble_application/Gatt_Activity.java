@@ -230,6 +230,7 @@ public class Gatt_Activity extends AppCompatActivity {
         Notif.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startActivity(new Intent(Gatt_Activity.this, Program.class));
             }
         });
     }

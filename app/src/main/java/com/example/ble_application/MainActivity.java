@@ -1,7 +1,9 @@
 package com.example.ble_application;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattService;
@@ -42,11 +44,12 @@ import java.util.UUID;
 public class MainActivity extends AppCompatActivity {
     private BluetoothAdapter BA = null;
     private Handler handler;
+    private static final int REQUEST_ENABLE_BT = 1;
+    private static final int REQUEST_PERMISSION = 2;
     //    private LeDeviceListAdapter leDeviceListAdapter = new LeDeviceListAdapter();
     private static final UUID NOTIFI_SERVICE = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private static final UUID NOTIFI_CHARACTERISTIC = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private static final long SCAN_PERIOD = 10000;          // Stops scanning after 10 seconds.
-    private static final int REQUEST_ENABLE_BT = 1;
     private ArrayList<BluetoothDevice> mLeDevices;
     private BluetoothLeScanner BS;
     private BluetoothGatt BG = null;
@@ -70,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
         handler = new Handler();
         findViewByIdes();
         final BluetoothManager bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
-//        BA = BluetoothAdapter.getDefaultAdapter();
         BA = bluetoothManager.getAdapter();
         checkBTState();
         implementListeners();
@@ -91,13 +93,18 @@ public class MainActivity extends AppCompatActivity {
                 status.setText("Scanning ........");
             }
         });
-
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
-                    if (Build.VERSION.SDK_INT >= 31) {
-                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.BLUETOOTH_SCAN}, REQUEST_PERMISSION);
+                        return;
+                    }
+                }
+                else {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_PERMISSION);
                         return;
                     }
                 }
@@ -134,16 +141,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void scanLeDevice() {
-//        ScanSettings scanSettings = new ScanSettings.Builder()
-//                .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)
-//                .build();
         if (!scanningEnd) {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
-                if (Build.VERSION.SDK_INT >= 31) {
-                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.BLUETOOTH_SCAN}, REQUEST_PERMISSION);
                     return;
                 }
             }
+            else {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_PERMISSION);
+                    return;
+                }
+            }
+
             BS = BA.getBluetoothLeScanner();
             BS.startScan(lescanDevice);
         } else {
@@ -191,7 +202,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     private void findViewByIdes() {
         b2 = findViewById(R.id.b2);
         b3 = findViewById(R.id.b3);
@@ -209,6 +219,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_PERMISSION) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                scanLeDevice();
+            } else {
+                Toast.makeText(this, "Permission required", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
 

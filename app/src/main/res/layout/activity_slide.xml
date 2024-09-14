@@ -44,6 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
+            android:textColor="#1877f2"
             android:textSize="16sp" />
     </LinearLayout>
     <TextView
@@ -65,11 +66,11 @@
         <com.google.android.material.slider.Slider
             android:id="@+id/slider2"
             android:layout_width="288dp"
-            android:valueFrom="0.0"
+            android:layout_height="322dp"
             android:stepSize="1.0"
-            app:labelBehavior="gone"
+            android:valueFrom="0.0"
             android:valueTo="10.0"
-            android:layout_height="wrap_content" />
+            app:labelBehavior="gone" />
 
         <ImageView
             android:layout_width="30dp"
@@ -80,6 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
+            android:textColor="#1877f2"
             android:textSize="16sp" />
     </LinearLayout>
 </LinearLayout>

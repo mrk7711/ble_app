@@ -136,6 +136,7 @@
             android:stepSize="1.0"
             android:valueFrom="0.0"
             android:valueTo="10.0"
+            android:visibility="invisible"
             app:labelBehavior="gone" />
 
         <TextView
@@ -144,6 +145,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Bass"
+            android:visibility="invisible"
             android:textAlignment="center" />
 
     </LinearLayout>
@@ -161,6 +163,7 @@
             android:stepSize="1.0"
             android:valueFrom="0.0"
             android:valueTo="10.0"
+            android:visibility="invisible"
             app:labelBehavior="gone" />
 
         <TextView
@@ -169,6 +172,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Middle"
+            android:visibility="invisible"
             android:textAlignment="center" />
     </LinearLayout>
 
@@ -185,6 +189,7 @@
             android:stepSize="1.0"
             android:valueFrom="0.0"
             android:valueTo="10.0"
+            android:visibility="invisible"
             app:labelBehavior="gone" />
 
         <TextView
@@ -193,6 +198,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Treble"
+            android:visibility="invisible"
             android:textAlignment="center" />
     </LinearLayout>
 
