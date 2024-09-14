@@ -1,45 +1,32 @@
 package com.example.ble_application;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.widget.TextView;
-
-import com.google.android.material.slider.Slider;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.widget.ViewPager2;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SlideActivity extends AppCompatActivity {
-Slider slider1;
-Slider slider2;
-TextView text1;
-TextView text2;
+
+    private ViewPager2 viewPager;
+    private SliderAdapter sliderAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_slide);
-        findViewByIdes();
-        implementListeners();
-    }
-    private void implementListeners(){
 
-        slider1.addOnChangeListener(new Slider.OnChangeListener() {
-            @Override
-            public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
-                text1.setText(Float.toString(value));
-            }
-        });
+        viewPager = findViewById(R.id.viewPager);
 
-        slider2.addOnChangeListener(new Slider.OnChangeListener() {
-            @Override
-            public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
-                text2.setText(Float.toString(value));
-            }
-        });
-    }
-    private void findViewByIdes(){
-        slider1=findViewById(R.id.slider1);
-        slider2=findViewById(R.id.slider2);
-        text1=findViewById(R.id.text1);
-        text2=findViewById(R.id.text2);
+        // لیست صفحات
+        List<SliderItem> sliderItems = new ArrayList<>();
+        sliderItems.add(new SliderItem(R.drawable.photo_5992214955950195160_y, "All_Around", "Noise filter", "Speech clarity"));
+        sliderItems.add(new SliderItem(R.drawable.photo_5992214955950195161_y, "Hear in noise", "Noise filter", "Speech clarity"));
+        sliderItems.add(new SliderItem(R.drawable.photo_5992214955950195162_y, "Outdoor", "Option 1", "Option 2"));
+        sliderItems.add(new SliderItem(R.drawable.photo_5992214955950195163_y, "Lecture", "Noise filter", "Speech clarity"));
+
+        // تنظیم آداپتر برای ViewPager
+        sliderAdapter = new SliderAdapter(sliderItems);
+        viewPager.setAdapter(sliderAdapter);
     }
 }

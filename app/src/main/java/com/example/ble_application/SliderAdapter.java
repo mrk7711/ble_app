@@ -5,6 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
@@ -27,6 +29,10 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderView
     @Override
     public void onBindViewHolder(@NonNull SliderViewHolder holder, int position) {
         holder.setItem(sliderItems.get(position));
+        holder.button1.setOnClickListener(v -> {
+            // چاپ یک پیام برای دکمه اول
+
+        });
     }
 
     @Override
@@ -53,5 +59,6 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderView
             button1.setText(item.getButton1Text());
             button2.setText(item.getButton2Text());
         }
+
     }
 }
