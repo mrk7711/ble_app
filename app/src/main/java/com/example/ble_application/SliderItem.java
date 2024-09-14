@@ -14,6 +14,7 @@ public class SliderItem {
         this.button2Text = button2Text;
     }
 
+
     public int getImageResId() {
         return imageResId;
     }

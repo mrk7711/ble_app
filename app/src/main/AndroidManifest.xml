@@ -26,6 +26,9 @@
         android:theme="@style/Theme.BLE_Application"
         tools:targetApi="31">
         <activity
+            android:name=".VolumePage"
+            android:exported="false" />
+        <activity
             android:name=".SlideActivity"
             android:exported="false"
             android:label="@string/title_activity_slide"
@@ -33,6 +36,7 @@
         <activity
             android:name=".FirstActivity"
             android:exported="true">
+
             <!-- Next line describe launcher (Main And first Page that opens!!) -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

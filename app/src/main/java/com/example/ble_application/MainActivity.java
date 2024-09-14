@@ -80,6 +80,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void implementListeners() {
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, VolumePage.class));
+            }
+        });
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -203,6 +209,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void findViewByIdes() {
+        b1 = findViewById(R.id.b1);
         b2 = findViewById(R.id.b2);
         b3 = findViewById(R.id.b3);
         b4 = findViewById(R.id.b4);
