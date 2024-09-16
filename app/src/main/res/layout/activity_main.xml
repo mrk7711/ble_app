@@ -14,27 +14,33 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/b5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hearing aid" />
+
+        <Button
             android:id="@+id/b1"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:text="Volume_Control" />
 
         <Button
             android:id="@+id/b2"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:text="Slide_Menu" />
 
         <Button
             android:id="@+id/b3"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:text="Start_Scan" />
 
         <Button
             android:id="@+id/b4"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:text="Stop_scan" />
 
         <TextView

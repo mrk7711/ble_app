@@ -54,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
     private BluetoothLeScanner BS;
     private BluetoothGatt BG = null;
     BluetoothDevice[] btArray;
+    BluetoothDevice ble_device;
     private boolean scanningEnd;
+    private static final String BLE_DEVICE_ADDRESS = "48:23:35:F4:00:0B";
     BluetoothGattCharacteristic characteristicNotifi;
     private static final String TAG = "Main";
     //    private LeDeviceListAdapter mLeDeviceListAdapter;
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     Button b2;
     Button b3;
     Button b4;
+    Button b5;
     ListView lv;
     TextView status;
     TextView ble;
@@ -118,15 +121,36 @@ public class MainActivity extends AppCompatActivity {
                 status.setText("Scan Finished ..");
             }
         });
-
+        b5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ble_device=BA.getRemoteDevice(BLE_DEVICE_ADDRESS);
+                if (ble_device != null)
+                {
+                    Intent senderIntent = new Intent(MainActivity.this, Gatt_Activity.class);
+                    senderIntent.putExtra("BLE", ble_device);
+                    MainActivity.this.startActivity(senderIntent);
+                    clearUI();
+                }
+                else {
+                    showToast("Not_OK");
+                }
+            }
+        });
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 status.setText("Connecting");
                 BluetoothDevice selectedDevice = btArray[i];
-                if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                    if (Build.VERSION.SDK_INT >= 31) {
-                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.BLUETOOTH_SCAN}, REQUEST_PERMISSION);
+                        return;
+                    }
+                }
+                else {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_PERMISSION);
                         return;
                     }
                 }
@@ -182,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
                 btArray[index] = a;
                 strings[index] = a.getAddress();
                 index++;
+
                 }
                 ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,strings);
                 lv.setAdapter(arrayAdapter);
@@ -213,6 +238,7 @@ public class MainActivity extends AppCompatActivity {
         b2 = findViewById(R.id.b2);
         b3 = findViewById(R.id.b3);
         b4 = findViewById(R.id.b4);
+        b5 = findViewById(R.id.b5);
         lv = findViewById(R.id.lv);
         status = findViewById(R.id.status);
         ble = findViewById(R.id.ble);
