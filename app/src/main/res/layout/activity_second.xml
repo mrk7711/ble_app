@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#51673AB7"
+    android:background="@color/background"
     tools:context=".FirstActivity">
 
     <LinearLayout
@@ -15,24 +15,39 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="242dp"
-            app:srcCompat="@drawable/arnica_logo_prev_ui_2_1" />
+            android:layout_height="262dp"
+            app:srcCompat="@drawable/logo4" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="79dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
             android:text="Welcome"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textSize="40sp" />
+            android:textColor="#F8F8FF"
+            android:textSize="50sp" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
-            android:layout_height="124dp"
+            android:layout_height="wrap_content"
+
             android:text="@string/about_app"
+            android:layout_marginTop="20dp"
             android:textAlignment="center"
+            android:textColor="#F8F8FF"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="12sp"
+            android:text="Do you have a hearing aid?"
+            android:textAlignment="center"
+            android:layout_marginTop="30dp"
+            android:textColor="#F8F8FF"
             android:textSize="20sp" />
 
         <Button
@@ -41,14 +56,30 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="20dp"
-            android:background="#FFFFFF"
+            android:backgroundTint="@color/arnica4"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:text="Continue"
+            android:insetTop="20dp"
+            android:text="Yes, connect now"
             android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="20sp"
-            android:verticalScrollbarPosition="defaultPosition"
-            app:iconTint="#673AB7" />
+            android:verticalScrollbarPosition="defaultPosition" />
+        <Button
+            android:id="@+id/Continue2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/arnica4"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:insetTop="20dp"
+            android:text="No, take me to demo mode"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:verticalScrollbarPosition="defaultPosition" />
 
     </LinearLayout>
 </LinearLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/background"
     tools:context=".FirstActivity">
 
     <LinearLayout
@@ -17,21 +17,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="50dp"
-            app:srcCompat="@drawable/images2" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Enable Location"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textSize="40sp" />
+            app:srcCompat="@drawable/images3" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
-            android:layout_height="92dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/font"
+            android:lineSpacingExtra="12sp"
             android:text="@string/enable_loc"
             android:textAlignment="center"
             android:textSize="20sp" />
@@ -43,9 +36,10 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
-            android:background="#FFFFFF"
+            android:backgroundTint="@color/arnica4"
             android:fontFamily="sans-serif"
             android:gravity="center"
+            android:textColor="@color/black"
             android:text="Enable Now"
             android:textAlignment="center"
             android:textSize="20sp"
@@ -58,9 +52,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="20dp"
-            android:background="#FFFFFF"
+            android:backgroundTint="@color/arnica1"
             android:fontFamily="sans-serif"
             android:gravity="center"
+            android:textColor="@color/black"
+            android:visibility="invisible"
             android:text="View demo mode"
             app:iconTint="#673AB7" />/>
 

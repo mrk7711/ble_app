@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/background"
     tools:context=".FirstActivity">
 
     <LinearLayout
@@ -17,40 +17,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="50dp"
-            app:srcCompat="@drawable/download" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Enable Bluetooth"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textSize="40sp" />
-
+            app:srcCompat="@drawable/download2" />
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
-            android:layout_height="92dp"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="12sp"
             android:text="@string/enable_blu"
             android:textAlignment="center"
+            android:textColor="@color/font"
             android:textSize="20sp" />
-
         <Button
             android:id="@+id/Continue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
+            android:insetTop="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
-            android:background="#FFFFFF"
+            android:backgroundTint="@color/arnica4"
+            android:textColor="@color/black"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="Enable Now"
             android:textAlignment="center"
             android:textSize="20sp"
-            android:verticalScrollbarPosition="defaultPosition"
-            app:iconTint="#673AB7" />
+            android:verticalScrollbarPosition="defaultPosition"/>
 
         <Button
             android:id="@+id/demo"
@@ -58,11 +50,13 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="20dp"
-            android:background="#FFFFFF"
+            android:visibility="invisible"
+            android:insetTop="20dp"
+            android:backgroundTint="@color/arnica4"
+            android:textColor="@color/black"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:text="View demo mode"
-            app:iconTint="#673AB7" />/>
+            android:text="View demo mode"/>/>
 
     </LinearLayout>
 </LinearLayout>
