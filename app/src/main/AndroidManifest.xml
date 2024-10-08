@@ -26,6 +26,15 @@
         android:theme="@style/Theme.BLE_Application"
         tools:targetApi="31">
         <activity
+            android:name=".SoundEnhancer"
+            android:exported="false" />
+        <activity
+            android:name=".NoiseReduction"
+            android:exported="false" />
+        <activity
+            android:name=".NoiseRedsuction"
+            android:exported="false" />
+        <activity
             android:name=".VolumePage"
             android:exported="false" />
         <activity

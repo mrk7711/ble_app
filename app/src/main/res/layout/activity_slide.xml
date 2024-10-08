@@ -1,13 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".SlideActivity">
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Arnica"
+        android:textAlignment="center"
+        android:textColor="@color/font"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="400dp"
+        android:layout_below="@id/textView4"
+        />
+    <LinearLayout
+        android:id="@+id/sliderLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/viewPager">
+
+        <ImageButton
+            android:id="@+id/mutepic1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/baseline_volume_mute_24"
+            android:backgroundTint="@color/background"/>
+
+        <SeekBar
+            android:id="@+id/slider1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:progress="3"
+            android:max="10"
+            android:thumbTint="@color/arnica4"
+            android:progressTint="@color/arnica4" />
+
+        <ImageButton
+            android:id="@+id/mutepic2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/twobar"
+            android:backgroundTint="@color/background"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/sliderLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/sliderLayout1">
+
+        <ImageButton
+            android:id="@+id/mutepic3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/baseline_volume_mute_24"
+            android:backgroundTint="@color/background"
+            android:visibility="invisible"/>
+
+        <SeekBar
+            android:id="@+id/slider2"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:progress="3"
+            android:max="10"
+            android:thumbTint="@color/arnica4"
+            android:progressTint="@color/arnica4"
+            android:visibility="invisible"/>
+
+        <ImageButton
+            android:id="@+id/mutepic4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/baseline_horizontal_rule_24"
+            android:backgroundTint="@color/background"
+            android:visibility="invisible"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+
+        android:layout_below="@id/sliderLayout2"
+        >
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:backgroundTint="@color/arnica4"
+            android:text="Noise Reduction"
+
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/arnica4"
+            android:text="Sound Enhancer"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/bottomNavigationLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/arinca8"
+        android:gravity="center"
+
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/homeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:textSize="10sp"
+                android:textColor="@color/arnica4"
+                android:drawableTint="@color/arnica4"
+                android:drawableTop="@drawable/baseline_home_24"
+                android:backgroundTint="@color/arinca8" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/statusButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/arinca8"
+                android:drawableTop="@drawable/baseline_hearing_24"
+                android:text="Status"
+                android:textColor="@color/font"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/myappButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MyApp"
+                android:textSize="10sp"
+                android:textColor="@color/font"
+                android:drawableTop="@drawable/baseline_contact_support_24"
+                android:backgroundTint="@color/arinca8" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/moreButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="More"
+                android:textSize="10sp"
+                android:textColor="@color/font"
+                android:drawableTop="@drawable/baseline_more_horiz_24"
+                android:backgroundTint="@color/arinca8" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

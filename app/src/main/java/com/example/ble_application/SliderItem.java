@@ -4,14 +4,10 @@ public class SliderItem {
 
     private int imageResId;
     private String title;
-    private String button1Text;
-    private String button2Text;
 
-    public SliderItem(int imageResId, String title, String button1Text, String button2Text) {
+    public SliderItem(int imageResId, String title) {
         this.imageResId = imageResId;
         this.title = title;
-        this.button1Text = button1Text;
-        this.button2Text = button2Text;
     }
 
 
@@ -23,11 +19,4 @@ public class SliderItem {
         return title;
     }
 
-    public String getButton1Text() {
-        return button1Text;
-    }
-
-    public String getButton2Text() {
-        return button2Text;
-    }
 }

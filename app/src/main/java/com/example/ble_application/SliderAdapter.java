@@ -1,5 +1,6 @@
 package com.example.ble_application;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,10 +30,6 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderView
     @Override
     public void onBindViewHolder(@NonNull SliderViewHolder holder, int position) {
         holder.setItem(sliderItems.get(position));
-        holder.button1.setOnClickListener(v -> {
-            // چاپ یک پیام برای دکمه اول
-
-        });
     }
 
     @Override
@@ -43,22 +40,19 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderView
     static class SliderViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView imageView;
-        private TextView title, button1, button2;
+        private TextView title;
 
         public SliderViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageView);
             title = itemView.findViewById(R.id.title);
-            button1 = itemView.findViewById(R.id.button1);
-            button2 = itemView.findViewById(R.id.button2);
+
         }
 
         public void setItem(SliderItem item) {
             imageView.setImageResource(item.getImageResId());
             title.setText(item.getTitle());
-            button1.setText(item.getButton1Text());
-            button2.setText(item.getButton2Text());
-        }
 
+        }
     }
 }

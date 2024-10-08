@@ -1,0 +1,98 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/background">
+
+    <!-- اولین SeekBar -->
+    <LinearLayout
+        android:id="@+id/slider1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <!-- دکمه نمایش مقدار -->
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/arnica4"
+            android:text="0" />
+
+        <!-- SeekBar عمودی -->
+        <SeekBar
+            android:id="@+id/seekBar1"
+            android:layout_width="152dp"
+            android:layout_height="418dp"
+            android:max="100"
+            android:min="0"
+            android:progress="50"
+            android:progressTint="@color/arnica4"
+            android:rotation="270"
+            android:rotationX="40"
+            android:thumbTint="@color/arnica4" />
+    </LinearLayout>
+
+    <!-- دومین SeekBar -->
+    <LinearLayout
+        android:id="@+id/slider2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_toEndOf="@id/slider1"
+
+        android:gravity="center">
+
+        <!-- دکمه نمایش مقدار -->
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/arnica4"
+            android:text="0" />
+
+        <!-- SeekBar عمودی -->
+        <SeekBar
+            android:id="@+id/seekBar2"
+            android:layout_width="122dp"
+            android:layout_height="418dp"
+            android:max="100"
+            android:progress="50"
+            android:progressTint="@color/arnica4"
+            android:rotation="270"
+            android:thumbTint="@color/arnica4" />
+    </LinearLayout>
+
+    <!-- سومین SeekBar -->
+    <LinearLayout
+        android:id="@+id/slider3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_toEndOf="@id/slider2"
+        android:gravity="center">
+
+        <!-- دکمه نمایش مقدار -->
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:backgroundTint="@color/arnica4"
+            android:layout_height="wrap_content"
+            android:text="0" />
+
+        <!-- SeekBar عمودی -->
+        <SeekBar
+            android:id="@+id/seekBar3"
+            android:layout_width="122dp"
+            android:layout_height="417dp"
+            android:max="100"
+            android:progress="50"
+            android:progressTint="@color/arnica4"
+            android:rotation="270"
+            android:thumbTint="@color/arnica4" />
+    </LinearLayout>
+
+</RelativeLayout>
