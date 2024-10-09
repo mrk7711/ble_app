@@ -140,7 +140,7 @@
         android:id="@+id/bottomNavigationLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/arinca8"
+        android:background="@color/arnica8"
         android:gravity="center"
 
         android:orientation="horizontal"
@@ -162,7 +162,7 @@
                 android:textColor="@color/arnica4"
                 android:drawableTint="@color/arnica4"
                 android:drawableTop="@drawable/baseline_home_24"
-                android:backgroundTint="@color/arinca8" />
+                android:backgroundTint="@color/arnica8" />
         </LinearLayout>
 
         <LinearLayout
@@ -176,7 +176,7 @@
                 android:id="@+id/statusButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/arinca8"
+                android:backgroundTint="@color/arnica8"
                 android:drawableTop="@drawable/baseline_hearing_24"
                 android:text="Status"
                 android:textColor="@color/font"
@@ -198,7 +198,7 @@
                 android:textSize="10sp"
                 android:textColor="@color/font"
                 android:drawableTop="@drawable/baseline_contact_support_24"
-                android:backgroundTint="@color/arinca8" />
+                android:backgroundTint="@color/arnica8" />
         </LinearLayout>
 
         <LinearLayout
@@ -216,7 +216,7 @@
                 android:textSize="10sp"
                 android:textColor="@color/font"
                 android:drawableTop="@drawable/baseline_more_horiz_24"
-                android:backgroundTint="@color/arinca8" />
+                android:backgroundTint="@color/arnica8" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
