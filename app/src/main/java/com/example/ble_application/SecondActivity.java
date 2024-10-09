@@ -26,7 +26,7 @@ public class SecondActivity extends AppCompatActivity {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SecondActivity.this, SlideActivity.class));
+                startActivity(new Intent(SecondActivity.this, ConnectionPage.class));
             }
         });
     }
