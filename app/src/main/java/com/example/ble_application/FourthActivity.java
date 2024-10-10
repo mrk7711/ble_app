@@ -30,20 +30,19 @@ public class FourthActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fourth);
         b1 = findViewById(R.id.Continue);
         b2 = findViewById(R.id.demo);
-        // دریافت LocationManager برای دسترسی به تنظیمات لوکیشن
+
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // بررسی وضعیت روشن یا خاموش بودن GPS
                 if (!isLocationEnabled()) {
-                    // اگر GPS خاموش است، کاربر را به تنظیمات لوکیشن هدایت کنید
+
                     Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                     startActivityForResult(intent, REQUEST_LOCATION_SETTINGS);
                 } else {
                     // اگر GPS روشن است، کاربر را به صفحه بعدی هدایت کنید
-                    FourthActivity.this.startActivity(new Intent(FourthActivity.this,MainActivity.class));
+                    FourthActivity.this.startActivity(new Intent(FourthActivity.this,ConnectionPage.class));
                     FourthActivity.this.finish();
                 }
             }

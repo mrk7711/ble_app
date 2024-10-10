@@ -44,7 +44,22 @@
         android:textAlignment="textStart"
         android:textColor="@color/font"
         android:layout_marginLeft="20dp"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:layout_below="@id/progressBar"
         android:layout_marginTop="30dp" />
+
+        <TextView
+            android:id="@+id/device_name_text"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/label3"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:text=""
+            android:textColor="@color/font"
+            android:textSize="18sp" />
+
+
 </RelativeLayout>
