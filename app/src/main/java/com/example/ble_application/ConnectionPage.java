@@ -20,6 +20,7 @@ import android.os.Build;
 import android.provider.Settings;
 import android.transition.Slide;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.os.Bundle;
 import android.view.animation.LinearInterpolator;
@@ -35,6 +36,7 @@ public class ConnectionPage extends AppCompatActivity {
     private final long SCAN_PERIOD = 10000;
     TextView t1;
     ProgressBar p1;
+    Button b1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +46,12 @@ public class ConnectionPage extends AppCompatActivity {
         BA = bluetoothManager.getAdapter();
         ProgressBar progressBar = findViewById(R.id.progressBar);
         ObjectAnimator rotate = ObjectAnimator.ofFloat(progressBar, "rotation", 0f, 360f);
-        rotate.setDuration(6000);
+        rotate.setDuration(5000);
         rotate.setInterpolator(new LinearInterpolator());
         rotate.setRepeatCount(ObjectAnimator.INFINITE);
         rotate.start(); //
         t1 = findViewById(R.id.device_name_text);
+        b1 = findViewById(R.id.search);
         p1 = findViewById(R.id.progressBar);
         BS = BA.getBluetoothLeScanner();
         startBleScan();
@@ -61,6 +64,13 @@ public class ConnectionPage extends AppCompatActivity {
                     intent.putExtra("BLE", ble_device);
                     startActivity(intent);
                 }
+            }
+        });
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startBleScan();
+                b1.setVisibility(View.INVISIBLE);
             }
         });
     }
@@ -91,6 +101,7 @@ public class ConnectionPage extends AppCompatActivity {
                 stopBleScan();
                 p1.setVisibility(ProgressBar.INVISIBLE);
                 t1.setText("Device not found..");
+                b1.setVisibility(View.VISIBLE);
             }
         }, SCAN_PERIOD);
     }
@@ -120,10 +131,12 @@ public class ConnectionPage extends AppCompatActivity {
             String deviceAddress = device.getAddress();
             if (deviceAddress.equals(BLE_DEVICE_ADDRESS)) {
                 ble_device=device;
-                t1.setText( device.getAddress());
+                t1.setText("Arnica_BLE");
+                //t1.setText( device.getAddress());
                 stopBleScan();
                 handler.removeCallbacksAndMessages(null);
             }
         }
     };
+
 }

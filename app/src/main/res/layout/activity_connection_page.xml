@@ -40,7 +40,7 @@
         android:id="@+id/label3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Device Found: "
+        android:text="Devices: "
         android:textAlignment="textStart"
         android:textColor="@color/font"
         android:layout_marginLeft="20dp"
@@ -61,5 +61,15 @@
             android:textColor="@color/font"
             android:textSize="18sp" />
 
-
+    <Button
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/baseline_restart_alt_24"
+        android:backgroundTint="@color/arnica4"
+        android:text="Search again"
+        android:textSize="10dp"
+        android:visibility="invisible"
+        android:textColor="@color/background"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

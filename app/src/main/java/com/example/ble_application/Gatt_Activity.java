@@ -35,6 +35,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ListAdapter;
+import android.widget.ProgressBar;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,10 +52,14 @@ public class Gatt_Activity extends AppCompatActivity {
     TextView Name;              //Device Name
     TextView ConnectionState;      //Connection State
     TextView mDataField;
+    TextView title;
+    ProgressBar p1;
     Button ConnectionButton;
     Button DisconnectionButton;
     Button ShowButton;
     Button Notif;
+    Button Pair;
+    Button Cont;
     BluetoothDevice device2;
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private static final UUID I2C_UUID_Service = UUID.fromString("18424398-7cbc-11e9-8f9e-2a86e4085a59");
@@ -135,6 +140,10 @@ public class Gatt_Activity extends AppCompatActivity {
 
             switch (msg.what) {
                 case STATE_DISCOVERED:
+                    p1.setVisibility(View.INVISIBLE);
+                    Pair.setVisibility(View.INVISIBLE);
+                    title.setText("Pairing Completed..");
+                    Cont.setVisibility(View.VISIBLE);
                     ConnectionState.setText("Service Discovered");
                     break;
                 case STATE_CONNECTING:
@@ -163,9 +172,13 @@ public class Gatt_Activity extends AppCompatActivity {
         ConnectionButton = findViewById(R.id.connect);
         DisconnectionButton = findViewById(R.id.disconnect);
         ShowButton = findViewById(R.id.show);
-        mGattServicesList = findViewById(R.id.expand);
+        //mGattServicesList = findViewById(R.id.expand);
         mDataField = findViewById(R.id.status6);
         Notif=findViewById(R.id.Notif);
+        Pair=findViewById(R.id.pair);
+        p1=findViewById(R.id.progressBar);
+        title=findViewById(R.id.label1);
+        Cont=findViewById(R.id.cont);
     }
 
     private void implementListeners2() {
@@ -231,6 +244,28 @@ public class Gatt_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Gatt_Activity.this, SlideActivity.class));
+
+            }
+        });
+
+        Pair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                p1.setVisibility(View.VISIBLE);
+                if (ActivityCompat.checkSelfPermission(Gatt_Activity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                    if (Build.VERSION.SDK_INT >= 31) {
+                        ActivityCompat.requestPermissions(Gatt_Activity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
+                        return;
+                    }
+                }
+                BG = device2.connectGatt(Gatt_Activity.this, false, mGattCallback);
+            }
+        });
+        Cont.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Gatt_Activity.this, SlideActivity.class));
+
             }
         });
     }
