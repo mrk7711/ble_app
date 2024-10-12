@@ -131,7 +131,7 @@ public class ConnectionPage extends AppCompatActivity {
             String deviceAddress = device.getAddress();
             if (deviceAddress.equals(BLE_DEVICE_ADDRESS)) {
                 ble_device=device;
-                t1.setText("Arnica_BLE");
+                t1.setText("Arnica_BLE1");
                 //t1.setText( device.getAddress());
                 stopBleScan();
                 handler.removeCallbacksAndMessages(null);

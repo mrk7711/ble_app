@@ -117,7 +117,7 @@ public class Gatt_Activity extends AppCompatActivity {
         findViewByIdes();
         Intent a = getIntent();
         device2 = getIntent().getExtras().getParcelable("BLE");
-        Information.setText("Device Information:");
+        Information.setText("Device Name:");
         Address.setText(device2.getAddress());
         if (ContextCompat.checkSelfPermission(Gatt_Activity.this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
             if (Build.VERSION.SDK_INT >= 31) {
@@ -144,7 +144,7 @@ public class Gatt_Activity extends AppCompatActivity {
                     Pair.setVisibility(View.INVISIBLE);
                     title.setText("Pairing Completed..");
                     Cont.setVisibility(View.VISIBLE);
-                    ConnectionState.setText("Service Discovered");
+                    //ConnectionState.setText("Service Discovered");
                     break;
                 case STATE_CONNECTING:
                     ConnectionState.setText("Connecting");

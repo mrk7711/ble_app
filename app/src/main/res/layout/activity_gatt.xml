@@ -37,10 +37,12 @@
             android:id="@+id/status2"
             android:layout_width="match_parent"
             android:textColor="@color/font"
+            android:layout_marginLeft="30dp"
             android:layout_height="30dp" />
 
         <TextView
             android:id="@+id/status3"
+            android:layout_marginLeft="30dp"
             android:layout_width="match_parent"
             android:textColor="@color/font"
             android:layout_height="30dp" />
@@ -49,11 +51,13 @@
             android:id="@+id/status4"
             android:layout_width="match_parent"
             android:textColor="@color/font"
+            android:visibility="invisible"
             android:layout_height="30dp" />
 
         <TextView
             android:id="@+id/status5"
             android:layout_width="match_parent"
+            android:visibility="invisible"
             android:textColor="@color/font"
             android:layout_height="30dp" />
 
