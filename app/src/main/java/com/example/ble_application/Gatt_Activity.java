@@ -133,7 +133,10 @@ public class Gatt_Activity extends AppCompatActivity {
             showToast("There is not any Device!");
         }
     }
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
     Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
@@ -142,7 +145,7 @@ public class Gatt_Activity extends AppCompatActivity {
                 case STATE_DISCOVERED:
                     p1.setVisibility(View.INVISIBLE);
                     Pair.setVisibility(View.INVISIBLE);
-                    title.setText("Pairing Completed..");
+                    title.setText("Pairing Completed!");
                     Cont.setVisibility(View.VISIBLE);
                     //ConnectionState.setText("Service Discovered");
                     break;
@@ -259,6 +262,7 @@ public class Gatt_Activity extends AppCompatActivity {
                     }
                 }
                 BG = device2.connectGatt(Gatt_Activity.this, false, mGattCallback);
+                Pair.setText("Pairing..");
             }
         });
         Cont.setOnClickListener(new View.OnClickListener() {

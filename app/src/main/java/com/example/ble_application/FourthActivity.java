@@ -7,9 +7,11 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.location.Location;
 import android.location.LocationRequest;
+import android.os.Build;
 import android.os.Bundle;
 import android.content.Context;
 import android.os.Handler;
@@ -36,21 +38,16 @@ public class FourthActivity extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!isLocationEnabled()) {
-
-                    Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                    startActivityForResult(intent, REQUEST_LOCATION_SETTINGS);
-                } else {
-                    // اگر GPS روشن است، کاربر را به صفحه بعدی هدایت کنید
-                    FourthActivity.this.startActivity(new Intent(FourthActivity.this,ConnectionPage.class));
-                    FourthActivity.this.finish();
-                }
+                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.R)
+                    requestLocationPermissions();
+                else
+                    enableLocation();
             }
         });
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(FourthActivity.this, MainActivity.class));
+                //startActivity(new Intent(FourthActivity.this, MainActivity.class));
             }
         });
     }
@@ -59,7 +56,7 @@ public class FourthActivity extends AppCompatActivity {
         if (requestCode == REQUEST_LOCATION_SETTINGS) {
             if (isLocationEnabled())
             {
-                FourthActivity.this.startActivity(new Intent(FourthActivity.this,MainActivity.class));
+                FourthActivity.this.startActivity(new Intent(FourthActivity.this,ConnectionPage.class));
             }
             else
             {
@@ -75,5 +72,20 @@ public class FourthActivity extends AppCompatActivity {
     private void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
-
+    private void enableLocation() {
+        if (!isLocationEnabled()) {
+            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+            startActivityForResult(intent,REQUEST_LOCATION_SETTINGS);
+        } else {
+            FourthActivity.this.startActivity(new Intent(FourthActivity.this,ConnectionPage.class));
+        }
+    }
+    private void requestLocationPermissions() {
+        // Request location permissions if needed
+        if (checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        } else {
+            enableLocation();
+        }
+    }
 }

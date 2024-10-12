@@ -29,7 +29,7 @@
             android:textColor="@color/font"
             android:textSize="20sp" />
         <Button
-            android:id="@+id/Continue"
+            android:id="@+id/Continue3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="100dp"
