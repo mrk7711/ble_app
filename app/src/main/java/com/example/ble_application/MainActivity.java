@@ -60,14 +60,14 @@ public class MainActivity extends AppCompatActivity {
     BluetoothGattCharacteristic characteristicNotifi;
     private static final String TAG = "Main";
     //    private LeDeviceListAdapter mLeDeviceListAdapter;
-    Button b1;
-    Button b2;
-    Button b3;
-    Button b4;
-    Button b5;
-    ListView lv;
-    TextView status;
-    TextView ble;
+    private Button b1;
+    private Button b2;
+    private Button b3;
+    private Button b4;
+    private Button b5;
+    private ListView lv;
+    private TextView status;
+    private TextView ble;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

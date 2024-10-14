@@ -21,10 +21,10 @@ public class Program extends AppCompatActivity {
     MenuItem a2;
     MenuItem a3;
     MenuItem a4;
-    Button p1;
-    Button p2;
-    Button p3;
-    Button p4;
+    private Button p1;
+    private Button p2;
+    private Button p3;
+    private Button p4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -19,13 +19,32 @@
         android:layout_marginBottom="10dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
+    <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:layout_below="@id/textView4"
-        />
+        >
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_below="@id/textView4"
+            />
+        <TextView
+            android:id="@+id/show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:text="Hi"
+            android:visibility="invisible"
+            android:textColor="@color/font"
+            android:textSize="140sp" />
+
+    </FrameLayout>
+
     <LinearLayout
         android:id="@+id/sliderLayout1"
         android:layout_width="match_parent"
@@ -33,7 +52,7 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
-        android:layout_below="@id/viewPager">
+        android:layout_below="@id/frameLayout">
 
         <ImageButton
             android:id="@+id/mutepic1"
@@ -49,6 +68,7 @@
             android:layout_height="wrap_content"
             android:progress="3"
             android:max="10"
+            android:min="1"
             android:thumbTint="@color/arnica4"
             android:progressTint="@color/arnica4" />
 
@@ -142,7 +162,6 @@
         android:layout_height="wrap_content"
         android:background="@color/arnica8"
         android:gravity="center"
-
         android:orientation="horizontal"
         android:layout_alignParentBottom="true">
 
@@ -159,6 +178,8 @@
                 android:layout_height="wrap_content"
                 android:text="Home"
                 android:textSize="10sp"
+                android:clickable="false"
+                android:focusable="false"
                 android:textColor="@color/arnica4"
                 android:drawableTint="@color/arnica4"
                 android:drawableTop="@drawable/baseline_home_24"

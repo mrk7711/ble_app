@@ -22,8 +22,8 @@ public class SecondMode extends AppCompatActivity {
     TextView text5;
     TextView text6;
 
-    Button n1;
-    Button e1;
+    private Button n1;
+    private Button e1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -4,15 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class NoiseReduction extends AppCompatActivity {
-Button b1;
-SeekBar s1;
-TextView t1;
-int x=0;
+    private Button b1;
+    private SeekBar s1;
+    private TextView t1;
+    private int x=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +28,7 @@ int x=0;
                 //currentValueTextView.setText(String.valueOf(progress));
                 x = progress;
                 if (x==0)
-                    t1.setText("off");
+                    t1.setText("OFF");
                 if (x==1)
                     t1.setText("Mild");
                 if (x==2)

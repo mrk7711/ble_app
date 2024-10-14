@@ -21,8 +21,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class FourthActivity extends AppCompatActivity {
-    Button b1;
-    Button b2;
+    private Button b1;
+    private Button b2;
     private LocationRequest locationRequest;
     private LocationManager locationManager;
     private static final int REQUEST_LOCATION_SETTINGS = 101;

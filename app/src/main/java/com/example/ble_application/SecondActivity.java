@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.Button;
 
 public class SecondActivity extends AppCompatActivity {
-    Button b1;
-    Button b2;
+    private Button b1;
+    private Button b2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

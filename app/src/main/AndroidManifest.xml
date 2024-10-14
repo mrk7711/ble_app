@@ -26,6 +26,18 @@
         android:theme="@style/Theme.BLE_Application"
         tools:targetApi="31">
         <activity
+            android:name=".Statuspage"
+            android:exported="false" />
+        <activity
+            android:name=".Myapppage"
+            android:exported="false" />
+        <activity
+            android:name=".Morepage"
+            android:exported="false" />
+        <activity
+            android:name=".curveslider"
+            android:exported="false" />
+        <activity
             android:name=".ConnectionPage"
             android:exported="false" />
         <activity

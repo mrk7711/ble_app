@@ -47,19 +47,19 @@ import java.util.List;
 import java.util.UUID;
 
 public class Gatt_Activity extends AppCompatActivity {
-    TextView Information;       //Device Information
-    TextView Address;           //Device Address
-    TextView Name;              //Device Name
-    TextView ConnectionState;      //Connection State
-    TextView mDataField;
-    TextView title;
-    ProgressBar p1;
-    Button ConnectionButton;
-    Button DisconnectionButton;
-    Button ShowButton;
-    Button Notif;
-    Button Pair;
-    Button Cont;
+    private TextView Information;       //Device Information
+    private TextView Address;           //Device Address
+    private TextView Name;              //Device Name
+    private TextView ConnectionState;      //Connection State
+    private TextView mDataField;
+    private TextView title;
+    private ProgressBar p1;
+    private Button ConnectionButton;
+    private Button DisconnectionButton;
+    private Button ShowButton;
+    private Button Notif;
+    private Button Pair;
+    private Button Cont;
     BluetoothDevice device2;
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private static final UUID I2C_UUID_Service = UUID.fromString("18424398-7cbc-11e9-8f9e-2a86e4085a59");

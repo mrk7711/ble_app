@@ -34,9 +34,9 @@ public class ConnectionPage extends AppCompatActivity {
     private static final String BLE_DEVICE_ADDRESS = "48:23:35:F4:00:0B";
     BluetoothDevice ble_device;
     private final long SCAN_PERIOD = 10000;
-    TextView t1;
-    ProgressBar p1;
-    Button b1;
+    private TextView t1;
+    private ProgressBar p1;
+    private Button b1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

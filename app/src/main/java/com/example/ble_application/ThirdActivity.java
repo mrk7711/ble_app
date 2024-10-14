@@ -20,8 +20,8 @@ import android.provider.Settings;
 public class ThirdActivity extends AppCompatActivity {
     private BluetoothAdapter BA;
     private ActivityResultLauncher<Intent> enableBluetoothLauncher;
-    Button b1;
-    Button b2;
+    private Button b1;
+    private Button b2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

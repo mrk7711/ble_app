@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".Morepage">
+        <TextView
+            android:id="@+id/label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="More"
+            android:textAlignment="center"
+            android:textColor="@color/font"
+            android:layout_marginBottom="30dp"
+            android:textSize="20sp"
+            android:layout_alignParentTop="true"
+            />
+
+        <TextView
+            android:id="@+id/application_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="APPLICATION"
+            android:layout_marginLeft="20dp"
+            android:textStyle="bold"
+            android:layout_below="@id/label"
+            android:textColor="@android:color/darker_gray"
+            android:paddingBottom="8dp" />
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/application_label"
+            android:background="@android:color/darker_gray" />
+        <TextView
+            android:id="@+id/exit_demo_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/application_label"
+            android:layout_marginLeft="50dp"
+            android:text="Exit Demo mode"
+            android:textColor="@color/font"
+            android:textSize="16sp"
+            android:paddingVertical="10dp" />
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/exit_demo_mode"
+            android:background="@android:color/darker_gray" />
+        <!-- گزینه Guiding tips -->
+        <TextView
+            android:id="@+id/guiding_tips_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/exit_demo_mode"
+            android:text="Guiding tips"
+            android:textColor="@color/font"
+            android:layout_marginLeft="50dp"
+            android:textSize="16sp"
+            android:paddingVertical="10dp" />
+
+        <Switch
+            android:id="@+id/switch_guiding_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:thumbTint="@color/arnica4"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/exit_demo_mode" />
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/guiding_tips_label"
+            android:background="@android:color/darker_gray" />
+        <!-- گزینه Auto-activate favorite locations -->
+        <TextView
+            android:id="@+id/auto_activate_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/guiding_tips_label"
+            android:text="Auto-activate favorite locations"
+            android:textColor="@color/font"
+            android:layout_marginLeft="50dp"
+            android:textSize="16sp"
+            android:paddingVertical="10dp" />
+
+        <Switch
+            android:id="@+id/switch_auto_activate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/guiding_tips_label"
+            android:thumbTint="@color/arnica4"
+            android:checked="true" />
+        <View
+            android:id="@+id/divider4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/auto_activate_label"
+            android:background="@android:color/darker_gray" />
+        <!-- عنوان General -->
+        <TextView
+            android:id="@+id/general_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/auto_activate_label"
+            android:text="GENERAL"
+            android:layout_marginLeft="20dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/darker_gray"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp" />
+        <View
+            android:id="@+id/divider5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/general_label"
+            android:background="@android:color/darker_gray" />
+        <!-- گزینه About -->
+        <TextView
+            android:id="@+id/about_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/general_label"
+            android:text="About"
+            android:textColor="@color/font"
+            android:layout_marginLeft="50dp"
+            android:textSize="16sp"
+            android:paddingVertical="10dp" />
+        <View
+            android:id="@+id/divider6"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/about_label"
+            android:background="@android:color/darker_gray" />
+        <!-- گزینه Legal information -->
+        <TextView
+            android:id="@+id/legal_info_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about_label"
+            android:text="Legal information"
+            android:textColor="@color/font"
+            android:layout_marginLeft="50dp"
+            android:textSize="16sp"
+            android:paddingVertical="10dp" />
+        <View
+            android:id="@+id/divider7"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/legal_info_label"
+            android:background="@android:color/darker_gray" />
+        <!-- گزینه Support -->
+        <TextView
+            android:id="@+id/support_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/legal_info_label"
+            android:text="Support"
+            android:textSize="16sp"
+            android:textColor="@color/font"
+            android:layout_marginLeft="50dp"
+            android:paddingVertical="10dp" />
+        <View
+            android:id="@+id/divider8"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/support_label"
+            android:background="@android:color/darker_gray" />
+        <LinearLayout
+            android:id="@+id/bottomNavigationLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/arnica8"
+            android:gravity="center"
+
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                        <Button
+                            android:id="@+id/homeButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Home"
+                            android:textSize="10sp"
+                            android:textColor="@color/font"
+                            android:drawableTop="@drawable/baseline_home_24"
+                            android:backgroundTint="@color/arnica8" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                        <Button
+                            android:id="@+id/statusButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/arnica8"
+                            android:drawableTop="@drawable/baseline_hearing_24"
+                            android:text="Status"
+                            android:textColor="@color/font"
+                            android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                        <Button
+                            android:id="@+id/myappButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="MyApp"
+                            android:textSize="10sp"
+                            android:textColor="@color/font"
+                            android:drawableTop="@drawable/baseline_contact_support_24"
+                            android:backgroundTint="@color/arnica8" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                        <Button
+                            android:id="@+id/moreButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="More"
+                            android:textSize="10sp"
+                            android:clickable="false"
+                            android:focusable="false"
+                            android:textColor="@color/arnica4"
+                            android:drawableTint="@color/arnica4"
+                            android:drawableTop="@drawable/baseline_more_horiz_24"
+                            android:backgroundTint="@color/arnica8" />
+                </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+

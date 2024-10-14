@@ -19,14 +19,13 @@
         android:layout_alignParentTop="true"
  />
 
-
     <TextView
         android:id="@+id/textView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/arnica4"
         android:layout_below="@id/label"
-        android:layout_marginLeft="50dp"
+        android:gravity="center"
         android:text="Mild"
         android:textSize="36dp" />
 
@@ -44,6 +43,7 @@
             android:layout_weight="1"
             android:max="4"
             android:min="0"
+
             android:progress="1"
             android:progressTint="@color/arnica4"
             android:rotation="270"
