@@ -171,6 +171,12 @@
             android:layout_height="1dp"
             android:layout_below="@id/support_label"
             android:background="@android:color/darker_gray" />
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/divider8"
+            android:layout_marginTop="30dp"/>
         <LinearLayout
             android:id="@+id/bottomNavigationLayout"
             android:layout_width="match_parent"

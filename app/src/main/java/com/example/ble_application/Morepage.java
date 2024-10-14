@@ -8,7 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
-
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 public class Morepage extends AppCompatActivity {
     private TextView exitDemoMode, guidingTips, autoActivate, about, legalInfo, support;
     private Switch switchGuidingTips, switchAutoActivate;
@@ -61,6 +62,7 @@ public class Morepage extends AppCompatActivity {
                 // شروع اکتیویتی جدید برای "About"
                 //Intent intent = new Intent(Morepage.this, AboutActivity.class);
                 //startActivity(intent);
+                loadFragment(new AboutFragment());
             }
         });
 
@@ -105,5 +107,12 @@ public class Morepage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void loadFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.addToBackStack(null);  // به پشته اضافه کردن برای بازگشت به Fragment قبلی
+        transaction.commit();
     }
 }
