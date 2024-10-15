@@ -31,7 +31,7 @@ public class Myapppage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // شروع اکتیویتی جدید برای "Exit Demo mode"
-                //Intent intent = new Intent(Myapppage.this, SecondActivity.class);
+                //Intent intent = new Intent(Myapppage.this, ConnectionPage.class);
                 //startActivity(intent);
             }
         });

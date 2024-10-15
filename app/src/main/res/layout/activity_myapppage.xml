@@ -309,8 +309,6 @@
                 android:layout_height="wrap_content"
                 android:text="More"
                 android:textSize="10sp"
-                android:clickable="false"
-                android:focusable="false"
                 android:textColor="@color/font"
                 android:drawableTop="@drawable/baseline_more_horiz_24"
                 android:backgroundTint="@color/arnica8" />

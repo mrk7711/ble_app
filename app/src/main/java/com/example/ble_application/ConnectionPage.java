@@ -46,7 +46,7 @@ public class ConnectionPage extends AppCompatActivity {
         BA = bluetoothManager.getAdapter();
         ProgressBar progressBar = findViewById(R.id.progressBar);
         ObjectAnimator rotate = ObjectAnimator.ofFloat(progressBar, "rotation", 0f, 360f);
-        rotate.setDuration(5000);
+        rotate.setDuration(7000);
         rotate.setInterpolator(new LinearInterpolator());
         rotate.setRepeatCount(ObjectAnimator.INFINITE);
         rotate.start(); //
