@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="More"
+        android:text="My app"
         android:textAlignment="center"
         android:textColor="@color/font"
         android:layout_marginBottom="30dp"
@@ -287,8 +287,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="MyApp"
+                android:clickable="false"
+                android:focusable="false"
                 android:textSize="10sp"
-                android:textColor="@color/font"
+                android:textColor="@color/arnica4"
+                android:drawableTint="@color/arnica4"
                 android:drawableTop="@drawable/baseline_contact_support_24"
                 android:backgroundTint="@color/arnica8" />
         </LinearLayout>
@@ -308,8 +311,7 @@
                 android:textSize="10sp"
                 android:clickable="false"
                 android:focusable="false"
-                android:textColor="@color/arnica4"
-                android:drawableTint="@color/arnica4"
+                android:textColor="@color/font"
                 android:drawableTop="@drawable/baseline_more_horiz_24"
                 android:backgroundTint="@color/arnica8" />
         </LinearLayout>
