@@ -1,6 +1,11 @@
 package com.example.ble_application;
-
+import android.Manifest;
+import android.bluetooth.BluetoothGatt;
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattService;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,12 +14,16 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.viewpager2.widget.ViewPager2;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class SlideActivity extends AppCompatActivity {
-
+    private BluetoothGatt bluetoothGatt;
+    private BluetoothGattCharacteristic ledCharacteristic;
+    private BluetoothGattCharacteristic i2cCharacteristic;
     private ViewPager2 viewPager;
     private SliderAdapter sliderAdapter;
     private Button b1,b2,b3,b4,b5;
@@ -22,6 +31,9 @@ public class SlideActivity extends AppCompatActivity {
     private SeekBar s1,s2;
     private TextView t1;
     private int x;
+    private static final UUID SERVICE_UUID = UUID.fromString("18424398-7cbc-11e9-8f9e-2a86e4085a59");
+    private static final UUID I2C_CHARACTERISTIC_UUID = UUID.fromString("5b87b4ef-3bfa-76a8-e642-92933c31434c");
+    private static final UUID LED_CHARACTERISTIC_UUID = UUID.fromString("5a87b4ef-3bfa-76a8-e642-92933c31434f");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +51,10 @@ public class SlideActivity extends AppCompatActivity {
         s1=findViewById(R.id.slider1);
         s2=findViewById(R.id.slider2);
         t1=findViewById(R.id.show);
+        bluetoothGatt = BluetoothManager.getInstance().getBluetoothGatt();
+        BluetoothGattService service = bluetoothGatt.getService(SERVICE_UUID);
+        ledCharacteristic = service.getCharacteristic(LED_CHARACTERISTIC_UUID);
+        i2cCharacteristic = service.getCharacteristic(I2C_CHARACTERISTIC_UUID);
         // لیست صفحات
         List<SliderItem> sliderItems = new ArrayList<>();
         sliderItems.add(new SliderItem(R.drawable.p1, "P1"));
@@ -118,8 +134,10 @@ public class SlideActivity extends AppCompatActivity {
                     t1.setText("8");
                 if (x==9)
                     t1.setText("9");
-                if (x==10)
+                if (x==10) {
                     t1.setText("10");
+
+                }
             }
 
             @Override
@@ -133,6 +151,10 @@ public class SlideActivity extends AppCompatActivity {
                 //showToast(String.valueOf(progressChangedValue));
                 viewPager.setAlpha(1.0f); // بازگشت به حالت عادی
                 t1.setVisibility(View.GONE); // مخفی کردن متن
+                if (x%2==0)
+                    turnOnLed();
+                if (x%2!=0)
+                    turnOffLed();
             }
         });
         b3.setOnClickListener(new View.OnClickListener() {
@@ -153,8 +175,19 @@ public class SlideActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(SlideActivity.this, Morepage.class));
-
             }
         });
+    }
+    private void turnOnLed() {
+        // Send command to turn on the LED to the microcontroller
+        byte[] command = new byte[]{1}; // Command to turn on the LED
+        ledCharacteristic.setValue(command);
+        bluetoothGatt.writeCharacteristic(ledCharacteristic);
+    }
+    private void turnOffLed() {
+        // Send command to turn on the LED to the microcontroller
+        byte[] command = new byte[]{0}; // Command to turn on the LED
+        ledCharacteristic.setValue(command);
+        bluetoothGatt.writeCharacteristic(ledCharacteristic);
     }
 }

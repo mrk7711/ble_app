@@ -3,7 +3,6 @@ package com.example.ble_application;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
@@ -262,6 +261,7 @@ public class Gatt_Activity extends AppCompatActivity {
                     }
                 }
                 BG = device2.connectGatt(Gatt_Activity.this, false, mGattCallback);
+                BluetoothManager.getInstance().setBluetoothGatt(BG);
                 Pair.setText("Pairing..");
             }
         });
@@ -427,6 +427,7 @@ public class Gatt_Activity extends AppCompatActivity {
         mGattServicesList.setAdapter(gattServiceAdapter);
     }
 }
+
 
 
 
