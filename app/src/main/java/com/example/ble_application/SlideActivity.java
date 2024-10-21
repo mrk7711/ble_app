@@ -151,10 +151,47 @@ public class SlideActivity extends AppCompatActivity {
                 //showToast(String.valueOf(progressChangedValue));
                 viewPager.setAlpha(1.0f); // بازگشت به حالت عادی
                 t1.setVisibility(View.GONE); // مخفی کردن متن
-                if (x%2==0)
-                    turnOnLed();
-                if (x%2!=0)
-                    turnOffLed();
+                if (x==1)
+                {
+                    setregister(1);
+                }
+                if (x==2)
+                {
+                    setregister(2);
+                }
+                if (x==3)
+                {
+                    setregister(3);
+                }
+                if (x==4)
+                {
+                    setregister(4);
+                }
+                if (x==5)
+                {
+                    setregister(5);
+                }
+                if (x==6)
+                {
+                    setregister(6);
+                }
+                if (x==7)
+                {
+                    setregister(7);
+                }
+                if (x==8)
+                {
+                    setregister(8);
+                }
+                if (x==9)
+                {
+                    setregister(9);
+                }
+                if (x==10)
+                {
+                    setregister(10);
+                }
+
             }
         });
         b3.setOnClickListener(new View.OnClickListener() {
@@ -187,6 +224,13 @@ public class SlideActivity extends AppCompatActivity {
     private void turnOffLed() {
         // Send command to turn on the LED to the microcontroller
         byte[] command = new byte[]{0}; // Command to turn on the LED
+        ledCharacteristic.setValue(command);
+        bluetoothGatt.writeCharacteristic(ledCharacteristic);
+    }
+
+    private void setregister(int x) {
+        // Send command to turn on the LED to the microcontroller
+        byte[] command = new byte[]{(byte)x}; // Command to turn on the LED
         ledCharacteristic.setValue(command);
         bluetoothGatt.writeCharacteristic(ledCharacteristic);
     }
