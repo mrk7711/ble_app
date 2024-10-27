@@ -69,7 +69,6 @@ public class SlideActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(SlideActivity.this,NoiseReduction.class));
-
             }
         });
         b2.setOnClickListener(new View.OnClickListener() {
