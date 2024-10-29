@@ -34,6 +34,7 @@ public class SlideActivity extends AppCompatActivity {
     private static final UUID SERVICE_UUID = UUID.fromString("18424398-7cbc-11e9-8f9e-2a86e4085a59");
     private static final UUID I2C_CHARACTERISTIC_UUID = UUID.fromString("5b87b4ef-3bfa-76a8-e642-92933c31434c");
     private static final UUID LED_CHARACTERISTIC_UUID = UUID.fromString("5a87b4ef-3bfa-76a8-e642-92933c31434f");
+    private int numberOfSlides = 4; // تعداد اسلایدها
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +66,13 @@ public class SlideActivity extends AppCompatActivity {
         // تنظیم آداپتر برای ViewPager
         sliderAdapter = new SliderAdapter(sliderItems);
         viewPager.setAdapter(sliderAdapter);
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                writeRegisters(position); // نوشتن رجیسترها بر اساس اسلاید فعلی
+            }
+        });
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -190,7 +198,6 @@ public class SlideActivity extends AppCompatActivity {
                 {
                     setregister(10);
                 }
-
             }
         });
         b3.setOnClickListener(new View.OnClickListener() {
@@ -213,6 +220,23 @@ public class SlideActivity extends AppCompatActivity {
                 startActivity(new Intent(SlideActivity.this, Morepage.class));
             }
         });
+    }
+
+    private void writeRegisters(int position) {
+        switch (position) {
+            case 0:
+                setregister(16);
+                break;
+            case 1:
+                setregister(17);
+                break;
+            case 2:
+                setregister(18);
+                break;
+            case 3:
+                setregister(19);
+                break;
+        }
     }
     private void turnOnLed() {
         // Send command to turn on the LED to the microcontroller
