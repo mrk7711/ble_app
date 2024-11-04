@@ -31,7 +31,7 @@ public class ConnectionPage extends AppCompatActivity {
     private Handler handler;
     private BluetoothAdapter BA = null;
     private BluetoothLeScanner BS;
-    private static final String BLE_DEVICE_ADDRESS = "48:23:35:F4:00:0B";
+    private static final String BLE_DEVICE_ADDRESS = "F4:35:23:48:00:00";
     BluetoothDevice ble_device;
     private final long SCAN_PERIOD = 10000;
     private TextView t1;
