@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".FirstActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="262dp"
+            app:srcCompat="@drawable/logo4" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/b_nazanin"
+            android:text="@string/Welocme"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#F8F8FF"
+            android:textSize="50sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/about_app"
+            android:textAlignment="center"
+            android:fontFamily="@font/b_nazanin"
+            android:textColor="#F8F8FF"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="12sp"
+            android:text="@string/do_you"
+            android:fontFamily="@font/b_nazanin"
+            android:textAlignment="center"
+            android:layout_marginTop="30dp"
+            android:textColor="#F8F8FF"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/Continue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:backgroundTint="@color/arnica4"
+            android:gravity="center"
+            android:insetTop="20dp"
+            android:text="@string/yes_connect"
+            android:fontFamily="@font/b_nazanin"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:verticalScrollbarPosition="defaultPosition" />
+        <Button
+            android:id="@+id/Continue2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:backgroundTint="@color/arnica4"
+            android:gravity="center"
+            android:insetTop="20dp"
+            android:text="@string/no_demo"
+            android:fontFamily="@font/b_nazanin"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:verticalScrollbarPosition="defaultPosition" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/language"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/arnica4"
+            android:text="Change Language"
+            android:fontFamily="@font/b_nazanin_bold"
+            android:textColor="@color/background"
+            android:textSize="20sp"
+            android:layout_alignParentBottom="true"
+            android:visibility="visible" />
+
+
+    </LinearLayout>
+</RelativeLayout>

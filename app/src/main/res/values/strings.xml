@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Arnica</string>
+    <string name="unknown_device">Unknown device</string>
+    <string name="unknown_service">Unknown service</string>
+    <string name="unknown_characteristic">Unknown characteristic</string>
+    <string name="title_activity_second">SecondActivity</string>
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="Welocme">Welcome</string>
+    <string name="do_you">Do you have a hearing aid?</string>
+    <string name="yes_connect">Yes, connect now</string>
+    <string name="no_demo">No, take me to demo mode</string>
+    <string name="about_app">The Arnica Remote app enables you to change your program and adjust volume for your Bluetooth compatible hearing aid</string>
+    <string name="enable_blu">Please enable Bluetooth to connect to your hearing  aid.</string>
+    <string name="enable_loc">Location Services have to be enabled to connect to your hearing aid.</string>
+    <string name="title_activity_slide">SlideActivity</string>
+    <string name="follow">Follow the guides to restart your hearing aids:</string>
+    <string name="getconnect">Getting connected</string>
+    <string name="open">1.Open the battery door in your hearing aids.</string>
+    <string name="close">2.Close the battery door in your hearing aids.</string>
+    <string name="cont">Continue</string>
+    <string name="searching">Searching....</string>
+    <string name="look">Looking for hearing aids</string>
+    <string name="device">Devices:</string>
+    <string name="tryagain">Try again</string>
+    <string name="pairing">Pairing your hearing aids..</string>
+    <string name="startpair">Start pairing</string>
+    <string name="noisereduct">Noise Reduction</string>
+    <string name="sounden">Sound Enhancer</string>
+    <string name="home">Home</string>
+</resources>

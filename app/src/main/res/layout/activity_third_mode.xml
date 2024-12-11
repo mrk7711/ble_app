@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#51673AB7"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".FirstMode">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="Mode Three"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:src="@drawable/baseline_looks_3_24" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Right Ear"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/baseline_volume_down_24" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/slider1"
+            android:layout_width="288dp"
+            android:layout_height="wrap_content"
+            android:stepSize="1.0"
+            android:valueFrom="0.0"
+            android:valueTo="10.0"
+            app:labelBehavior="gone" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/baseline_volume_up_24" />
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Left Ear"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/baseline_volume_down_24" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/slider2"
+            android:layout_width="288dp"
+            android:layout_height="wrap_content"
+            android:stepSize="1.0"
+            android:valueFrom="0.0"
+            android:valueTo="10.0"
+            app:labelBehavior="gone" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/baseline_volume_up_24" />
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/N1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="NoiseFilter" />
+
+        <Button
+            android:id="@+id/E1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Equalizer" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/slider3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:stepSize="1.0"
+            android:valueFrom="0.0"
+            android:valueTo="10.0"
+            android:visibility="invisible"
+            app:labelBehavior="gone" />
+
+        <TextView
+            android:id="@+id/text4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Bass"
+            android:visibility="invisible"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/slider4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:stepSize="1.0"
+            android:valueFrom="0.0"
+            android:valueTo="10.0"
+            android:visibility="invisible"
+            app:labelBehavior="gone" />
+
+        <TextView
+            android:id="@+id/text5"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Middle"
+            android:visibility="invisible"
+            android:textAlignment="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/slider5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:stepSize="1.0"
+            android:valueFrom="0.0"
+            android:valueTo="10.0"
+            android:visibility="invisible"
+            app:labelBehavior="gone" />
+
+        <TextView
+            android:id="@+id/text6"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Treble"
+            android:visibility="invisible"
+            android:textAlignment="center" />
+    </LinearLayout>
+
+</LinearLayout>

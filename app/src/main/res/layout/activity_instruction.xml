@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".Instruction">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/getconnect"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#F8F8FF"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="262dp"
+            app:srcCompat="@drawable/image4" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="@string/follow"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            android:textColor="#F8F8FF"
+            android:textSize="25sp" />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="12sp"
+            android:text="@string/open"
+            android:textAlignment="viewStart"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#F8F8FF"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="12sp"
+            android:text="@string/close"
+            android:textAlignment="viewStart"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#F8F8FF"
+            android:textSize="20sp" />
+        <Button
+            android:id="@+id/Continue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/arnica4"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:insetTop="20dp"
+            android:text="@string/cont"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:verticalScrollbarPosition="defaultPosition" />
+
+
+    </LinearLayout>
+</RelativeLayout>
