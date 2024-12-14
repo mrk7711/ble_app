@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class DemoSlideActivity extends AppCompatActivity {
+public class DemoSlideActivity extends AppCompat {
 
     private ViewPager2 viewPager;
     private SliderAdapter sliderAdapter;

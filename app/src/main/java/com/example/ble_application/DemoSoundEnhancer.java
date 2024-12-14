@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 
-public class DemoSoundEnhancer extends AppCompatActivity {
+public class DemoSoundEnhancer extends AppCompat {
     private Button b1,b2,b3,b4,b5,b6,b7,b8;
     private SeekBar s1,s2,s3;
     int x=0;

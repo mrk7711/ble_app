@@ -12,7 +12,7 @@ import android.widget.SeekBar;
 
 import java.util.UUID;
 
-public class SoundEnhancer extends AppCompatActivity {
+public class SoundEnhancer extends AppCompat {
     private Button b1,b2,b3,b4,b5,b6,b7,b8;
     private SeekBar s1,s2,s3;
     private static final UUID SERVICE_UUID = UUID.fromString("18424398-7cbc-11e9-8f9e-2a86e4085a59");

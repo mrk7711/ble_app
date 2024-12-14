@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 
-public class Myapppage extends AppCompatActivity {
+public class Myapppage extends AppCompat {
     private TextView findhearingaid, tapcontrol, learnabout, guidingtips, ratemysound, requestassistance, newsetting, update;
     private Button home,status,more;
     @Override

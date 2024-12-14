@@ -20,7 +20,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class FourthActivity extends AppCompatActivity {
+public class FourthActivity extends AppCompat {
     private Button b1;
     private Button b2;
     private LocationRequest locationRequest;

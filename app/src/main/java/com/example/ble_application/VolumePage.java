@@ -6,7 +6,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class VolumePage extends AppCompatActivity {
+public class VolumePage extends AppCompat {
 
     private SeekBar volumeSeekBar;
     private TextView currentValueTextView;

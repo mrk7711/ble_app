@@ -7,7 +7,7 @@
         android:id="@+id/about_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="About this app..."
+        android:text="@string/about_app"
         android:textSize="18sp"
         android:textColor="@android:color/black"/>
 </RelativeLayout>

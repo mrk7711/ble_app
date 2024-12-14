@@ -17,7 +17,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import android.widget.Button;
 import android.widget.Toast;
 import android.provider.Settings;
-public class ThirdActivity extends AppCompatActivity {
+public class ThirdActivity extends AppCompat {
     private BluetoothAdapter BA;
     private ActivityResultLauncher<Intent> enableBluetoothLauncher;
     private Button b1;

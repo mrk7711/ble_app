@@ -12,7 +12,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import java.util.UUID;
 
-public class NoiseReduction extends AppCompatActivity {
+public class NoiseReduction extends AppCompat {
     private Button b1;
     private SeekBar s1;
     private TextView t1;

@@ -26,6 +26,7 @@
             android:text="@string/enable_blu"
             android:textAlignment="center"
             android:layout_marginTop="50dp"
+
             android:textColor="@color/font"
             android:textSize="20sp" />
         <Button
@@ -38,7 +39,7 @@
             android:textColor="@color/black"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:text="Enable Now"
+            android:text="@string/Enable"
             android:textAlignment="center"
             android:textSize="20sp" />
 
@@ -47,14 +48,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="30dp"
             android:visibility="invisible"
             android:insetTop="20dp"
             android:backgroundTint="@color/arnica4"
             android:textColor="@color/black"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:text="View demo mode"/>
+            android:text="@string/no_demo"/>
 
     </LinearLayout>
 </RelativeLayout>

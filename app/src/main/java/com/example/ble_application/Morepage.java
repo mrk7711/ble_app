@@ -1,19 +1,25 @@
 package com.example.ble_application;
 
+import android.content.SharedPreferences;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.transition.Slide;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-public class Morepage extends AppCompatActivity {
+public class Morepage extends AppCompat {
     private TextView exitDemoMode, guidingTips, autoActivate, about, legalInfo, support;
     private Switch switchGuidingTips, switchAutoActivate;
     private Button home,status,myapp;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +35,15 @@ public class Morepage extends AppCompatActivity {
         home=findViewById(R.id.homeButton);
         status=findViewById(R.id.statusButton);
         myapp=findViewById(R.id.myappButton);
+        sharedPreferences = getSharedPreferences("ThemePrefs", MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        boolean isDarkMode = sharedPreferences.getBoolean("isDarkMode", false);
+        if (isDarkMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+        switchGuidingTips.setChecked(isDarkMode);
         exitDemoMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,7 +61,21 @@ public class Morepage extends AppCompatActivity {
                // startActivity(intent);
             }
         });
-
+        switchGuidingTips.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked){
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                        editor.putBoolean("isDarkMode", true);
+                        editor.apply();
+                    }
+                    else{
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                        editor.putBoolean("isDarkMode", false);
+                        editor.apply();
+                    }
+            }
+        });
         autoActivate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

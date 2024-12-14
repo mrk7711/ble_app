@@ -26,7 +26,7 @@ import android.os.Bundle;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
 
-public class ConnectionPage extends AppCompatActivity {
+public class ConnectionPage extends AppCompat {
     private static final int REQUEST_PERMISSION = 2;
     private Handler handler;
     private BluetoothAdapter BA = null;

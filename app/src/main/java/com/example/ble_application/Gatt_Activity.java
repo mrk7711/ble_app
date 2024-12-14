@@ -45,7 +45,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
-public class Gatt_Activity extends AppCompatActivity {
+public class Gatt_Activity extends AppCompat {
     private TextView Information;       //Device Information
     private TextView Address;           //Device Address
     private TextView Name;              //Device Name

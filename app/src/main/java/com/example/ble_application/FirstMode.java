@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.google.android.material.slider.Slider;
 
-public class FirstMode extends AppCompatActivity {
+public class FirstMode extends AppCompat {
     Slider slider1;
     Slider slider2;
     Slider slider3;

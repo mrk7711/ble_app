@@ -15,7 +15,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.PopupMenu;
 
-public class Program extends AppCompatActivity {
+public class Program extends AppCompat {
     ImageButton g1;
     MenuItem a1;
     MenuItem a2;

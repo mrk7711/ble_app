@@ -41,7 +41,7 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.UUID;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompat {
     private BluetoothAdapter BA = null;
     private Handler handler;
     private static final int REQUEST_ENABLE_BT = 1;

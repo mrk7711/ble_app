@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="More"
+            android:text="@string/More"
             android:textAlignment="center"
             android:textColor="@color/font"
             android:layout_marginBottom="30dp"
@@ -23,8 +23,9 @@
             android:id="@+id/application_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="APPLICATION"
+            android:text="@string/APPLICATION"
             android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:textStyle="bold"
             android:layout_below="@id/label"
             android:textColor="@android:color/darker_gray"
@@ -41,7 +42,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/application_label"
             android:layout_marginLeft="50dp"
-            android:text="Exit Demo mode"
+            android:layout_marginRight="50dp"
+            android:text="@string/ExitDemomode"
             android:textColor="@color/font"
             android:textSize="16sp"
             android:paddingVertical="10dp" />
@@ -57,9 +59,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/exit_demo_mode"
-            android:text="Guiding tips"
+            android:text="@string/Switchmode"
             android:textColor="@color/font"
             android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
             android:textSize="16sp"
             android:paddingVertical="10dp" />
 
@@ -68,6 +71,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:thumbTint="@color/arnica4"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_alignParentEnd="true"
             android:layout_below="@id/exit_demo_mode" />
         <View
@@ -82,9 +87,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/guiding_tips_label"
-            android:text="Auto-activate favorite locations"
+            android:text="@string/Auto"
             android:textColor="@color/font"
             android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
             android:textSize="16sp"
             android:paddingVertical="10dp" />
 
@@ -93,6 +99,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_below="@id/guiding_tips_label"
             android:thumbTint="@color/arnica4"
             android:checked="true" />
@@ -108,8 +116,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/auto_activate_label"
-            android:text="GENERAL"
+            android:text="@string/GENERAL"
             android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:textStyle="bold"
             android:textColor="@android:color/darker_gray"
             android:paddingTop="16dp"
@@ -126,9 +135,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/general_label"
-            android:text="About"
+            android:text="@string/About"
             android:textColor="@color/font"
             android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
             android:textSize="16sp"
             android:paddingVertical="10dp" />
         <View
@@ -143,9 +153,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/about_label"
-            android:text="Legal information"
+            android:text="@string/Legal"
             android:textColor="@color/font"
             android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
             android:textSize="16sp"
             android:paddingVertical="10dp" />
         <View
@@ -160,10 +171,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/legal_info_label"
-            android:text="Support"
+            android:text="@string/Support"
             android:textSize="16sp"
             android:textColor="@color/font"
             android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
             android:paddingVertical="10dp" />
         <View
             android:id="@+id/divider8"
@@ -198,7 +210,7 @@
                             android:id="@+id/homeButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Home"
+                            android:text="@string/home"
                             android:textSize="10sp"
                             android:textColor="@color/font"
                             android:drawableTop="@drawable/baseline_home_24"
@@ -218,7 +230,7 @@
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/arnica8"
                             android:drawableTop="@drawable/baseline_hearing_24"
-                            android:text="Status"
+                            android:text="@string/status"
                             android:textColor="@color/font"
                             android:textSize="10sp" />
                 </LinearLayout>
@@ -234,7 +246,7 @@
                             android:id="@+id/myappButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="MyApp"
+                            android:text="@string/Myapp"
                             android:textSize="10sp"
                             android:textColor="@color/font"
                             android:drawableTop="@drawable/baseline_contact_support_24"
@@ -252,7 +264,7 @@
                             android:id="@+id/moreButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="More"
+                            android:text="@string/More"
                             android:textSize="10sp"
                             android:clickable="false"
                             android:focusable="false"

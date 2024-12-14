@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Statuspage extends AppCompatActivity {
+public class Statuspage extends AppCompat {
     private Button home,myapp,more;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

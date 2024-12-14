@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 
 
-public class DemoNoiseReduction extends AppCompatActivity {
+public class DemoNoiseReduction extends AppCompat {
     private Button b1;
     private SeekBar s1;
     private TextView t1;
@@ -26,15 +26,15 @@ public class DemoNoiseReduction extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 x = progress;
                 if (x==0)
-                    t1.setText("OFF");
+                    t1.setText(getString(R.string.OFF));
                 if (x==1)
-                    t1.setText("Mild");
+                    t1.setText(getString(R.string.Mild));
                 if (x==2)
-                    t1.setText("Moderate");
+                    t1.setText(getString(R.string.Moderate));
                 if (x==3)
-                    t1.setText("Considerable");
+                    t1.setText(getString(R.string.Considerable));
                 if (x==4)
-                    t1.setText("Strong");
+                    t1.setText(getString(R.string.Strong));
             }
 
             @Override
