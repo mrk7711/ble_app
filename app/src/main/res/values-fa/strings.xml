@@ -69,4 +69,7 @@
     <string name="Request">درخواست کمک</string>
     <string name="requests">درخواست های من</string>
     <string name="updates">آپدیت های نرم افزاری</string>
+    <string name="notfound">سمعکی یافت نشد..</string>
+    <string name="make1">مطمئن شوید سمعک روشن است و باتری آن قابل استفاده است.</string>
+    <string name="make2">مطمئن شوید که سمعک به دستگاه دیگری متصل نیست.</string>
 </resources>

@@ -105,9 +105,9 @@ public class ConnectionPage extends AppCompat {
             public void run() {
                 stopBleScan();
                 p1.setVisibility(ProgressBar.INVISIBLE);
-                t1.setText("No hearing aids found..");
-                t2.setText("Make sure the hearing aids are turned on and have fresh batteries.");
-                t3.setText("Make sure the hearing aids are not connected to another device.");
+                t1.setText(R.string.notfound);
+                t2.setText(R.string.make1);
+                t3.setText(R.string.make2);
                 b1.setVisibility(View.VISIBLE);
             }
         }, SCAN_PERIOD);

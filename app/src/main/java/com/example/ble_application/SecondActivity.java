@@ -4,13 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import java.util.ArrayList;
+import java.util.List;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.content.res.Configuration;
 public class SecondActivity extends AppCompat {
     private Button b1;
     private Button b2;
     private Button b3;
     private Button b4;
+    private Spinner spinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +26,14 @@ public class SecondActivity extends AppCompat {
         b2 = findViewById(R.id.Continue2);
         b3 = findViewById(R.id.language);
         b4 = findViewById(R.id.language2);
+        //spinner = findViewById(R.id.spinner2);
+        //List<String> list = new ArrayList<>();
+        //list.add("Select Language");
+        //list.add("English");
+        //list.add("Farsi");
+        //ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, list);
+        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //spinner.setAdapter(adapter);
         LanguageManager lang= new LanguageManager(this);
         b1.setOnClickListener(new View.OnClickListener() {
             @Override

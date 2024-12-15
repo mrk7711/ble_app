@@ -69,5 +69,7 @@
     <string name="Request">Request assistance</string>
     <string name="requests">My requests and new settings</string>
     <string name="updates">Hearing aid software updates</string>
-
+    <string name="notfound">No hearing aids found..</string>
+    <string name="make1">Make sure the hearing aids are turned on and have fresh batteries.</string>
+    <string name="make2">Make sure the hearing aids are not connected to another device.</string>
 </resources>

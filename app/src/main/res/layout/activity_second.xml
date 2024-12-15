@@ -7,14 +7,20 @@
     android:background="@color/background"
     tools:context=".FirstActivity">
 
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/spinner2"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_alignParentTop="true"
             android:layout_width="match_parent"
             android:layout_height="262dp"
             app:srcCompat="@drawable/logo7" />
@@ -51,6 +57,7 @@
             android:fontFamily="@font/b_nazanin"
             android:textAlignment="center"
             android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/font"
             android:textSize="20sp" />
 
@@ -58,14 +65,13 @@
             android:id="@+id/Continue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
             android:backgroundTint="@color/arnica4"
-            android:gravity="center"
-            android:insetTop="20dp"
-            android:text="@string/yes_connect"
             android:fontFamily="@font/b_nazanin_bold"
+            android:gravity="center"
+            android:text="@string/yes_connect"
             android:textAlignment="center"
+            android:layout_marginRight="100dp"
+            android:layout_marginLeft="100dp"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:verticalScrollbarPosition="defaultPosition" />
@@ -75,13 +81,13 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:backgroundTint="@color/arnica4"
+            android:backgroundTint="@color/background"
             android:gravity="center"
             android:insetTop="20dp"
             android:text="@string/no_demo"
             android:fontFamily="@font/b_nazanin_bold"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:verticalScrollbarPosition="defaultPosition" />
 
@@ -103,7 +109,7 @@
             android:layout_marginRight="50dp"
             android:layout_marginLeft="50dp"
             android:fontFamily="@font/b_nazanin_bold"
-            android:textColor="@color/background"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:layout_alignParentBottom="true"
             android:visibility="visible" />
@@ -115,7 +121,7 @@
             android:backgroundTint="@color/arnica4"
             android:text="FA"
             android:fontFamily="@font/b_nazanin_bold"
-            android:textColor="@color/background"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:layout_marginRight="50dp"
             android:layout_marginLeft="50dp"

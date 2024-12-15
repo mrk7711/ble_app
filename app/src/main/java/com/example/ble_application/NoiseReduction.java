@@ -40,15 +40,15 @@ public class NoiseReduction extends AppCompat {
         int y = preferences.getInt(KEY_SEEKBAR_VALUE, 0);
         s1.setProgress(y);
         if (y==0)
-            t1.setText("OFF");
+            t1.setText(getString(R.string.OFF));
         if (y==1)
-            t1.setText("Mild");
+            t1.setText(getString(R.string.Mild));
         if (y==2)
-            t1.setText("Moderate");
+            t1.setText(getString(R.string.Moderate));
         if (y==3)
-            t1.setText("Considerable");
+            t1.setText(getString(R.string.Considerable));
         if (y==4)
-            t1.setText("Strong");
+            t1.setText(getString(R.string.Strong));
         s1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -58,15 +58,15 @@ public class NoiseReduction extends AppCompat {
                 editor.apply();
                 x = progress;
                 if (x==0)
-                    t1.setText("OFF");
+                    t1.setText(getString(R.string.OFF));
                 if (x==1)
-                    t1.setText("Mild");
+                    t1.setText(getString(R.string.Mild));
                 if (x==2)
-                    t1.setText("Moderate");
+                    t1.setText(getString(R.string.Moderate));
                 if (x==3)
-                    t1.setText("Considerable");
+                    t1.setText(getString(R.string.Considerable));
                 if (x==4)
-                    t1.setText("Strong");
+                    t1.setText(getString(R.string.Strong));
             }
 
             @Override
