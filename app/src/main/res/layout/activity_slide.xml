@@ -50,6 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layoutDirection="ltr"
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
         android:layout_below="@id/frameLayout">
@@ -85,6 +86,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layoutDirection="ltr"
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
         android:layout_below="@id/sliderLayout1">
@@ -122,6 +124,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layoutDirection="ltr"
         android:layout_marginBottom="50dp"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
@@ -132,7 +135,7 @@
         <Button
             android:id="@+id/button1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_weight="1"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
@@ -145,7 +148,7 @@
         <Button
             android:id="@+id/button2"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_weight="1"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
@@ -199,7 +202,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/arnica8"
                 android:drawableTop="@drawable/baseline_hearing_24"
-                android:text="Status"
+                android:text="@string/status"
                 android:textColor="@color/font"
                 android:textSize="10sp" />
         </LinearLayout>
@@ -215,7 +218,7 @@
                 android:id="@+id/myappButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="MyApp"
+                android:text="@string/Myapp"
                 android:textSize="10sp"
                 android:textColor="@color/font"
                 android:drawableTop="@drawable/baseline_contact_support_24"
@@ -233,7 +236,7 @@
                 android:id="@+id/moreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="More"
+                android:text="@string/More"
                 android:textSize="10sp"
                 android:textColor="@color/font"
                 android:drawableTop="@drawable/baseline_more_horiz_24"

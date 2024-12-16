@@ -16,7 +16,7 @@ public class SecondActivity extends AppCompat {
     private Button b2;
     private Button b3;
     private Button b4;
-    private Spinner spinner;
+    private Button b5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,15 +26,11 @@ public class SecondActivity extends AppCompat {
         b2 = findViewById(R.id.Continue2);
         b3 = findViewById(R.id.language);
         b4 = findViewById(R.id.language2);
-        //spinner = findViewById(R.id.spinner2);
-        //List<String> list = new ArrayList<>();
-        //list.add("Select Language");
-        //list.add("English");
-        //list.add("Farsi");
-        //ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, list);
-        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //spinner.setAdapter(adapter);
+        b5 = findViewById(R.id.togglelanguage);
+
         LanguageManager lang= new LanguageManager(this);
+        String currentLang = lang.getLang();
+        b5.setText(currentLang.equals("fa") ? "en" : "fa");
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,14 +46,21 @@ public class SecondActivity extends AppCompat {
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lang.updateResource("en");
-                recreate();
+                //lang.updateResource("en");
+                //recreate();
             }
         });
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lang.updateResource("fa");
+                //lang.updateResource("fa");
+                //recreate();
+            }
+        });
+        b5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lang.updateResource(b5.getText().toString());
                 recreate();
             }
         });

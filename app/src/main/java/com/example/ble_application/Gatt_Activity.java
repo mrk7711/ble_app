@@ -116,7 +116,7 @@ public class Gatt_Activity extends AppCompat {
         findViewByIdes();
         Intent a = getIntent();
         device2 = getIntent().getExtras().getParcelable("BLE");
-        Information.setText("Device Name:");
+        Information.setText(R.string.devname);
         Address.setText(device2.getAddress());
         if (ContextCompat.checkSelfPermission(Gatt_Activity.this, android.Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
             if (Build.VERSION.SDK_INT >= 31) {
@@ -144,7 +144,7 @@ public class Gatt_Activity extends AppCompat {
                 case STATE_DISCOVERED:
                     p1.setVisibility(View.INVISIBLE);
                     Pair.setVisibility(View.INVISIBLE);
-                    title.setText("Pairing Completed!");
+                    title.setText(R.string.pairing3);
                     Cont.setVisibility(View.VISIBLE);
                     //ConnectionState.setText("Service Discovered");
                     break;
@@ -262,7 +262,7 @@ public class Gatt_Activity extends AppCompat {
                 }
                 BG = device2.connectGatt(Gatt_Activity.this, false, mGattCallback);
                 BluetoothManager.getInstance().setBluetoothGatt(BG);
-                Pair.setText("Pairing..");
+                Pair.setText(R.string.pairing2);
             }
         });
         Cont.setOnClickListener(new View.OnClickListener() {

@@ -7,23 +7,27 @@
     android:background="@color/background"
     tools:context=".FirstActivity">
 
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="100dp"
-        android:layout_alignParentTop="true"
-        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/togglelanguage"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:backgroundTint="@color/arnica4"
+        android:fontFamily="@font/b_nazanin"
+        android:text="en"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/spinner2"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="262dp"
-            app:srcCompat="@drawable/logo7" />
+            android:layout_height="230dp"
+            app:srcCompat="@drawable/brand2" />
 
         <TextView
             android:id="@+id/textView"
@@ -31,6 +35,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/b_nazanin"
             android:text="@string/Welocme"
+            android:layout_marginBottom="50dp"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/font"
@@ -39,12 +44,13 @@
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_marginTop="20dp"
             android:text="@string/about_app"
             android:textAlignment="center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:fontFamily="@font/b_nazanin"
             android:textColor="@color/font"
             android:textSize="20sp" />
@@ -66,12 +72,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/arnica4"
-            android:fontFamily="@font/b_nazanin_bold"
+            android:fontFamily="@font/b_nazanin"
             android:gravity="center"
             android:text="@string/yes_connect"
             android:textAlignment="center"
-            android:layout_marginRight="100dp"
-            android:layout_marginLeft="100dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginLeft="70dp"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:verticalScrollbarPosition="defaultPosition" />
@@ -112,7 +118,7 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             android:layout_alignParentBottom="true"
-            android:visibility="visible" />
+            android:visibility="invisible" />
         <Button
             android:id="@+id/language2"
             android:layout_width="wrap_content"
@@ -126,7 +132,7 @@
             android:layout_marginRight="50dp"
             android:layout_marginLeft="50dp"
             android:layout_alignParentBottom="true"
-            android:visibility="visible" />
+            android:visibility="invisible" />
 
     </LinearLayout>
 </RelativeLayout>

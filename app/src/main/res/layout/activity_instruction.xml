@@ -28,13 +28,14 @@
             android:layout_alignParentTop="true"
             android:layout_width="match_parent"
             android:layout_height="262dp"
-            app:srcCompat="@drawable/image4" />
+            app:srcCompat="@drawable/image44" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:text="@string/follow"
             android:layout_marginTop="20dp"
             android:textAlignment="center"

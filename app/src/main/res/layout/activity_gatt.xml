@@ -40,6 +40,7 @@
             android:layout_width="match_parent"
             android:textColor="@color/font"
             android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:layout_height="30dp" />
 
         <TextView

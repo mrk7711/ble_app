@@ -7,7 +7,7 @@
         android:id="@+id/label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sound Enhancer Settings"
+        android:text="@string/soundsetting"
         android:textAlignment="center"
         android:textColor="@color/font"
         android:textSize="30sp"
@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/label"
+        android:layoutDirection="ltr"
         android:layout_marginTop="70dp"
         android:orientation="horizontal">
 
@@ -56,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Bass"
+                android:text="@string/Bass"
                 android:textColor="@color/font" />
 
         </LinearLayout>
@@ -96,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Middle"
+                android:text="@string/Middle"
                 android:textColor="@color/font" />
 
         </LinearLayout>
@@ -135,7 +136,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Treble"
+                android:text="@string/Treble"
                 android:textColor="@color/font" />
         </LinearLayout>
     </LinearLayout>
@@ -146,6 +147,7 @@
         android:layout_height="wrap_content"
         android:background="@color/background"
         android:layout_marginTop="100dp"
+        android:layoutDirection="ltr"
         android:gravity="center"
         android:layout_below="@id/l1"
         android:orientation="horizontal"
@@ -162,7 +164,7 @@
                 android:id="@+id/speech"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="More speech"
+                android:text="@string/Morespeech"
                 android:textSize="12sp"
                 android:textColor="@color/font"
                 android:drawableTint="@color/font"
@@ -181,7 +183,7 @@
                 android:id="@+id/clarity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="More clarity"
+                android:text="@string/Moreclarity"
                 android:textSize="12sp"
                 android:textColor="@color/font"
                 android:drawableTint="@color/font"
@@ -200,7 +202,7 @@
                 android:id="@+id/sharp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Less sharp"
+                android:text="@string/Lesssharp"
                 android:textSize="12sp"
                 android:textColor="@color/font"
                 android:drawableTint="@color/font"
@@ -219,7 +221,7 @@
                 android:id="@+id/echo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Less echo"
+                android:text="@string/Lessecho"
                 android:textSize="12sp"
                 android:textColor="@color/font"
                 android:drawableTint="@color/font"
@@ -231,10 +233,10 @@
         android:id="@+id/reset2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableTop="@drawable/baseline_restart_alt_24"
         android:backgroundTint="@color/arnica8"
-        android:text="Reset"
-        android:textSize="10dp"
+        android:text="@string/reset"
+        android:textSize="20dp"
         android:textColor="@color/font"
         android:layout_alignParentBottom="true"/>
+        <!--android:drawableTop="@drawable/baseline_restart_alt_24"-->
 </RelativeLayout>

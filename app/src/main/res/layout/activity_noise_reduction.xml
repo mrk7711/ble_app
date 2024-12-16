@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="Noise Reduction Settings"
+        android:text="@string/noisesetting"
         android:textAlignment="center"
         android:textColor="@color/font"
         android:layout_marginBottom="30dp"
@@ -40,6 +40,7 @@
             style="@style/Widget.AppCompat.SeekBar.Discrete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layoutDirection="ltr"
             android:layout_weight="1"
             android:max="4"
             android:min="0"
@@ -53,12 +54,12 @@
             android:id="@+id/reset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableTop="@drawable/baseline_restart_alt_24"
             android:backgroundTint="@color/arnica8"
-            android:text="Reset"
-            android:textSize="10dp"
+            android:text="@string/reset"
+            android:textSize="20dp"
             android:textColor="@color/font"
             android:layout_alignParentBottom="true"/>
+        <!--android:drawableTop="@drawable/baseline_restart_alt_24"-->
 
     </LinearLayout>
 

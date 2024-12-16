@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="50dp"
-            app:srcCompat="@drawable/images3" />
+            app:srcCompat="@drawable/images4" />
 
         <TextView
             android:id="@+id/textView2"
@@ -25,7 +25,8 @@
             android:layout_height="wrap_content"
             android:textColor="@color/font"
             android:lineSpacingExtra="12sp"
-
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="50dp"
             android:text="@string/enable_loc"
             android:textAlignment="center"
