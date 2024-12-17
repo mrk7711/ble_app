@@ -28,7 +28,7 @@
     <string name="tryagain">دوباره تلاش کنید</string>
     <string name="pairing">در حال جفت شدن سمعک...</string>
     <string name="startpair">آغاز فرایند جفت شدن</string>
-    <string name="noisereduct">کاهش نویز</string>
+    <string name="noisereduct">کاهش میزان نویز</string>
     <string name="sounden">بهبود کیفیت صدا</string>
     <string name="home">خانه</string>
     <string name="status">وضعیت</string>

@@ -26,6 +26,9 @@
         android:theme="@style/Theme.BLE_Application"
         tools:targetApi="31">
         <activity
+            android:name=".ForTestEqualizer"
+            android:exported="false" />
+        <activity
             android:name=".DemoSoundEnhancer"
             android:exported="false" />
         <activity

@@ -46,6 +46,7 @@
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="377dp"
+            android:layoutDirection="ltr"
             android:layout_below="@id/textView4" />
         <TextView
             android:id="@+id/show"
@@ -179,6 +180,7 @@
         android:layout_height="wrap_content"
         android:background="@color/arnica8"
         android:gravity="center"
+        android:layoutDirection="locale"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true">
 

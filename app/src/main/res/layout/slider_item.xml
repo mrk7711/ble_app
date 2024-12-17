@@ -26,7 +26,8 @@
             android:layout_margin="16dp"
             android:background="@android:color/transparent"
             android:text="title"
-            android:textColor="@color/font"
+            android:layoutDirection="ltr"
+            android:textColor="@color/arnica4"
             android:textSize="24sp" />
     </FrameLayout>
 </RelativeLayout>
