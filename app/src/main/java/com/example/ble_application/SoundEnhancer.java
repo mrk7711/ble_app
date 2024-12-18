@@ -22,6 +22,8 @@ public class SoundEnhancer extends AppCompat {
     private BluetoothGattCharacteristic ledCharacteristic;
     private BluetoothGattCharacteristic i2cCharacteristic;
     int x=0;
+    private EqualizerBackgroundView backgroundView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,11 +43,14 @@ public class SoundEnhancer extends AppCompat {
         BluetoothGattService service = bluetoothGatt.getService(SERVICE_UUID);
         ledCharacteristic = service.getCharacteristic(LED_CHARACTERISTIC_UUID);
         i2cCharacteristic = service.getCharacteristic(I2C_CHARACTERISTIC_UUID);
+        backgroundView = findViewById(R.id.equalizerBackground);
+        updateBackground(s1.getProgress(), s2.getProgress(), s3.getProgress());
         s1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
                 x = progress;
+                updateBackground(s1.getProgress(), s2.getProgress(), s3.getProgress());
                 if (x==-6)
                     b1.setText("-6");
                 if (x==-5)
@@ -115,6 +120,7 @@ public class SoundEnhancer extends AppCompat {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
                 x = progress;
+                updateBackground(s1.getProgress(), s2.getProgress(), s3.getProgress());
                 if (x==-6)
                     b2.setText("-6");
                 if (x==-5)
@@ -158,6 +164,7 @@ public class SoundEnhancer extends AppCompat {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
                 x = progress;
+                updateBackground(s1.getProgress(), s2.getProgress(), s3.getProgress());
                 if (x==-6)
                     b3.setText("-6");
                 if (x==-5)
@@ -243,5 +250,8 @@ public class SoundEnhancer extends AppCompat {
         byte[] command = new byte[]{(byte)x}; // Command to turn on the LED
         ledCharacteristic.setValue(command);
         bluetoothGatt.writeCharacteristic(ledCharacteristic);
+    }
+    private void updateBackground(int bass, int mid, int treble) {
+        backgroundView.setValues(bass, mid, treble);
     }
 }

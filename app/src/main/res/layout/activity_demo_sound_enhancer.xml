@@ -5,6 +5,7 @@
     android:orientation="vertical"
     tools:context=".DemoSoundEnhancer"
     android:background="@color/background">
+
     <TextView
         android:id="@+id/textView8"
         android:layout_width="match_parent"
@@ -27,6 +28,12 @@
         android:textColor="@color/font"
         android:textSize="30sp" />
 
+    <com.example.ble_application.EqualizerBackgroundView
+        android:id="@+id/equalizerBackground"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="240dp" />
     <LinearLayout
         android:id="@+id/l1"
         android:layoutDirection="ltr"
@@ -61,7 +68,7 @@
                 android:layoutDirection="ltr"
                 android:max="6"
                 android:min="-6"
-                android:progress="0"
+                android:progress="4"
                 android:progressTint="@color/arnica4"
                 android:rotation="270"
                 android:thumbTint="@color/arnica4" />
@@ -102,7 +109,7 @@
                 android:layoutDirection="ltr"
                 android:max="6"
                 android:min="-6"
-                android:progress="0"
+                android:progress="2"
                 android:progressTint="@color/arnica4"
                 android:rotation="270"
                 android:thumbTint="@color/arnica4" />
@@ -144,7 +151,7 @@
                 android:max="6"
                 android:min="-6"
                 android:layoutDirection="ltr"
-                android:progress="0"
+                android:progress="-2"
                 android:progressTint="@color/arnica4"
                 android:rotation="270"
                 android:thumbTint="@color/arnica4" />

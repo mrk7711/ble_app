@@ -27,7 +27,7 @@ public class EqualizerBackgroundView extends View {
     private void init() {
         paint = new Paint();
         paint.setAntiAlias(true);
-        paint.setColor(Color.RED); // رنگ قرمز برای نوار
+        paint.setColor(getResources().getColor(R.color.arnica2, null)); // رنگ بنفش برای نوار
         paint.setStyle(Paint.Style.FILL);
     }
 
@@ -47,14 +47,12 @@ public class EqualizerBackgroundView extends View {
         int height = getHeight();
 
         // محاسبه نقاط مثلث با استفاده از مقادیر SeekBar
-        float bassX = width * 0.2f;
-        float bassY = height - (bassValue / 10.0f * height);
-
+        float bassX = width * 0.16f;
+        float bassY = height - ((bassValue / 12.0f )* height)-135;
         float midX = width * 0.5f;
-        float midY = height - (midValue / 10.0f * height);
-
-        float trebleX = width * 0.8f;
-        float trebleY = height - (trebleValue / 10.0f * height);
+        float midY = height - ((midValue / 12f) * height)-135;
+        float trebleX = width * 0.83f;
+        float trebleY = height - ((trebleValue / 12.0f) * height)-135;
 
         // رسم مستطیل قرمز رنگ بین نقاط
         Path path = new Path();
@@ -64,7 +62,6 @@ public class EqualizerBackgroundView extends View {
         path.lineTo(trebleX, height); // پایین ترین نقطه از نوار
         path.lineTo(bassX, height); // پایین ترین نقطه از نوار
         path.close(); // مثلث بسته می‌شود
-
         // رسم نوار روی Canvas
         canvas.drawPath(path, paint);
     }

@@ -13,7 +13,12 @@
         android:textSize="30sp"
         android:layout_marginTop="50dp"
         android:layout_alignParentTop="true" />
-
+    <com.example.ble_application.EqualizerBackgroundView
+        android:id="@+id/equalizerBackground"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="263dp" />
     <LinearLayout
         android:id="@+id/l1"
         android:layout_width="match_parent"

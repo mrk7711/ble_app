@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.SeekBar;
 
 public class DemoSoundEnhancer extends AppCompat {
+    private EqualizerBackgroundView backgroundView;
     private Button b1,b2,b3,b4,b5,b6,b7,b8;
     private SeekBar s1,s2,s3;
     int x=0;
@@ -26,11 +27,14 @@ public class DemoSoundEnhancer extends AppCompat {
         s1=findViewById(R.id.seekBar2);
         s2=findViewById(R.id.seekBar3);
         s3=findViewById(R.id.seekBar4);
+        backgroundView = findViewById(R.id.equalizerBackground);
+        updateBackground(s1.getProgress(), s2.getProgress(), s3.getProgress());
         s1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
                 x = progress;
+                updateBackground(s1.getProgress(), s2.getProgress(), s3.getProgress());
                 if (x==-6)
                     b1.setText("-6");
                 if (x==-5)
@@ -72,8 +76,8 @@ public class DemoSoundEnhancer extends AppCompat {
         s2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
                 x = progress;
+                updateBackground(s1.getProgress(), s2.getProgress(), s3.getProgress());
                 if (x==-6)
                     b2.setText("-6");
                 if (x==-5)
@@ -117,6 +121,7 @@ public class DemoSoundEnhancer extends AppCompat {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
                 x = progress;
+                updateBackground(s1.getProgress(), s2.getProgress(), s3.getProgress());
                 if (x==-6)
                     b3.setText("-6");
                 if (x==-5)
@@ -170,6 +175,7 @@ public class DemoSoundEnhancer extends AppCompat {
                 s1.setProgress(0);
                 s2.setProgress(3);
                 s3.setProgress(3);
+
             }
         });
         b6.setOnClickListener(new View.OnClickListener() {
@@ -178,6 +184,7 @@ public class DemoSoundEnhancer extends AppCompat {
                 s1.setProgress(0);
                 s2.setProgress(0);
                 s3.setProgress(-2);
+
             }
         });
         b7.setOnClickListener(new View.OnClickListener() {
@@ -196,5 +203,8 @@ public class DemoSoundEnhancer extends AppCompat {
                 s3.setProgress(0);
             }
         });
+    }
+    private void updateBackground(int bass, int mid, int treble) {
+        backgroundView.setValues(bass, mid, treble);
     }
 }
