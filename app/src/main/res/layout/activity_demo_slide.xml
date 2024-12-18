@@ -73,9 +73,9 @@
 
         <ImageButton
             android:id="@+id/mutepic1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+
             android:src="@drawable/baseline_volume_mute_24"
             android:backgroundTint="@color/background"/>
 
@@ -92,9 +92,9 @@
 
         <ImageButton
             android:id="@+id/mutepic2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+
             android:src="@drawable/twobar"
             android:backgroundTint="@color/background"/>
     </LinearLayout>
@@ -110,9 +110,8 @@
 
         <ImageButton
             android:id="@+id/mutepic3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:src="@drawable/baseline_volume_mute_24"
             android:backgroundTint="@color/background"
             android:visibility="invisible"/>
@@ -129,9 +128,8 @@
 
         <ImageButton
             android:id="@+id/mutepic4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:src="@drawable/baseline_horizontal_rule_24"
             android:backgroundTint="@color/background"
             android:visibility="invisible"/>
@@ -144,7 +142,7 @@
         android:layoutDirection="ltr"
         android:layout_marginBottom="50dp"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_below="@id/sliderLayout2">
 
         <Button

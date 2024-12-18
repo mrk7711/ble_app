@@ -9,5 +9,5 @@
         android:layout_height="wrap_content"
         android:text="@string/about_app"
         android:textSize="18sp"
-        android:textColor="@android:color/black"/>
+        android:textColor="@color/font"/>
 </RelativeLayout>

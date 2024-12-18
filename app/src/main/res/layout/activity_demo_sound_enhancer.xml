@@ -172,7 +172,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/background"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:gravity="center"
         android:layoutDirection="ltr"
         android:layout_below="@id/l1"
@@ -191,7 +191,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Morespeech"
-                android:textSize="12sp"
+                android:textSize="16sp"
                 android:textColor="@color/font"
                 android:drawableTint="@color/font"
                 android:drawableTop="@drawable/baseline_hearing_24"
@@ -210,12 +210,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Moreclarity"
-                android:textSize="12sp"
+                android:textSize="16sp"
                 android:textColor="@color/font"
                 android:drawableTint="@color/font"
                 android:drawableTop="@drawable/baseline_hearing_24"
                 android:backgroundTint="@color/background" />
         </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/bottomNavigationLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layoutDirection="ltr"
+        android:layout_below="@id/bottomNavigationLayout"
+        android:orientation="horizontal"
+        >
+
 
         <LinearLayout
             android:layout_width="0dp"
@@ -229,7 +243,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Lesssharp"
-                android:textSize="12sp"
+                android:textSize="16sp"
                 android:textColor="@color/font"
                 android:drawableTint="@color/font"
                 android:drawableTop="@drawable/baseline_hearing_24"
@@ -248,7 +262,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Lessecho"
-                android:textSize="12sp"
+                android:textSize="16sp"
                 android:textColor="@color/font"
                 android:drawableTint="@color/font"
                 android:drawableTop="@drawable/baseline_hearing_24"

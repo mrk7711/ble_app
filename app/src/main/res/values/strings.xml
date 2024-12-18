@@ -12,6 +12,7 @@
     <string name="do_you">Do you have a hearing aid?</string>
     <string name="yes_connect">Yes, connect now</string>
     <string name="no_demo">No, take me to demo mode</string>
+    <string name="no_demo2">take me to demo mode</string>
     <string name="Enable">Enable Now</string>
     <string name="about_app">The Arnica Remote app enables you to change your program and adjust volume for your Bluetooth compatible hearing aid.</string>
     <string name="enable_blu">Please enable Bluetooth to connect to your hearing  aid.</string>

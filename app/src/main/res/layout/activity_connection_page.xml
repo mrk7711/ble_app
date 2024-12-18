@@ -99,6 +99,19 @@
         android:textColor="@color/font"
         android:textSize="17sp" />
     <Button
+        android:id="@+id/demo2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/device_name_text3"
+        android:backgroundTint="@color/arnica4"
+        android:text="@string/no_demo2"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"
+        android:visibility="invisible"
+        android:textColor="@color/background" />
+    <Button
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -37,7 +37,7 @@ public class ConnectionPage extends AppCompat {
     private final long SCAN_PERIOD = 10000;
     private TextView t1,t2,t3;
     private ProgressBar p1;
-    private Button b1;
+    private Button b1,b2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,10 +54,12 @@ public class ConnectionPage extends AppCompat {
         t1 = findViewById(R.id.device_name_text);
         t2 = findViewById(R.id.device_name_text2);
         t3 = findViewById(R.id.device_name_text3);
+        b2 = findViewById(R.id.demo2);
         b1 = findViewById(R.id.search);
         p1 = findViewById(R.id.progressBar);
         BS = BA.getBluetoothLeScanner();
         startBleScan();
+
         t1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,6 +76,13 @@ public class ConnectionPage extends AppCompat {
             public void onClick(View view) {
                 startBleScan();
                 b1.setVisibility(View.INVISIBLE);
+                b2.setVisibility(View.INVISIBLE);
+            }
+        });
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ConnectionPage.this, DemoSlideActivity.class));
             }
         });
     }
@@ -109,6 +118,7 @@ public class ConnectionPage extends AppCompat {
                 t2.setText(R.string.make1);
                 t3.setText(R.string.make2);
                 b1.setVisibility(View.VISIBLE);
+                b2.setVisibility(View.VISIBLE);
             }
         }, SCAN_PERIOD);
     }

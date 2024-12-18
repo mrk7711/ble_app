@@ -47,7 +47,7 @@ public class EqualizerBackgroundView extends View {
         int height = getHeight();
 
         // محاسبه نقاط مثلث با استفاده از مقادیر SeekBar
-        float bassX = width * 0.16f;
+        float bassX = width * 0.165f;
         float bassY = height - ((bassValue / 12.0f )* height)-135;
         float midX = width * 0.5f;
         float midY = height - ((midValue / 12f) * height)-135;
