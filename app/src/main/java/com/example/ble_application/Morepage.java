@@ -74,7 +74,6 @@ public class Morepage extends AppCompat {
                         editor.putBoolean("isDarkMode", false);
                         editor.apply();
                     }
-                recreate();
             }
         });
         autoActivate.setOnClickListener(new View.OnClickListener() {

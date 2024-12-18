@@ -34,7 +34,10 @@ public class FourthActivity extends AppCompat {
         b2 = findViewById(R.id.demo);
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
+        if(isLocationEnabled())
+        {
+            FourthActivity.this.startActivity(new Intent(FourthActivity.this,Instruction.class));
+        }
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
