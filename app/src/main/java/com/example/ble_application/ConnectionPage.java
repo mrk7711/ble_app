@@ -146,6 +146,7 @@ public class ConnectionPage extends AppCompat {
 
             BluetoothDevice device = result.getDevice();
             String deviceAddress = device.getAddress();
+
             if (deviceAddress.equals(BLE_DEVICE_ADDRESS)) {
                 ble_device=device;
                 t1.setText("Arnica Hearing Aid");
@@ -160,6 +161,7 @@ public class ConnectionPage extends AppCompat {
                 stopBleScan();
                 handler.removeCallbacksAndMessages(null);
             }
+            //else {t1.setText(deviceAddress);}
         }
     };
 

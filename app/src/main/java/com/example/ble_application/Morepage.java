@@ -1,6 +1,9 @@
 package com.example.ble_application;
 
 import android.content.SharedPreferences;
+
+import androidx.activity.OnBackPressedCallback;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,6 +26,12 @@ public class Morepage extends AppCompat {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                showExitDialog(); // نمایش دیالوگ تأیید خروج
+            }
+        });
         setContentView(R.layout.activity_morepage);
         exitDemoMode = findViewById(R.id.exit_demo_mode);
         guidingTips = findViewById(R.id.guiding_tips_label);
@@ -31,7 +40,6 @@ public class Morepage extends AppCompat {
         legalInfo = findViewById(R.id.legal_info_label);
         support = findViewById(R.id.support_label);
         switchGuidingTips = findViewById(R.id.switch_guiding_tips);
-        switchAutoActivate = findViewById(R.id.switch_auto_activate);
         home=findViewById(R.id.homeButton);
         status=findViewById(R.id.statusButton);
         myapp=findViewById(R.id.myappButton);
@@ -44,6 +52,7 @@ public class Morepage extends AppCompat {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
         switchGuidingTips.setChecked(isDarkMode);
+
         exitDemoMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,9 +88,7 @@ public class Morepage extends AppCompat {
         autoActivate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // شروع اکتیویتی جدید برای "Auto-activate favorite locations"
-                //Intent intent = new Intent(Morepage.this, AutoActivateActivity.class);
-                //startActivity(intent);
+                showExitDialog();
             }
         });
 
@@ -143,5 +150,16 @@ public class Morepage extends AppCompat {
         transaction.replace(R.id.fragment_container, fragment);
         transaction.addToBackStack(null);  // به پشته اضافه کردن برای بازگشت به Fragment قبلی
         transaction.commit();
+    }
+
+    private void showExitDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.Exitapp)
+                .setMessage(R.string.sure)
+                .setPositiveButton(R.string.yes, (dialog, which) -> {
+                    finishAffinity();
+                })
+                .setNegativeButton(R.string.no, (dialog, which) -> dialog.dismiss())
+                .show();
     }
 }

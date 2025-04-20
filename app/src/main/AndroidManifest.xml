@@ -30,12 +30,14 @@
             android:exported="false" />
         <activity
             android:name=".DemoSoundEnhancer"
+            android:parentActivityName=".DemoSlideActivity"
             android:exported="false" />
         <activity
             android:name=".Instruction"
             android:exported="false" />
         <activity
             android:name=".DemoNoiseReduction"
+            android:parentActivityName=".DemoSlideActivity"
             android:exported="false" />
         <activity
             android:name=".DemoSlideActivity"

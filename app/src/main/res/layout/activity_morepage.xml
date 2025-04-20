@@ -95,16 +95,6 @@
             android:textSize="16sp"
             android:paddingVertical="10dp" />
 
-        <Switch
-            android:id="@+id/switch_auto_activate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_below="@id/guiding_tips_label"
-            android:thumbTint="@color/arnica4"
-            android:checked="true" />
         <View
             android:id="@+id/divider4"
             android:layout_width="match_parent"

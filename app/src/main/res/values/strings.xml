@@ -55,7 +55,7 @@
     <string name="ExitDemomode">Exit Demo mode</string>
     <string name="Guidingtips">Guiding tips</string>
     <string name="Switchmode">Switch Theme</string>
-    <string name="Auto">Auto-activate favorite locations</string>
+    <string name="Auto">Exit</string>
     <string name="GENERAL">GENERAL</string>
     <string name="About">About</string>
     <string name="Legal">Legal information</string>
@@ -76,5 +76,11 @@
     <string name="devname">Device Name:</string>
     <string name="pairing2">Pairing..</string>
     <string name="pairing3">Pairing Completed!</string>
+    <string name="Exitapp">Do You Want to Exit?</string>
+    <string name="ExitBLE">Exit BLE connection?</string>
+    <string name="sure">If you exit, the connection will be disconnected. Are you sure?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="save">Save</string>
 </resources>
 

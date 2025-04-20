@@ -13,6 +13,8 @@ import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.viewpager2.widget.ViewPager2;
@@ -26,7 +28,7 @@ public class SlideActivity extends AppCompat {
     private BluetoothGattCharacteristic i2cCharacteristic;
     private ViewPager2 viewPager;
     private SliderAdapter sliderAdapter;
-    private Button b1,b2,b3,b4,b5;
+    private Button b1,b2,b3,b4,b5,b6;
     private ImageButton i1,i2,i3,i4;
     private SeekBar s1,s2;
     private TextView t1;
@@ -38,6 +40,12 @@ public class SlideActivity extends AppCompat {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                showExitDialog2(); // نمایش دیالوگ تأیید خروج
+            }
+        });
         setContentView(R.layout.activity_slide);
         viewPager = findViewById(R.id.viewPager);
         b1=findViewById(R.id.button1);
@@ -45,6 +53,7 @@ public class SlideActivity extends AppCompat {
         b3=findViewById(R.id.statusButton);
         b4=findViewById(R.id.myappButton);
         b5=findViewById(R.id.moreButton);
+        b6=findViewById(R.id.save);
         i1=findViewById(R.id.mutepic1);
         i2=findViewById(R.id.mutepic2);
         i3=findViewById(R.id.mutepic3);
@@ -56,6 +65,7 @@ public class SlideActivity extends AppCompat {
         BluetoothGattService service = bluetoothGatt.getService(SERVICE_UUID);
         ledCharacteristic = service.getCharacteristic(LED_CHARACTERISTIC_UUID);
         i2cCharacteristic = service.getCharacteristic(I2C_CHARACTERISTIC_UUID);
+
         // لیست صفحات
         List<SliderItem> sliderItems = new ArrayList<>();
         sliderItems.add(new SliderItem(R.drawable.p1, "P1"));
@@ -91,6 +101,7 @@ public class SlideActivity extends AppCompat {
             public void onClick(View view) {
                 s1.setProgress(0);
                 t1.setVisibility(View.INVISIBLE);
+                setregister(60);
             }
         });
         i2.setOnClickListener(new View.OnClickListener() {
@@ -220,6 +231,12 @@ public class SlideActivity extends AppCompat {
                 startActivity(new Intent(SlideActivity.this, Morepage.class));
             }
         });
+        b6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setregister(59);
+            }
+        });
     }
 
     private void writeRegisters(int position) {
@@ -256,5 +273,23 @@ public class SlideActivity extends AppCompat {
         byte[] command = new byte[]{(byte)x}; // Command to turn on the LED
         ledCharacteristic.setValue(command);
         bluetoothGatt.writeCharacteristic(ledCharacteristic);
+    }
+
+    private void showExitDialog2() {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.ExitBLE)
+                .setMessage(R.string.sure)
+                .setPositiveButton(R.string.yes, (dialog, which) -> {
+                    if (ActivityCompat.checkSelfPermission(SlideActivity.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                        if (Build.VERSION.SDK_INT >= 31) {
+                            ActivityCompat.requestPermissions(SlideActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
+                            return;
+                        }
+                    }
+                    bluetoothGatt.disconnect();
+                    bluetoothGatt.close();
+                })
+                .setNegativeButton(R.string.no, (dialog, which) -> dialog.dismiss())
+                .show();
     }
 }

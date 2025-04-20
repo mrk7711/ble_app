@@ -55,7 +55,7 @@
     <string name="ExitDemomode">خروج از حالت آزمایشی</string>
     <string name="Guidingtips">نکات راهنمایی</string>
     <string name="Switchmode">تغییر تم</string>
-    <string name="Auto">فعال سازی خودکار موقعیت های مورد علاقه </string>
+    <string name="Auto">خروج از برنامه </string>
     <string name="GENERAL">عمومی</string>
     <string name="About">درباره</string>
     <string name="Legal">اطلاعات حقوقی</string>
@@ -76,4 +76,10 @@
     <string name="devname">نام دستگاه:</string>
     <string name="pairing2">در حال جفت شدن..</string>
     <string name="pairing3">اتمام جفت سازی!</string>
+    <string name="Exitapp">خروج از برنامه؟</string>
+    <string name="ExitBLE">"خروج از اتصال BLE</string>
+    <string name="sure">اگر خارج شوید، اتصال قطع خواهد شد. آیا مطمئن هستید؟</string>
+    <string name="yes">بله</string>
+    <string name="no">خیر</string>
+    <string name="save">ذخیره</string>
 </resources>

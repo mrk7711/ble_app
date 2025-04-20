@@ -40,15 +40,30 @@ public class NoiseReduction extends AppCompat {
         int y = preferences.getInt(KEY_SEEKBAR_VALUE, 0);
         s1.setProgress(y);
         if (y==0)
+        {
             t1.setText(getString(R.string.OFF));
+            setregister(11);
+        }
         if (y==1)
+        {
             t1.setText(getString(R.string.Mild));
+            setregister(12);
+        }
         if (y==2)
+        {
             t1.setText(getString(R.string.Moderate));
+            setregister(13);
+        }
         if (y==3)
+        {
             t1.setText(getString(R.string.Considerable));
+            setregister(14);
+        }
         if (y==4)
+        {
             t1.setText(getString(R.string.Strong));
+            setregister(15);
+        }
         s1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -95,6 +110,7 @@ public class NoiseReduction extends AppCompat {
             @Override
             public void onClick(View view) {
                 s1.setProgress(1);
+                setregister(12);
             }
         });
     }

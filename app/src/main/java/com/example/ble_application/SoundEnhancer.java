@@ -157,6 +157,32 @@ public class SoundEnhancer extends AppCompat {
             public void onStopTrackingTouch(SeekBar seekBar) {
                 // کاری انجام نمی‌شود
                 //showToast(String.valueOf(progressChangedValue));
+                if (x==-6)
+                    setregister(33);
+                if (x==-5)
+                    setregister(34);
+                if (x==-4)
+                    setregister(35);
+                if (x==-3)
+                    setregister(36);
+                if (x==-2)
+                    setregister(37);
+                if (x==-1)
+                    setregister(38);
+                if (x==0)
+                    setregister(39);
+                if (x==1)
+                    setregister(40);
+                if (x==2)
+                    setregister(41);
+                if (x==3)
+                    setregister(42);
+                if (x==4)
+                    setregister(43);
+                if (x==5)
+                    setregister(44);
+                if (x==6)
+                    setregister(45);
             }
         });
         s3.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -201,6 +227,32 @@ public class SoundEnhancer extends AppCompat {
             public void onStopTrackingTouch(SeekBar seekBar) {
                 // کاری انجام نمی‌شود
                 //showToast(String.valueOf(progressChangedValue));
+                if (x==-6)
+                    setregister(46);
+                if (x==-5)
+                    setregister(47);
+                if (x==-4)
+                    setregister(48);
+                if (x==-3)
+                    setregister(49);
+                if (x==-2)
+                    setregister(50);
+                if (x==-1)
+                    setregister(51);
+                if (x==0)
+                    setregister(52);
+                if (x==1)
+                    setregister(53);
+                if (x==2)
+                    setregister(54);
+                if (x==3)
+                    setregister(55);
+                if (x==4)
+                    setregister(56);
+                if (x==5)
+                    setregister(57);
+                if (x==6)
+                    setregister(58);
             }
         });
         b4.setOnClickListener(new View.OnClickListener() {
@@ -209,6 +261,9 @@ public class SoundEnhancer extends AppCompat {
                 s1.setProgress(0);
                 s2.setProgress(3);
                 s3.setProgress(0);
+                setregister(26);
+                setregister(42);
+                setregister(52);
             }
         });
 
@@ -218,6 +273,9 @@ public class SoundEnhancer extends AppCompat {
                 s1.setProgress(0);
                 s2.setProgress(3);
                 s3.setProgress(3);
+                setregister(26);
+                setregister(42);
+                setregister(55);
             }
         });
         b6.setOnClickListener(new View.OnClickListener() {
@@ -226,6 +284,9 @@ public class SoundEnhancer extends AppCompat {
                 s1.setProgress(0);
                 s2.setProgress(0);
                 s3.setProgress(-2);
+                setregister(26);
+                setregister(39);
+                setregister(50);
             }
         });
         b7.setOnClickListener(new View.OnClickListener() {
@@ -234,6 +295,9 @@ public class SoundEnhancer extends AppCompat {
                 s1.setProgress(-2);
                 s2.setProgress(0);
                 s3.setProgress(0);
+                setregister(24);
+                setregister(39);
+                setregister(52);
             }
         });
         b8.setOnClickListener(new View.OnClickListener() {
@@ -242,6 +306,9 @@ public class SoundEnhancer extends AppCompat {
                 s1.setProgress(0);
                 s2.setProgress(0);
                 s3.setProgress(0);
+                setregister(26);
+                setregister(39);
+                setregister(52);
             }
         });
     }
