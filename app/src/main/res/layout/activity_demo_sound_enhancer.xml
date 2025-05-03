@@ -31,16 +31,16 @@
     <com.example.ble_application.EqualizerBackgroundView
         android:id="@+id/equalizerBackground"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="400dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="240dp" />
+        android:layout_marginTop="100dp" />
     <LinearLayout
         android:id="@+id/l1"
         android:layoutDirection="ltr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/label"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -55,6 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:backgroundTint="@color/arnica8"
+                android:layout_marginBottom="80dp"
                 android:text="0"
                 android:textSize="20dp"
                 android:textColor="@color/font" />
@@ -62,13 +63,15 @@
             <SeekBar
                 android:id="@+id/seekBar2"
                 style="@style/Widget.AppCompat.SeekBar.Discrete"
-                android:layout_width="match_parent"
+                android:layout_width="400dp"
                 android:layout_height="180dp"
                 android:layout_marginTop="20dp"
                 android:layoutDirection="ltr"
-                android:max="6"
-                android:min="-6"
-                android:progress="4"
+                android:layout_gravity="center"
+                android:thumb="@drawable/thumb_custom"
+                android:max="5"
+                android:min="-5"
+                android:progress="0"
                 android:progressTint="@color/arnica4"
                 android:rotation="270"
                 android:thumbTint="@color/arnica4" />
@@ -78,6 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layoutDirection="ltr"
+                android:layout_marginTop="120dp"
                 android:gravity="center"
                 android:text="@string/Bass"
                 android:textColor="@color/font" />
@@ -96,6 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:backgroundTint="@color/arnica8"
+                android:layout_marginBottom="80dp"
                 android:text="0"
                 android:textSize="20dp"
                 android:textColor="@color/font" />
@@ -103,13 +108,15 @@
             <SeekBar
                 android:id="@+id/seekBar3"
                 style="@style/Widget.AppCompat.SeekBar.Discrete"
-                android:layout_width="match_parent"
+                android:layout_width="400dp"
                 android:layout_height="180dp"
                 android:layout_marginTop="20dp"
                 android:layoutDirection="ltr"
-                android:max="6"
-                android:min="-6"
-                android:progress="2"
+                android:layout_gravity="center"
+                android:max="5"
+                android:min="-5"
+                android:progress="0"
+                android:thumb="@drawable/thumb_custom"
                 android:progressTint="@color/arnica4"
                 android:rotation="270"
                 android:thumbTint="@color/arnica4" />
@@ -120,6 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_marginTop="120dp"
                 android:layoutDirection="ltr"
                 android:text="@string/Middle"
                 android:textColor="@color/font" />
@@ -138,6 +146,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:backgroundTint="@color/arnica8"
+                android:layout_marginBottom="80dp"
                 android:text="0"
                 android:textSize="20dp"
                 android:textColor="@color/font" />
@@ -145,13 +154,15 @@
             <SeekBar
                 android:id="@+id/seekBar4"
                 style="@style/Widget.AppCompat.SeekBar.Discrete"
-                android:layout_width="match_parent"
+                android:layout_width="400dp"
                 android:layout_height="180dp"
                 android:layout_marginTop="20dp"
-                android:max="6"
-                android:min="-6"
+                android:max="5"
+                android:min="-5"
+                android:layout_gravity="center"
                 android:layoutDirection="ltr"
-                android:progress="-2"
+                android:thumb="@drawable/thumb_custom"
+                android:progress="0"
                 android:progressTint="@color/arnica4"
                 android:rotation="270"
                 android:thumbTint="@color/arnica4" />
@@ -162,6 +173,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/Treble"
+                android:layout_marginTop="120dp"
                 android:layoutDirection="ltr"
                 android:textColor="@color/font" />
         </LinearLayout>
@@ -172,8 +184,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/background"
-        android:layout_marginTop="50dp"
         android:gravity="center"
+        android:layout_marginTop="60dp"
         android:layoutDirection="ltr"
         android:layout_below="@id/l1"
         android:orientation="horizontal"
@@ -224,7 +236,6 @@
         android:layout_height="wrap_content"
         android:background="@color/background"
         android:gravity="center"
-        android:layout_marginTop="20dp"
         android:layoutDirection="ltr"
         android:layout_below="@id/bottomNavigationLayout"
         android:orientation="horizontal"

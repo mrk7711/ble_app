@@ -44,7 +44,7 @@
             android:layout_weight="1"
             android:max="4"
             android:min="0"
-
+            android:thumb="@drawable/thumb_custom"
             android:progress="1"
             android:progressTint="@color/arnica4"
             android:rotation="270"

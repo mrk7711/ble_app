@@ -67,11 +67,11 @@
             android:id="@+id/slider1"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:progress="3"
             android:max="10"
-            android:min="1"
-            android:thumbTint="@color/arnica4"
-            android:progressTint="@color/arnica4" />
+            android:min="0"
+            android:progress="3"
+            android:progressTint="@color/arnica4"
+            android:thumbTint="@color/arnica4" />
 
         <ImageButton
             android:id="@+id/mutepic2"

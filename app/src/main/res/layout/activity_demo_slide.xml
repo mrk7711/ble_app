@@ -85,8 +85,9 @@
             android:layout_height="wrap_content"
             android:progress="3"
             android:layoutDirection="ltr"
+            android:thumb="@drawable/thumb_custom"
             android:max="10"
-            android:min="1"
+            android:min="0"
             android:thumbTint="@color/arnica4"
             android:progressTint="@color/arnica4" />
 
@@ -124,6 +125,7 @@
             android:max="10"
             android:thumbTint="@color/arnica4"
             android:progressTint="@color/arnica4"
+            android:thumb="@drawable/thumb_custom"
             android:visibility="invisible"/>
 
         <ImageButton

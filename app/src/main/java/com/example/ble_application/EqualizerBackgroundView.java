@@ -48,11 +48,11 @@ public class EqualizerBackgroundView extends View {
 
         // محاسبه نقاط مثلث با استفاده از مقادیر SeekBar
         float bassX = width * 0.165f;
-        float bassY = height - ((bassValue / 12.0f )* height)-135;
+        float bassY = height - ((bassValue / 10.0f )* height)-470;
         float midX = width * 0.5f;
-        float midY = height - ((midValue / 12f) * height)-135;
+        float midY = height - ((midValue / 10.0f) * height)-470;
         float trebleX = width * 0.83f;
-        float trebleY = height - ((trebleValue / 12.0f) * height)-135;
+        float trebleY = height - ((trebleValue / 10.0f) * height)-470;
 
         // رسم مستطیل قرمز رنگ بین نقاط
         Path path = new Path();
@@ -65,5 +65,4 @@ public class EqualizerBackgroundView extends View {
         // رسم نوار روی Canvas
         canvas.drawPath(path, paint);
     }
-
 }

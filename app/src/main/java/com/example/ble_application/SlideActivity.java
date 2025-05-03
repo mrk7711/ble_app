@@ -134,6 +134,8 @@ public class SlideActivity extends AppCompat {
                 viewPager.setAlpha(0.1f); // کاهش شفافیت برای مات کردن
                 t1.setVisibility(View.VISIBLE);
                 x = progress;
+                if(x==0)
+                    t1.setText("0");
                 if(x==1)
                     t1.setText("1");
                 if (x==2)
@@ -169,6 +171,10 @@ public class SlideActivity extends AppCompat {
                 //showToast(String.valueOf(progressChangedValue));
                 viewPager.setAlpha(1.0f); // بازگشت به حالت عادی
                 t1.setVisibility(View.GONE); // مخفی کردن متن
+                if(x==0)
+                {
+                    setregister(60);
+                }
                 if (x==1)
                 {
                     setregister(1);

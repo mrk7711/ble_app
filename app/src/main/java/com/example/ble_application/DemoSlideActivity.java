@@ -103,6 +103,8 @@ public class DemoSlideActivity extends AppCompat {
                 viewPager.setAlpha(0.1f); // کاهش شفافیت برای مات کردن
                 t1.setVisibility(View.VISIBLE);
                 x = progress;
+                if(x==0)
+                    t1.setText("0");
                 if(x==1)
                     t1.setText("1");
                 if (x==2)

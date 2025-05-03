@@ -6,8 +6,6 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-
-
 public class DemoNoiseReduction extends AppCompat {
     private Button b1;
     private SeekBar s1;

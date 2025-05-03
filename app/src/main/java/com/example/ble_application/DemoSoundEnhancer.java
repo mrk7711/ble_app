@@ -35,8 +35,6 @@ public class DemoSoundEnhancer extends AppCompat {
 
                 x = progress;
                 updateBackground(s1.getProgress(), s2.getProgress(), s3.getProgress());
-                if (x==-6)
-                    b1.setText("-6");
                 if (x==-5)
                     b1.setText("-5");
                 if (x==-4)
@@ -49,8 +47,6 @@ public class DemoSoundEnhancer extends AppCompat {
                     b1.setText("-1");
                 if (x==0)
                     b1.setText("0");
-                if (x==6)
-                    b1.setText("+6");
                 if (x==5)
                     b1.setText("+5");
                 if (x==4)
@@ -78,8 +74,6 @@ public class DemoSoundEnhancer extends AppCompat {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 x = progress;
                 updateBackground(s1.getProgress(), s2.getProgress(), s3.getProgress());
-                if (x==-6)
-                    b2.setText("-6");
                 if (x==-5)
                     b2.setText("-5");
                 if (x==-4)
@@ -92,8 +86,6 @@ public class DemoSoundEnhancer extends AppCompat {
                     b2.setText("-1");
                 if (x==0)
                     b2.setText("0");
-                if (x==6)
-                    b2.setText("+6");
                 if (x==5)
                     b2.setText("+5");
                 if (x==4)
@@ -122,8 +114,7 @@ public class DemoSoundEnhancer extends AppCompat {
 
                 x = progress;
                 updateBackground(s1.getProgress(), s2.getProgress(), s3.getProgress());
-                if (x==-6)
-                    b3.setText("-6");
+
                 if (x==-5)
                     b3.setText("-5");
                 if (x==-4)
@@ -136,8 +127,6 @@ public class DemoSoundEnhancer extends AppCompat {
                     b3.setText("-1");
                 if (x==0)
                     b3.setText("0");
-                if (x==6)
-                    b3.setText("+6");
                 if (x==5)
                     b3.setText("+5");
                 if (x==4)
