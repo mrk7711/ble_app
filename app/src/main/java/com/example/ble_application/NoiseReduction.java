@@ -20,8 +20,8 @@ public class NoiseReduction extends AppCompat {
     private BluetoothGatt bluetoothGatt;
     private BluetoothGattCharacteristic ledCharacteristic;
     private BluetoothGattCharacteristic i2cCharacteristic;
-    private static final String PREFS_NAME = "SeekBarPrefs";
-    private static final String KEY_SEEKBAR_VALUE = "seekBarValue";
+    private static final String PREFS_NAMEA = "SeekBarPrefs";
+    private static final String KEY_SEEKBAR_VALUEA = "seekBarValue";
     private static final UUID SERVICE_UUID = UUID.fromString("18424398-7cbc-11e9-8f9e-2a86e4085a59");
     private static final UUID I2C_CHARACTERISTIC_UUID = UUID.fromString("5b87b4ef-3bfa-76a8-e642-92933c31434c");
     private static final UUID LED_CHARACTERISTIC_UUID = UUID.fromString("5a87b4ef-3bfa-76a8-e642-92933c31434f");
@@ -36,8 +36,8 @@ public class NoiseReduction extends AppCompat {
         BluetoothGattService service = bluetoothGatt.getService(SERVICE_UUID);
         ledCharacteristic = service.getCharacteristic(LED_CHARACTERISTIC_UUID);
         i2cCharacteristic = service.getCharacteristic(I2C_CHARACTERISTIC_UUID);
-        SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        int y = preferences.getInt(KEY_SEEKBAR_VALUE, 0);
+        SharedPreferences preferences = getSharedPreferences(PREFS_NAMEA, MODE_PRIVATE);
+        int y = preferences.getInt(KEY_SEEKBAR_VALUEA, 0);
         s1.setProgress(y);
         if (y==0)
         {
@@ -69,7 +69,7 @@ public class NoiseReduction extends AppCompat {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 //currentValueTextView.setText(String.valueOf(progress));
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putInt(KEY_SEEKBAR_VALUE, progress);
+                editor.putInt(KEY_SEEKBAR_VALUEA, progress);
                 editor.apply();
                 x = progress;
                 if (x==0)
@@ -116,7 +116,9 @@ public class NoiseReduction extends AppCompat {
     }
     private void setregister(int x) {
         // Send command to turn on the LED to the microcontroller
-        byte[] command = new byte[]{(byte)x}; // Command to turn on the LED
+        byte highByte = (byte) ((x >> 8) & 0xFF); // بایت بالا
+        byte lowByte  = (byte) (x & 0xFF);        // بایت پایین
+        byte[] command = new byte[]{highByte, lowByte}; // Command to turn on the LED
         ledCharacteristic.setValue(command);
         bluetoothGatt.writeCharacteristic(ledCharacteristic);
     }

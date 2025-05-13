@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -33,6 +35,7 @@ public class SlideActivity extends AppCompat {
     private SeekBar s1,s2;
     private TextView t1;
     private int x;
+    SliderItem item;
     private static final UUID SERVICE_UUID = UUID.fromString("18424398-7cbc-11e9-8f9e-2a86e4085a59");
     private static final UUID I2C_CHARACTERISTIC_UUID = UUID.fromString("5b87b4ef-3bfa-76a8-e642-92933c31434c");
     private static final UUID LED_CHARACTERISTIC_UUID = UUID.fromString("5a87b4ef-3bfa-76a8-e642-92933c31434f");
@@ -80,13 +83,29 @@ public class SlideActivity extends AppCompat {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
+                item = sliderItems.get(position);
                 writeRegisters(position); // نوشتن رجیسترها بر اساس اسلاید فعلی
             }
         });
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SlideActivity.this,NoiseReduction.class));
+                String mode = item.getTitle();
+                switch (mode)
+                {
+                    case "P1" :
+                        startActivity(new Intent(SlideActivity.this,NoiseReduction.class));
+                        break;
+                    case "P2" :
+                        startActivity(new Intent(SlideActivity.this,NoiseReduction_Mode2.class));
+                        break;
+                    case "P3" :
+                        startActivity(new Intent(SlideActivity.this,NoiseReduction_Mode3.class));
+                        break;
+                    case "P4" :
+                        startActivity(new Intent(SlideActivity.this,NoiseReduction_Mode4.class));
+                        break;
+                }
             }
         });
         b2.setOnClickListener(new View.OnClickListener() {
@@ -174,6 +193,9 @@ public class SlideActivity extends AppCompat {
                 if(x==0)
                 {
                     setregister(60);
+//                    new Handler(Looper.getMainLooper()).postDelayed(() -> {
+//                        setregister(300);
+//                    }, 300); // تاخیر 300 میلی‌ثانیه
                 }
                 if (x==1)
                 {
@@ -261,22 +283,24 @@ public class SlideActivity extends AppCompat {
                 break;
         }
     }
-    private void turnOnLed() {
-        // Send command to turn on the LED to the microcontroller
-        byte[] command = new byte[]{1}; // Command to turn on the LED
-        ledCharacteristic.setValue(command);
-        bluetoothGatt.writeCharacteristic(ledCharacteristic);
-    }
-    private void turnOffLed() {
-        // Send command to turn on the LED to the microcontroller
-        byte[] command = new byte[]{0}; // Command to turn on the LED
-        ledCharacteristic.setValue(command);
-        bluetoothGatt.writeCharacteristic(ledCharacteristic);
-    }
+//    private void turnOnLed() {
+//        // Send command to turn on the LED to the microcontroller
+//        byte[] command = new byte[]{1}; // Command to turn on the LED
+//        ledCharacteristic.setValue(command);
+//        bluetoothGatt.writeCharacteristic(ledCharacteristic);
+//    }
+//    private void turnOffLed() {
+//        // Send command to turn on the LED to the microcontroller
+//        byte[] command = new byte[]{0}; // Command to turn on the LED
+//        ledCharacteristic.setValue(command);
+//        bluetoothGatt.writeCharacteristic(ledCharacteristic);
+//    }
 
     private void setregister(int x) {
         // Send command to turn on the LED to the microcontroller
-        byte[] command = new byte[]{(byte)x}; // Command to turn on the LED
+        byte highByte = (byte) ((x >> 8) & 0xFF); // بایت بالا
+        byte lowByte  = (byte) (x & 0xFF);        // بایت پایین
+        byte[] command = new byte[]{highByte, lowByte}; // Command to turn on the LED
         ledCharacteristic.setValue(command);
         bluetoothGatt.writeCharacteristic(ledCharacteristic);
     }

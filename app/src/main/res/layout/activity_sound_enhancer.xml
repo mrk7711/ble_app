@@ -11,21 +11,21 @@
         android:textAlignment="center"
         android:textColor="@color/font"
         android:textSize="30sp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="26dp"
         android:layout_alignParentTop="true" />
     <com.example.ble_application.EqualizerBackgroundView
         android:id="@+id/equalizerBackground"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="400dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="263dp" />
+        android:layout_marginTop="100dp" />
     <LinearLayout
         android:id="@+id/l1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/label"
         android:layoutDirection="ltr"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -39,6 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="80dp"
                 android:backgroundTint="@color/arnica8"
                 android:text="0"
                 android:textSize="20dp"
@@ -47,9 +48,11 @@
             <SeekBar
                 android:id="@+id/seekBar2"
                 style="@style/Widget.AppCompat.SeekBar.Discrete"
-                android:layout_width="match_parent"
+                android:layout_width="400dp"
                 android:layout_height="180dp"
                 android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:thumb="@drawable/thumb_custom"
                 android:max="5"
                 android:min="-5"
                 android:progress="0"
@@ -62,6 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_marginTop="120dp"
                 android:text="@string/Bass"
                 android:textColor="@color/font" />
 
@@ -78,6 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="80dp"
                 android:backgroundTint="@color/arnica8"
                 android:text="0"
                 android:textSize="20dp"
@@ -86,9 +91,11 @@
             <SeekBar
                 android:id="@+id/seekBar3"
                 style="@style/Widget.AppCompat.SeekBar.Discrete"
-                android:layout_width="match_parent"
+                android:layout_width="400dp"
                 android:layout_height="180dp"
                 android:layout_marginTop="20dp"
+                android:thumb="@drawable/thumb_custom"
+                android:layout_gravity="center"
                 android:max="5"
                 android:min="-5"
                 android:progress="0"
@@ -102,6 +109,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_marginTop="120dp"
                 android:text="@string/Middle"
                 android:textColor="@color/font" />
 
@@ -119,6 +127,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:backgroundTint="@color/arnica8"
+                android:layout_marginBottom="80dp"
                 android:text="0"
                 android:textSize="20dp"
                 android:textColor="@color/font" />
@@ -126,11 +135,13 @@
             <SeekBar
                 android:id="@+id/seekBar4"
                 style="@style/Widget.AppCompat.SeekBar.Discrete"
-                android:layout_width="match_parent"
+                android:layout_width="400dp"
                 android:layout_height="180dp"
                 android:layout_marginTop="20dp"
                 android:max="5"
                 android:min="-5"
+                android:thumb="@drawable/thumb_custom"
+                android:layout_gravity="center"
                 android:progress="0"
                 android:progressTint="@color/arnica4"
                 android:rotation="270"
@@ -141,6 +152,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_marginTop="120dp"
                 android:text="@string/Treble"
                 android:textColor="@color/font" />
         </LinearLayout>
@@ -151,7 +163,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/background"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:layoutDirection="ltr"
         android:layout_below="@id/l1"

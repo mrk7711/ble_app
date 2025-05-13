@@ -26,19 +26,37 @@
         android:theme="@style/Theme.BLE_Application"
         tools:targetApi="31">
         <activity
+            android:name=".SoundEnhancer_Mode4"
+            android:exported="false" />
+        <activity
+            android:name=".SoundEnhancer_Mode3"
+            android:exported="false" />
+        <activity
+            android:name=".SoundEnhancer_Mode2"
+            android:exported="false" />
+        <activity
+            android:name=".NoiseReduction_Mode4"
+            android:exported="false" />
+        <activity
+            android:name=".NoiseReduction_Mode3"
+            android:exported="false" />
+        <activity
+            android:name=".NoiseReduction_Mode2"
+            android:exported="false" />
+        <activity
             android:name=".ForTestEqualizer"
             android:exported="false" />
         <activity
             android:name=".DemoSoundEnhancer"
-            android:parentActivityName=".DemoSlideActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".DemoSlideActivity" />
         <activity
             android:name=".Instruction"
             android:exported="false" />
         <activity
             android:name=".DemoNoiseReduction"
-            android:parentActivityName=".DemoSlideActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".DemoSlideActivity" />
         <activity
             android:name=".DemoSlideActivity"
             android:exported="false" />

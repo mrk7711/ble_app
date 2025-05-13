@@ -10,12 +10,13 @@ public class SliderItem {
         this.title = title;
     }
 
-
-    public int getImageResId() {
+    public int getImageResId()
+    {
         return imageResId;
     }
 
-    public String getTitle() {
+    public String getTitle()
+    {
         return title;
     }
 

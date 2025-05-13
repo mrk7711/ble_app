@@ -25,7 +25,7 @@ public class DemoSlideActivity extends AppCompat {
     private ImageButton i1,i2,i3,i4;
     private SeekBar s1,s2;
     private TextView t1;
-    private int x;
+    private int x,y;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,8 +80,8 @@ public class DemoSlideActivity extends AppCompat {
                 i3.setVisibility(View.VISIBLE);
                 i4.setVisibility(View.VISIBLE);
                 i2.setVisibility(View.INVISIBLE);
-                i1.setImageResource(R.drawable.r);
-                i3.setImageResource(R.drawable.l);
+                //i1.setImageResource(R.drawable.r);
+                i3.setImageResource(R.drawable.baseline_volume_up_24);
                 x=s1.getProgress();
                 s2.setProgress(x);
             }
@@ -93,7 +93,7 @@ public class DemoSlideActivity extends AppCompat {
                 i4.setVisibility(View.INVISIBLE);
                 i2.setVisibility(View.VISIBLE);
                 i3.setVisibility(View.INVISIBLE);
-                i1.setImageResource(R.drawable.baseline_volume_mute_24);
+                i1.setImageResource(R.drawable.baseline_volume_up_24);
             }
         });
         s1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -104,7 +104,16 @@ public class DemoSlideActivity extends AppCompat {
                 t1.setVisibility(View.VISIBLE);
                 x = progress;
                 if(x==0)
+                {
+                    i1.setImageResource(R.drawable.baseline_volume_off_24);
+                }
+                else
+                {
+                    i1.setImageResource(R.drawable.baseline_volume_up_24);
+                }
+                if(x==0)
                     t1.setText("0");
+
                 if(x==1)
                     t1.setText("1");
                 if (x==2)
@@ -124,6 +133,61 @@ public class DemoSlideActivity extends AppCompat {
                 if (x==9)
                     t1.setText("9");
                 if (x==10) {
+                    t1.setText("10");
+
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // کاری انجام نمی‌شود
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // کاری انجام نمی‌شود
+                //showToast(String.valueOf(progressChangedValue));
+                viewPager.setAlpha(1.0f); // بازگشت به حالت عادی
+                t1.setVisibility(View.GONE); // مخفی کردن متن
+            }
+        });
+        s2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                //currentValueTextView.setText(String.valueOf(progress));
+                viewPager.setAlpha(0.1f); // کاهش شفافیت برای مات کردن
+                t1.setVisibility(View.VISIBLE);
+                y = progress;
+                if(y==0)
+                {
+                    i2.setImageResource(R.drawable.baseline_volume_off_24);
+                }
+                else
+                {
+                    i2.setImageResource(R.drawable.baseline_volume_up_24);
+                }
+                if(y==0)
+                    t1.setText("0");
+
+                if(y==1)
+                    t1.setText("1");
+                if (y==2)
+                    t1.setText("2");
+                if (y==3)
+                    t1.setText("3");
+                if (y==4)
+                    t1.setText("4");
+                if (y==5)
+                    t1.setText("5");
+                if (y==6)
+                    t1.setText("6");
+                if (y==7)
+                    t1.setText("7");
+                if (y==8)
+                    t1.setText("8");
+                if (y==9)
+                    t1.setText("9");
+                if (y==10) {
                     t1.setText("10");
 
                 }

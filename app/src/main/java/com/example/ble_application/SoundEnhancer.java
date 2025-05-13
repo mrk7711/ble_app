@@ -5,13 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
-
 import java.util.UUID;
 
 public class SoundEnhancer extends AppCompat {
@@ -23,6 +23,12 @@ public class SoundEnhancer extends AppCompat {
     private BluetoothGatt bluetoothGatt;
     private BluetoothGattCharacteristic ledCharacteristic;
     private BluetoothGattCharacteristic i2cCharacteristic;
+    private static final String PREFS_NAMEE = "SeekBarPrefs5";
+    private static final String KEY_SEEKBAR_VALUEE = "seekBarValue5";
+    private static final String PREFS_NAMEF = "SeekBarPrefs6";
+    private static final String KEY_SEEKBAR_VALUEF = "seekBarValue6";
+    private static final String PREFS_NAMEG = "SeekBarPrefs7";
+    private static final String KEY_SEEKBAR_VALUEG = "seekBarValue7";
     int x=0;
     private EqualizerBackgroundView backgroundView;
 
@@ -46,11 +52,22 @@ public class SoundEnhancer extends AppCompat {
         ledCharacteristic = service.getCharacteristic(LED_CHARACTERISTIC_UUID);
         i2cCharacteristic = service.getCharacteristic(I2C_CHARACTERISTIC_UUID);
         backgroundView = findViewById(R.id.equalizerBackground);
+        SharedPreferences preferences1 = getSharedPreferences(PREFS_NAMEE, MODE_PRIVATE);
+        int y1 = preferences1.getInt(KEY_SEEKBAR_VALUEE, 0);
+        s1.setProgress(y1);
+        SharedPreferences preferences2 = getSharedPreferences(PREFS_NAMEF, MODE_PRIVATE);
+        int y2 = preferences2.getInt(KEY_SEEKBAR_VALUEF, 0);
+        s2.setProgress(y2);
+        SharedPreferences preferences3 = getSharedPreferences(PREFS_NAMEG, MODE_PRIVATE);
+        int y3 = preferences3.getInt(KEY_SEEKBAR_VALUEG, 0);
+        s3.setProgress(y3);
         updateBackground(s1.getProgress(), s2.getProgress(), s3.getProgress());
         s1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
+                SharedPreferences.Editor editor1 = preferences1.edit();
+                editor1.putInt(KEY_SEEKBAR_VALUEE, progress);
+                editor1.apply();
                 x = progress;
                 updateBackground(s1.getProgress(), s2.getProgress(), s3.getProgress());
                 if (x==-5)
@@ -112,7 +129,9 @@ public class SoundEnhancer extends AppCompat {
         s2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
+                SharedPreferences.Editor editor2 = preferences2.edit();
+                editor2.putInt(KEY_SEEKBAR_VALUEF, progress);
+                editor2.apply();
                 x = progress;
                 updateBackground(s1.getProgress(), s2.getProgress(), s3.getProgress());
                 if (x==-5)
@@ -861,7 +880,9 @@ public class SoundEnhancer extends AppCompat {
         s3.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
+                SharedPreferences.Editor editor3 = preferences3.edit();
+                editor3.putInt(KEY_SEEKBAR_VALUEG, progress);
+                editor3.apply();
                 x = progress;
                 updateBackground(s1.getProgress(), s2.getProgress(), s3.getProgress());
                 if (x==-5)
@@ -1037,7 +1058,9 @@ public class SoundEnhancer extends AppCompat {
     }
     private void setregister(int x) {
         // Send command to turn on the LED to the microcontroller
-        byte[] command = new byte[]{(byte)x}; // Command to turn on the LED
+        byte highByte = (byte) ((x >> 8) & 0xFF); // بایت بالا
+        byte lowByte  = (byte) (x & 0xFF);        // بایت پایین
+        byte[] command = new byte[]{highByte, lowByte}; // Command to turn on the LED
         ledCharacteristic.setValue(command);
         bluetoothGatt.writeCharacteristic(ledCharacteristic);
     }

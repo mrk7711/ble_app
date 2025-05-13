@@ -76,7 +76,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
 
-            android:src="@drawable/baseline_volume_mute_24"
+            android:src="@drawable/baseline_volume_up_24"
             android:backgroundTint="@color/background"/>
 
         <SeekBar
