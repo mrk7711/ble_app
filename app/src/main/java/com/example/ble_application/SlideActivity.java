@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AlertDialog;
@@ -46,7 +47,7 @@ public class SlideActivity extends AppCompat {
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                showExitDialog2(); // نمایش دیالوگ تأیید خروج
+                showExitDialog2();
             }
         });
         setContentView(R.layout.activity_slide);
@@ -111,8 +112,22 @@ public class SlideActivity extends AppCompat {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SlideActivity.this, SoundEnhancer.class));
-
+                String mode = item.getTitle();
+                switch (mode)
+                {
+                    case "P1" :
+                        startActivity(new Intent(SlideActivity.this,SoundEnhancer.class));
+                        break;
+                    case "P2" :
+                        startActivity(new Intent(SlideActivity.this, SoundEnhancer_Mode2.class));
+                        break;
+                    case "P3" :
+                        startActivity(new Intent(SlideActivity.this,SoundEnhancer_Mode3.class));
+                        break;
+                    case "P4" :
+                        startActivity(new Intent(SlideActivity.this,SoundEnhancer_Mode4.class));
+                        break;
+                }
             }
         });
         i1.setOnClickListener(new View.OnClickListener() {
@@ -120,7 +135,7 @@ public class SlideActivity extends AppCompat {
             public void onClick(View view) {
                 s1.setProgress(0);
                 t1.setVisibility(View.INVISIBLE);
-                setregister(60);
+                setregister(0);
             }
         });
         i2.setOnClickListener(new View.OnClickListener() {
@@ -130,8 +145,8 @@ public class SlideActivity extends AppCompat {
                 i3.setVisibility(View.VISIBLE);
                 i4.setVisibility(View.VISIBLE);
                 i2.setVisibility(View.INVISIBLE);
-                i1.setImageResource(R.drawable.r);
-                i3.setImageResource(R.drawable.l);
+                //i1.setImageResource(R.drawable.r);
+                i3.setImageResource(R.drawable.baseline_volume_up_24);
                 x=s1.getProgress();
                 s2.setProgress(x);
             }
@@ -143,7 +158,7 @@ public class SlideActivity extends AppCompat {
                 i4.setVisibility(View.INVISIBLE);
                 i2.setVisibility(View.VISIBLE);
                 i3.setVisibility(View.INVISIBLE);
-                i1.setImageResource(R.drawable.baseline_volume_mute_24);
+                i1.setImageResource(R.drawable.baseline_volume_up_24);
             }
         });
         s1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -153,6 +168,14 @@ public class SlideActivity extends AppCompat {
                 viewPager.setAlpha(0.1f); // کاهش شفافیت برای مات کردن
                 t1.setVisibility(View.VISIBLE);
                 x = progress;
+                if(x==0)
+                {
+                    i1.setImageResource(R.drawable.baseline_volume_off_24);
+                }
+                else
+                {
+                    i1.setImageResource(R.drawable.baseline_volume_up_24);
+                }
                 if(x==0)
                     t1.setText("0");
                 if(x==1)
@@ -190,12 +213,10 @@ public class SlideActivity extends AppCompat {
                 //showToast(String.valueOf(progressChangedValue));
                 viewPager.setAlpha(1.0f); // بازگشت به حالت عادی
                 t1.setVisibility(View.GONE); // مخفی کردن متن
+                //setregister(s1.getProgress());
                 if(x==0)
                 {
-                    setregister(60);
-//                    new Handler(Looper.getMainLooper()).postDelayed(() -> {
-//                        setregister(300);
-//                    }, 300); // تاخیر 300 میلی‌ثانیه
+                    setregister(0);
                 }
                 if (x==1)
                 {
@@ -242,8 +263,8 @@ public class SlideActivity extends AppCompat {
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SlideActivity.this, Statuspage.class));
-
+                //getregister();
+                //startActivity(new Intent(SlideActivity.this, Statuspage.class));
             }
         });
         b4.setOnClickListener(new View.OnClickListener() {
@@ -262,7 +283,7 @@ public class SlideActivity extends AppCompat {
         b6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setregister(59);
+                setregister(272);                //Save to EEPROM
             }
         });
     }
@@ -283,18 +304,7 @@ public class SlideActivity extends AppCompat {
                 break;
         }
     }
-//    private void turnOnLed() {
-//        // Send command to turn on the LED to the microcontroller
-//        byte[] command = new byte[]{1}; // Command to turn on the LED
-//        ledCharacteristic.setValue(command);
-//        bluetoothGatt.writeCharacteristic(ledCharacteristic);
-//    }
-//    private void turnOffLed() {
-//        // Send command to turn on the LED to the microcontroller
-//        byte[] command = new byte[]{0}; // Command to turn on the LED
-//        ledCharacteristic.setValue(command);
-//        bluetoothGatt.writeCharacteristic(ledCharacteristic);
-//    }
+
 
     private void setregister(int x) {
         // Send command to turn on the LED to the microcontroller
@@ -304,6 +314,13 @@ public class SlideActivity extends AppCompat {
         ledCharacteristic.setValue(command);
         bluetoothGatt.writeCharacteristic(ledCharacteristic);
     }
+
+//    private void getregister() {
+//        bluetoothGatt.readCharacteristic(i2cCharacteristic);
+//        byte[] data = i2cCharacteristic.getValue();
+//        String hex = String.format("0x%08X", data);
+//        Toast.makeText(SlideActivity.this, "Value = " + hex, Toast.LENGTH_SHORT).show();
+//    }
 
     private void showExitDialog2() {
         new AlertDialog.Builder(this)

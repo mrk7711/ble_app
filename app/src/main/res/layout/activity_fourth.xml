@@ -60,7 +60,10 @@
             android:textColor="@color/black"
             android:visibility="invisible"
             android:text="@string/no_demo"
-            app:iconTint="#673AB7" />/>
+            app:iconTint="#673AB7" /><![CDATA[
 
+        />
+
+    ]]>
     </LinearLayout>
 </RelativeLayout>

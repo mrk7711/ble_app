@@ -14,7 +14,7 @@
     <string name="no_demo">نه از حالت آزمایشی استفاده می کنم.</string>
     <string name="no_demo2">رفتن به حالت آزمایشی</string>
     <string name="Enable">فعالسازی</string>
-    <string name="about_app">برنامه آرنیکا به شما امکان می دهد برنامه خود را تغییر دهید و صدا را برای سمعک سازگار با بلوتوث خود تنظیم کنید.</string>
+    <string name="about_app">برنامه ایرانیکا به شما امکان می دهد برنامه خود را تغییر دهید و صدا، سطح نویز و اکولایزر را برای سمعک سازگار با بلوتوث خود تنظیم کنید.</string>
     <string name="enable_blu">لطفا بلوتوث را برای اتصال به سمعک خود فعال کنید.</string>
     <string name="enable_loc">برای اتصال به سمعک، خدمات موقعیت مکانی باید فعال باشد.</string>
     <string name="title_activity_slide">صفحه ی دوم</string>

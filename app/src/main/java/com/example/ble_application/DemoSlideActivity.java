@@ -45,10 +45,10 @@ public class DemoSlideActivity extends AppCompat {
         t1=findViewById(R.id.show);
         // لیست صفحات
         List<SliderItem> sliderItems = new ArrayList<>();
-        sliderItems.add(new SliderItem(R.drawable.p1, "P1"));
-        sliderItems.add(new SliderItem(R.drawable.p2, "P2"));
-        sliderItems.add(new SliderItem(R.drawable.p3, "P3"));
-        sliderItems.add(new SliderItem(R.drawable.p4, "P4"));
+        sliderItems.add(new SliderItem(R.drawable.p1, "Common"));
+        sliderItems.add(new SliderItem(R.drawable.p2, "Noise"));
+        sliderItems.add(new SliderItem(R.drawable.p3, "Music"));
+        sliderItems.add(new SliderItem(R.drawable.p4, "Quiet"));
 
         // تنظیم آداپتر برای ViewPager
         sliderAdapter = new SliderAdapter(sliderItems);
@@ -113,7 +113,6 @@ public class DemoSlideActivity extends AppCompat {
                 }
                 if(x==0)
                     t1.setText("0");
-
                 if(x==1)
                     t1.setText("1");
                 if (x==2)
@@ -160,11 +159,11 @@ public class DemoSlideActivity extends AppCompat {
                 y = progress;
                 if(y==0)
                 {
-                    i2.setImageResource(R.drawable.baseline_volume_off_24);
+                    i3.setImageResource(R.drawable.baseline_volume_off_24);
                 }
                 else
                 {
-                    i2.setImageResource(R.drawable.baseline_volume_up_24);
+                    i3.setImageResource(R.drawable.baseline_volume_up_24);
                 }
                 if(y==0)
                     t1.setText("0");
@@ -210,7 +209,6 @@ public class DemoSlideActivity extends AppCompat {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(DemoSlideActivity.this, Statuspage.class));
-
             }
         });
         b4.setOnClickListener(new View.OnClickListener() {

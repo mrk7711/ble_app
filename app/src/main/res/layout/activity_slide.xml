@@ -60,7 +60,7 @@
             android:id="@+id/mutepic1"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/baseline_volume_mute_24"
+            android:src="@drawable/baseline_volume_up_24"
             android:backgroundTint="@color/background"/>
 
         <SeekBar
@@ -68,7 +68,9 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:max="10"
+            android:layoutDirection="ltr"
             android:min="0"
+            android:thumb="@drawable/thumb_custom"
             android:progress="3"
             android:progressTint="@color/arnica4"
             android:thumbTint="@color/arnica4" />
@@ -93,11 +95,11 @@
 
         <ImageButton
             android:id="@+id/mutepic3"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/baseline_volume_mute_24"
+            android:layout_width="26dp"
+            android:layout_height="match_parent"
             android:backgroundTint="@color/background"
-            android:visibility="invisible"/>
+            android:src="@drawable/baseline_volume_up_24"
+            android:visibility="invisible" />
 
         <SeekBar
             android:id="@+id/slider2"

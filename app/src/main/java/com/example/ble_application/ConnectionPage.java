@@ -4,7 +4,6 @@ import android.animation.ObjectAnimator;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
 import android.content.Intent;
 import android.os.Handler;
 import android.bluetooth.le.BluetoothLeScanner;
@@ -13,7 +12,6 @@ import android.bluetooth.le.ScanResult;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
-
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -33,6 +31,8 @@ public class ConnectionPage extends AppCompat {
     private BluetoothLeScanner BS;
     private static final String BLE_DEVICE_ADDRESS = "F4:35:23:48:00:00";
     private static final String BLE_DEVICE_ADDRESS2 = "48:23:35:F4:00:0B";
+    private static final String BLE_DEVICE_ADDRESS3 = "0B:00:F4:35:23:48";
+    private static final String BLE_DEVICE_ADDRESS4 = "F7:01:00:00:00:64";
     BluetoothDevice ble_device;
     private final long SCAN_PERIOD = 10000;
     private TextView t1,t2,t3;
@@ -156,7 +156,21 @@ public class ConnectionPage extends AppCompat {
             }
             if (deviceAddress.equals(BLE_DEVICE_ADDRESS2)) {
                 ble_device=device;
-                t1.setText("Arnica Hearing Aid2");
+                t1.setText("Arnica Hearing Aid");
+                //t1.setText( device.getAddress());
+                stopBleScan();
+                handler.removeCallbacksAndMessages(null);
+            }
+            if (deviceAddress.equals(BLE_DEVICE_ADDRESS3)) {
+                ble_device=device;
+                t1.setText("Arnica Hearing Aid");
+                //t1.setText( device.getAddress());
+                stopBleScan();
+                handler.removeCallbacksAndMessages(null);
+            }
+            if (deviceAddress.equals(BLE_DEVICE_ADDRESS4)) {
+                ble_device=device;
+                t1.setText("Earanica Hearing Aid");
                 //t1.setText( device.getAddress());
                 stopBleScan();
                 handler.removeCallbacksAndMessages(null);
